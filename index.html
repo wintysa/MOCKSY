@@ -1629,7 +1629,7 @@ body.pl-line #screenChatView .composer-input-pill { background-color: var(--ln-i
 .x-pinfo { padding: 0 16px 0; position: relative; }
 .x-pinfo .avw { margin-top: -38px; display: flex; justify-content: space-between; align-items: flex-end; }
 .x-pinfo .avw .x-av { border: 4px solid var(--bg); box-sizing: content-box; }
-.x-pname { margin-top: 10px; font-size: 21px; font-weight: 800; display: flex; align-items: center; gap: 4px; line-height: 26px; }
+.x-pname { margin-top: 10px; font-size: 20px; font-weight: 800; display: flex; align-items: center; gap: 4px; line-height: 26px; }
 .x-phandle { color: var(--tx2); font-size: 15px; display: flex; align-items: center; gap: 6px; }
 .x-fy { background-color: var(--input); color: var(--tx2); font-size: 12px; padding: 1px 5px; border-radius: 4px; }
 .x-bio { font-size: 15px; line-height: 20px; margin-top: 12px; white-space: pre-wrap; word-break: break-word; }
@@ -1828,7 +1828,7 @@ body.pl-line #screenChatView .composer-input-pill { background-color: var(--ln-i
 .ig-ib { width: 40px; height: 40px; border: none; background: transparent; color: var(--tx); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; position: relative; flex-shrink: 0; }
 .ig-dot { position: absolute; top: 7px; right: 7px; width: 9px; height: 9px; border-radius: 50%; background-color: var(--like); border: 1.5px solid var(--bg); }
 .ig-top { height: 50px; display: flex; align-items: center; padding: 0 8px 0 16px; gap: 4px; flex-shrink: 0; background-color: var(--bg); }
-.ig-top .ttl { flex: 1; font-size: 24px; font-weight: 700; letter-spacing: -.5px; display: flex; align-items: center; gap: 4px; min-width: 0; }
+.ig-top .ttl { flex: 1; font-size: 22px; font-weight: 700; letter-spacing: -.5px; display: flex; align-items: center; gap: 4px; min-width: 0; }
 .ig-top .ttl.sm { font-size: 20px; letter-spacing: 0; }
 .ig-top .ttl.ctr { justify-content: center; }
 .ig-bar { height: 50px; display: flex; align-items: center; gap: 8px; padding: 0 8px; flex-shrink: 0; border-bottom: 1px solid var(--bd); }
@@ -1842,8 +1842,8 @@ body.pl-line #screenChatView .composer-input-pill { background-color: var(--ln-i
 /* stories */
 .ig-stories { display: flex; gap: 14px; padding: 6px 12px 12px; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid var(--bd); }
 .ig-stories::-webkit-scrollbar { display: none; }
-.ig-story { display: flex; flex-direction: column; align-items: center; gap: 5px; width: 76px; flex-shrink: 0; cursor: pointer; font-size: 12px; color: var(--tx); }
-.ig-story span.n { max-width: 76px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ig-story { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 70px; flex-shrink: 0; cursor: pointer; font-size: 12px; color: var(--tx); }
+.ig-story span.n { max-width: 70px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .ig-story .add { position: absolute; right: -2px; bottom: -2px; width: 24px; height: 24px; border-radius: 50%; background-color: var(--tx); color: var(--bg); border: 3px solid var(--bg); display: flex; align-items: center; justify-content: center; }
 /* post */
 .ig-post { padding-bottom: 14px; }
@@ -1877,8 +1877,8 @@ body.pl-line #screenChatView .composer-input-pill { background-color: var(--ln-i
 .ig-prow .stats .nm { font-weight: 600; font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 4px; }
 .ig-prow .stats .nums { display: flex; justify-content: space-between; gap: 6px; }
 .ig-prow .stats .nums div { line-height: 1.15; cursor: default; }
-.ig-prow .stats .nums b { display: block; font-size: 17px; font-weight: 700; }
-.ig-prow .stats .nums span { font-size: 14px; }
+.ig-prow .stats .nums b { display: block; font-size: 16px; font-weight: 600; }
+.ig-prow .stats .nums span { font-size: 13px; }
 .ig-note { position: absolute; top: -12px; left: 2px; background-color: var(--input); color: var(--tx2); font-size: 11px; line-height: 1.2; padding: 6px 10px; border-radius: 14px; max-width: 92px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,.25); z-index: 2; }
 .ig-cat { color: var(--tx2); font-size: 14px; margin-top: 12px; }
 .ig-bio { font-size: 14px; line-height: 18px; white-space: pre-wrap; word-break: break-word; margin-top: 2px; }
@@ -1962,12 +1962,12 @@ body.pl-line #screenChatView .composer-input-pill { background-color: var(--ln-i
 .ig-reel .info .u { display: flex; align-items: center; gap: 8px; font-weight: 600; margin-bottom: 8px; }
 .ig-reel .top { position: absolute; left: 0; right: 0; top: 0; display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; color: #fff; font-size: 22px; font-weight: 700; }
 /* tab bar Liquid Glass mengambang */
-.ig-tabbar { position: absolute; left: 18px; right: 18px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); height: 62px; border-radius: 31px; display: flex; align-items: center; padding: 0 5px; z-index: 8;
+.ig-tabbar { position: absolute; left: 20px; right: 20px; bottom: calc(10px + env(safe-area-inset-bottom, 0px)); height: 58px; border-radius: 29px; display: flex; align-items: center; padding: 0 5px; z-index: 8;
   background-color: var(--tabbg); -webkit-backdrop-filter: blur(16px) saturate(190%) brightness(1.05); backdrop-filter: blur(16px) saturate(190%) brightness(1.05);
   box-shadow: 0 10px 28px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.38), inset 0 -1px 0 rgba(255,255,255,.08), inset 1px 0 0 rgba(255,255,255,.12), inset -1px 0 0 rgba(255,255,255,.12);
   border: .5px solid rgba(0,0,0,.35); }
 .t-light .ig-tabbar { border-color: rgba(0,0,0,.08); box-shadow: 0 8px 24px rgba(0,0,0,.14), inset 0 1px 0 rgba(255,255,255,.9), inset 0 -1px 0 rgba(0,0,0,.04); }
-.ig-tabbar button { flex: 1; height: 52px; border: none; background: transparent; color: var(--tx); display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 26px; position: relative; }
+.ig-tabbar button { flex: 1; height: 48px; border: none; background: transparent; color: var(--tx); display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 26px; position: relative; }
 .ig-tabbar button.on { background-color: var(--tabon); box-shadow: inset 0 1px 0 rgba(255,255,255,.18); }
 .ig-tabbar .cnt { position: absolute; top: 4px; left: 50%; margin-left: 4px; min-width: 20px; height: 20px; border-radius: 10px; background-color: var(--like); color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; padding: 0 6px; }
 #igApp.snap .ig-tabbar { background-color: rgba(38,38,40,.92); }
@@ -2008,6 +2008,51 @@ body.pl-line #screenChatView .composer-input-pill { background-color: var(--ln-i
 .ig-acc .c { flex: 1; min-width: 0; }
 .ig-acc .c b { display: flex; align-items: center; gap: 4px; }
 .ig-acc .c span { color: var(--tx2); font-size: 13px; }
+
+/* ===== Perbaikan audit (lintas layanan) ===== */
+/* P1: Chat View tidak boleh meluber di layar sempit */
+#screenChatView .composer-input-pill { min-width: 0; }
+#screenChatView .composer-text-input { min-width: 0; width: 100%; }
+#screenChatView .chatview-header { gap: 6px; }
+#screenChatView #btnCapsuleContact { min-width: 0; flex: 1 1 auto; overflow: hidden; }
+#screenChatView #btnCapsuleContact .capsule-title, #screenChatView #btnCapsuleContact .capsule-status { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; max-width: 100%; }
+#screenChatView .chatview-header .header-right { flex-shrink: 0; }
+@media (max-width: 380px){
+  #screenChatView .chatview-header { padding-left: 8px; padding-right: 8px; }
+  #screenChatView .chatview-header .header-right { gap: 2px; }
+  #screenChatView .chatview-header .header-right > button { width: 36px; height: 36px; min-width: 36px; }
+  #screenChatView .chat-bottom-composer { padding-left: 8px; padding-right: 8px; gap: 6px; }
+}
+/* P2: target sentuh minimum (WCAG 2.2 AA 2.5.8) */
+.theme-color-clear { min-width: 28px; min-height: 28px; }
+/* P2: indikator fokus keyboard yang konsisten */
+:where(button, [role="button"], a, input, select, textarea, summary, .ln-lrow, .svc-card):focus-visible { outline: 2px solid #3B82F6; outline-offset: 2px; }
+:where(button, [role="button"], .ln-lrow, .svc-card):focus:not(:focus-visible) { outline: none; }
+/* P3: hormati preferensi kurangi gerakan */
+@media (prefers-reduced-motion: reduce){ *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+/* ===== Tema per platform (Chat View & Pengaturan) ===== */
+.im-only { display: none !important; }
+body.pl-im .im-only { display: flex !important; }
+body.pl-im .wa-only { display: none !important; }
+#imBgSeg .ln-chip.active { background-color: #007AFF; border-color: #007AFF; color: #fff; }
+/* WhatsApp tanpa preset tema: warna asli WA iOS */
+body.pl-wa:not(.has-pal) #screenChatView .chat-stream-container, body.pl-wa:not(.has-pal) #chatStreamScroll { background-color: #EFEAE2; }
+body.pl-wa:not(.has-pal) #screenChatView .chat-bubble.me { background-color: #D9FDD3; color: #111B21; }
+body.pl-wa:not(.has-pal) #screenChatView .chat-bubble.them { background-color: #FFFFFF; color: #111B21; }
+body.pl-wa:not(.has-pal) #screenChatView .bubble-meta-row { color: #667781; }
+body.pl-wa.pl-dk:not(.has-pal) #screenChatView .chat-stream-container, body.pl-wa.pl-dk:not(.has-pal) #chatStreamScroll { background-color: #0B141A; }
+body.pl-wa.pl-dk:not(.has-pal) #screenChatView .chat-bubble.me { background-color: #005C4B; color: #E9EDEF; }
+body.pl-wa.pl-dk:not(.has-pal) #screenChatView .chat-bubble.them { background-color: #202C33; color: #E9EDEF; }
+body.pl-wa.pl-dk:not(.has-pal) #screenChatView .bubble-meta-row { color: #8696A0; }
+/* iMessage: warna asli Messages iOS 26 */
+body.pl-im #screenChatView .chat-stream-container, body.pl-im #chatStreamScroll { background-color: #FFFFFF; }
+body.pl-im #screenChatView .chat-bubble { border-radius: 19px; }
+body.pl-im #screenChatView .chat-bubble.me { background-color: #007AFF; color: #FFFFFF; }
+body.pl-im #screenChatView .chat-bubble.them { background-color: #E9E9EB; color: #000000; }
+body.pl-im #screenChatView .bubble-meta-row.out { color: rgba(255,255,255,.8); }
+body.pl-im #screenChatView .bubble-meta-row.in { color: #8A8A8E; }
+body.pl-im.pl-dk #screenChatView .chat-stream-container, body.pl-im.pl-dk #chatStreamScroll { background-color: #000000; }
+body.pl-im.pl-dk #screenChatView .chat-bubble.them { background-color: #26262A; color: #FFFFFF; }
 
 </style>
 </head>
@@ -3066,7 +3111,7 @@ var PL=[["#1d5fb8","#0a2a66","#030b1f"],["#ff9ac1","#b84fd6","#3a1b6e"],["#14151
 function dk(){return $("ph").classList.contains("dark")}
 function gi(s){if(!s)return null;if(!IM[s]){var i=new Image();i.onload=function(){render()};i.src=s;IM[s]=i}return IM[s].complete&&IM[s].naturalWidth?IM[s]:null}
 function cover(i,x,y,w,h){var r=Math.max(w/i.naturalWidth,h/i.naturalHeight),dw=i.naturalWidth*r,dh=i.naturalHeight*r;Q.drawImage(i,x+(w-dw)/2,y+(h-dh)/2,dw,dh)}
-function wall(){var ew=window.WPEFF?WPEFF(S):null;if(ew&&window.WPDRAW){try{WPDRAW(Q,ew,FW,FH,dk(),EX);return}catch(e){console.error(e)}}
+function wall(){if(window.IMBG&&IMBG(Q,S,FW,FH,dk()))return;var ew=null;if(ew&&window.WPDRAW){try{WPDRAW(Q,ew,FW,FH,dk(),EX);return}catch(e){console.error(e)}}
  var w=S.wall||"";if(w.indexOf("url(")==0){var i=gi(w.slice(4,w.indexOf(") center")));if(i){cover(i,0,0,FW,FH);return}}
  var p=PL[Math.max(0,G.indexOf(w))],g=Q.createLinearGradient(0,0,0,FH);p.forEach(function(k,j){g.addColorStop(j/(p.length-1),k)});Q.fillStyle=g;Q.fillRect(0,0,FW,FH);if(G.indexOf(w)==4){var b2=Q.createLinearGradient(0,170,FW,340);b2.addColorStop(0,"rgba(0,0,0,0)");b2.addColorStop(.5,"rgba(214,150,70,.5)");b2.addColorStop(1,"rgba(0,0,0,0)");Q.fillStyle=b2;Q.fillRect(0,0,FW,FH)}}
 function bl(w,h){var a=document.createElement("canvas");a.width=w;a.height=h;a.getContext("2d").drawImage(cv,0,0,w,h);var b=document.createElement("canvas");b.width=w*3;b.height=h*3;var x=b.getContext("2d");x.imageSmoothingQuality="high";x.drawImage(a,0,0,w*3,h*3);return b}
@@ -3299,7 +3344,7 @@ function cr(a,b){var x=lum(a),y=lum(b);return(Math.max(x,y)+.05)/(Math.min(x,y)+
 function txOn(bg){return cr(bg,"#111b21")>=cr(bg,"#e9edef")?"#111b21":"#e9edef"}
 function fgOn(bg,pref){return cr(bg,pref)>=3?pref:txOn(bg)}
 function rgbaOf(h,a){var q=hex2rgb(h)||[0,0,0];return"rgba("+q[0]+","+q[1]+","+q[2]+","+a+")"}
-var TH0={l:{o:"#d9fdd3",i:"#ffffff"},d:{o:"#144d37",i:"#1f2c34"}};
+var TH0={l:{o:"#d9fdd3",i:"#ffffff"},d:{o:"#005c4b",i:"#202c33"}};
 var TP=[
  {n:"Classic Green",l:{o:"#d9fdd3",i:"#ffffff"},d:{o:"#144d37",i:"#1f2c34"}},
  {n:"Purple",l:{o:"#e3d4ff",i:"#ffffff"},d:{o:"#5b3a99",i:"#2a2438"}},
@@ -3525,6 +3570,7 @@ function renderWA(c,o){
  if(FP.a>0){var sg2=c.createLinearGradient(0,PHH-120,0,PHH),sc2=FP.W?"0,0,0":"255,255,255";sg2.addColorStop(0,"rgba("+sc2+",0)");sg2.addColorStop(1,"rgba("+sc2+","+FP.a+")");c.fillStyle=sg2;c.fillRect(-o.OX,PHH-120,FW,120)}
  var bk=P?null:blurOf(c.canvas,o.w,o.h);
   function glass(x,y,w,h,r,W,strong){ /* W = foreground is white (dark backdrop); strong = readable field (message input) */
+  if(P&&window.LINE&&LINE.glass){LINE.glass(c,x,y,w,h,r,{tint:(y<200)?P.hdr:P.input,tintA:strong?.62:.4,dark:lum(P.canvas)<.2,refr:1,shadowA:.12,shadowB:10,shadowY:2,blur:5});return}
   if(P){rrp(c,x,y,w,h,r);c.save();c.shadowColor="rgba(0,0,0,.10)";c.shadowBlur=5*k;c.shadowOffsetY=1*k;c.fillStyle=(y<200)?P.hdr:P.input;c.fill();c.restore();if(y<200){rrp(c,x,y,w,h,r);c.fillStyle=rgbaOf(P.hdrTx,.09);c.fill()}rrp(c,x+.5,y+.5,w-1,h-1,r-.5);c.lineWidth=1;c.strokeStyle=rgbaOf(P.tx,.12);c.stroke();return}
   if(window.LINE&&LINE.glass){LINE.glass(c,x,y,w,h,r,{dark:!!W,op:strong?Math.max(58,LINE.glassOp):LINE.glassOp,refr:1,shadowA:W?.22:.1,shadowB:10,shadowY:2,blur:5});return}
   rrp(c,x,y,w,h,r);c.save();c.shadowColor="rgba(0,0,0,"+(W?.22:.09)+")";c.shadowBlur=7*k;c.shadowOffsetY=1.5*k;c.fillStyle=W?"rgba(40,46,52,.9)":"rgba(255,255,255,.9)";c.fill();c.restore();
@@ -3554,7 +3600,7 @@ function renderWA(c,o){
  c.globalAlpha=.45;c.lineWidth=1.1;rrp(c,PW0-50,26,26,13,4);c.stroke();c.globalAlpha=1;rrp(c,PW0-48.5,27.5,23*Math.max(.06,Math.min(1,(S.batt||80)/100)),10,2.6);c.fill();c.globalAlpha=.5;rrp(c,PW0-22,30.5,2,4,1);c.fill();c.globalAlpha=1;}
 /* --- nav (Liquid Glass): back circle | avatar + name on wallpaper | one call capsule --- */
  c.save();c.translate(0,uY);gsh=uY;
- var HB=46,HC=82,by=HC-HB/2,CW=106,AV=54,badge=(S.showBadge&&S.badge>0)?String(S.badge):"";
+ var HB=42,HC=82,by=HC-HB/2,CW=100,AV=38,badge=(S.showBadge&&S.badge>0)?String(S.badge):"";
  c.font="600 17px "+FNT;var bdw=badge?c.measureText(badge).width:0,bwid=HB+(badge?bdw+3:0);
  glass(16,by,bwid,HB,HB/2,HP.W);c.strokeStyle=hf;c.lineWidth=2.7;c.lineCap="round";c.lineJoin="round";var chx=badge?36:43;c.beginPath();c.moveTo(chx,HC-9);c.lineTo(chx-8.5,HC);c.lineTo(chx,HC+9);c.stroke();
  if(badge){c.fillStyle=hf;c.font="600 17px "+FNT;c.textAlign="left";c.fillText(badge,chx+7,HC+6)}
@@ -3564,9 +3610,9 @@ function renderWA(c,o){
  else{if(S.grp)peopleIc(c,acx,HC,AV);else personIc(c,acx,HC,AV)}
  c.restore();circ(c,acx,HC,AV/2-.4);c.strokeStyle="rgba(255,255,255,.55)";c.lineWidth=.9;c.stroke();
  var capX=PW0-16-CW,nx0=ax0+AV+11,nmw=capX-12-nx0,stt=S.typing?"typing\u2026":((S.showSt&&S.wst)?S.wst:"");if(S.grp&&!S.typing)stt=gsub();var hasSt=!!stt;
- c.textAlign="left";c.fillStyle=nf;c.font="700 19px "+FNT;c.fillText(fitT(c,S.name||"",nmw),nx0,hasSt?HC-1:HC+7);
- if(hasSt){c.font="12.5px "+FNT;c.fillStyle=S.typing?grn:nsec;c.fillText(fitT(c,stt,nmw),nx0,HC+16)}
- glass(capX,by,CW,HB,HB/2,HP.W);icS(c,P_VD,capX+CW*.27,HC,27,hf,1.8);icS(c,P_PH,capX+CW*.73,HC,25,hf,1.8);
+ c.textAlign="left";c.fillStyle=nf;c.font="600 17px "+FNT;c.fillText(fitT(c,S.name||"",nmw),nx0,hasSt?HC-2:HC+6);
+ if(hasSt){c.font="12px "+FNT;c.fillStyle=S.typing?grn:nsec;c.fillText(fitT(c,stt,nmw),nx0,HC+16)}
+ glass(capX,by,CW,HB,HB/2,HP.W);icS(c,P_VD,capX+CW*.28,HC,25,hf,1.8);icS(c,P_PH,capX+CW*.72,HC,23,hf,1.8);
  c.restore();gsh=0;
  /* --- composer (floating Liquid Glass) --- */
  var cy=772+dY,ch=40,gp=8,pay=S.pay!==false,mx=PW0-12-ch,cmx=mx-gp-ch,pyx=cmx-gp-ch,ix=12+ch+gp,iw=(pay?pyx:cmx)-gp-ix,cc=cy+ch/2;
@@ -5533,7 +5579,7 @@ render();
   function applyPaletteCSS(){
     var root = document.documentElement, body = document.body;
     var names = ["canvas","out","in","input","act","tx","tx2","tm","hdr","hdrtx","out-tx","in-tx","glyph","hdr-pill","hdr-line"];
-    if(S && S.pal && S.pal.c){
+    if(S && S.wa && !S.ln && S.pal && S.pal.c){
       var c = S.pal.c;
       var set = function(n, v){ root.style.setProperty("--pal-" + n, v); };
       set("canvas", c.canvas); set("out", c.out); set("in", c.in); set("input", c.input);
@@ -5880,7 +5926,7 @@ render();
     updateChatHeaderCapsule: updateChatHeaderCapsule, syncSettingsUIFromState: syncSettingsUIFromState,
     pushMsg: pushMsg, curSender: curSender, openCallBuilder: openCallBuilder, setDarkMode: setDarkMode,
     updateSenderToggleVisual: updateSenderToggleVisual, deleteConversation: deleteConversation,
-    clockNow: clockNow, setGrpMode: setGrpMode
+    clockNow: clockNow, setGrpMode: setGrpMode, applyPaletteCSS: applyPaletteCSS
   };
 
 })();
@@ -10489,7 +10535,7 @@ render();
   function tabbar(v){
     var me = X.st.me, un = X.st.nBadge != null && X.st.nBadge !== "" ? +X.st.nBadge : X.notifs().filter(function(n){ return n.k !== "follow" && n.ts > (X.st.seenN || 0); }).length;
     var dmUn = X.st.dms.filter(function(d){ return (d.a === me || d.b === me) && !d.seen && d.msgs.length && d.msgs[d.msgs.length - 1].by !== me; }).length;
-    function b(k, icn, on, badge){ return '<button type="button" data-a="tab" data-v="' + k + '" aria-label="' + k + '">' + ic(icn, 26, on ? (k === "explore" ? { sw: 3 } : { fill: 1, fsw: .8 }) : { sw: 1.9 }) + (badge ? '<span class="dot">' + badge + "</span>" : "") + "</button>"; }
+    function b(k, icn, on, badge){ return '<button type="button" data-a="tab" data-v="' + k + '" aria-label="' + k + '">' + ic(icn, 24, on ? (k === "explore" ? { sw: 2.8 } : { fill: 1, fsw: .8 }) : { sw: 1.9 }) + (badge ? '<span class="dot">' + badge + "</span>" : "") + "</button>"; }
     return b("home", "home", v === "home") + b("explore", "search", v === "explore") + b("people", "people", v === "people") + b("notif", "bell", v === "notif", un ? Math.min(un, 99) : 0) + b("msgs", "mail", v === "msgs", dmUn);
   }
   function render(newPage){
@@ -10706,7 +10752,7 @@ render();
       (own ? "" : '<button type="button" class="x-pill ' + (fol ? "" : "solid") + '" data-a="follow" data-v="' + a.id + '">' + (fol ? t("followingBtn") : t("follow")) + "</button>") + "</div>";
   }
   function vPeople(){
-    var h = '<div class="x-scroll"><div class="x-top"><div class="x-top-row"><span data-a="drawer">' + X.avatar(X.me(), 32, false) + '</span><span class="mid">Akun</span><button type="button" class="x-ib" data-a="acctadd">' + ic("userAdd", 22) + "</button></div></div>";
+    var h = '<div class="x-scroll"><div class="x-top"><div class="x-top-row"><span data-a="drawer">' + X.avatar(X.me(), 32, false) + '</span><span class="mid">Akun</span><button type="button" class="x-ib" data-a="acctadd" aria-label="Tambah akun">' + ic("userAdd", 22) + "</button></div></div>";
     h += '<div class="x-note" style="padding:12px 16px">Semua akun di Mocksy X. Ketuk untuk membuka profil, atau kelola lewat tombol Akun.</div>';
     X.st.accounts.forEach(function(a){ h += accRow(a); });
     return h + '<div style="height:90px"></div></div>';
@@ -11314,22 +11360,22 @@ render();
   };
   function mi(c, n, cx, cy, s, col, fill){ var p = new Path2D(MI[n]); c.save(); c.translate(cx - s / 2, cy - s / 2); c.scale(s / 24, s / 24); c.fillStyle = col; c.strokeStyle = col; c.lineWidth = 2; c.lineCap = "round"; c.lineJoin = "round"; if(fill) c.fill(p); else c.stroke(p); c.restore(); }
   function drawMusic(c, x, y, w){
-    var m = K.st.music, h = 176, dark = true, op = K.st.glassOp;
+    var m = K.st.music, h = 164, dark = true, op = K.st.glassOp;
     LN.glass(c, x, y, w, h, 30, { dark: dark, op: op, refr: 1, shadowA: .16, shadowB: 16, shadowY: 3 });
     var art = m.art ? LN.img(LN.asset(m.art)) : null;
-    c.save(); LN.rr(c, x + 18, y + 18, 62, 62, 10); c.clip();
-    if(art){ var sc = Math.max(62 / art.naturalWidth, 62 / art.naturalHeight); c.drawImage(art, x + 49 - art.naturalWidth * sc / 2, y + 49 - art.naturalHeight * sc / 2, art.naturalWidth * sc, art.naturalHeight * sc); }
-    else { var g = c.createLinearGradient(x, y, x + 62, y + 80); g.addColorStop(0, "#FF5E7E"); g.addColorStop(1, "#7B3FE4"); c.fillStyle = g; c.fillRect(x + 18, y + 18, 62, 62); var mp = new Path2D(G.music); c.translate(x + 33, y + 33); c.scale(32 / 24, 32 / 24); c.strokeStyle = "#fff"; c.lineWidth = 2; c.stroke(mp); }
+    c.save(); LN.rr(c, x + 16, y + 16, 58, 58, 10); c.clip();
+    if(art){ var sc = Math.max(58 / art.naturalWidth, 58 / art.naturalHeight); c.drawImage(art, x + 45 - art.naturalWidth * sc / 2, y + 45 - art.naturalHeight * sc / 2, art.naturalWidth * sc, art.naturalHeight * sc); }
+    else { var g = c.createLinearGradient(x, y, x + 62, y + 80); g.addColorStop(0, "#FF5E7E"); g.addColorStop(1, "#7B3FE4"); c.fillStyle = g; c.fillRect(x + 16, y + 16, 58, 58); var mp = new Path2D(G.music); c.translate(x + 30, y + 30); c.scale(30 / 24, 30 / 24); c.strokeStyle = "#fff"; c.lineWidth = 2; c.stroke(mp); }
     c.restore();
-    c.textAlign = "left"; c.fillStyle = "#FFFFFF"; c.font = "600 17px " + SF;
-    var tt = LN.fitT(c, m.title || "", w - 150); c.fillText(tt, x + 96, y + 44);
-    if(m.explicit){ var ew = c.measureText(tt).width; LN.rr(c, x + 102 + ew, y + 31, 15, 15, 3); c.fillStyle = "rgba(255,255,255,.75)"; c.fill(); c.fillStyle = "#222"; c.font = "800 10px " + SF; c.textAlign = "center"; c.fillText("E", x + 109.5 + ew, y + 42.5); }
-    c.textAlign = "left"; c.fillStyle = "rgba(255,255,255,.62)"; c.font = "400 16px " + SF; c.fillText(LN.fitT(c, m.artist || "", w - 150), x + 96, y + 67);
-    mi(c, "wave", x + w - 32, y + 40, 20, "rgba(255,255,255,.6)");
-    var py = y + 106, px = x + 64, pw = w - 128, pr = Math.max(0, Math.min(100, +m.prog || 0)) / 100;
+    c.textAlign = "left"; c.fillStyle = "#FFFFFF"; c.font = "600 16px " + SF;
+    var tt = LN.fitT(c, m.title || "", w - 150); c.fillText(tt, x + 88, y + 40);
+    if(m.explicit){ var ew = c.measureText(tt).width; LN.rr(c, x + 94 + ew, y + 28, 15, 15, 3); c.fillStyle = "rgba(255,255,255,.75)"; c.fill(); c.fillStyle = "#222"; c.font = "800 10px " + SF; c.textAlign = "center"; c.fillText("E", x + 101.5 + ew, y + 39.5); }
+    c.textAlign = "left"; c.fillStyle = "rgba(255,255,255,.62)"; c.font = "400 15px " + SF; c.fillText(LN.fitT(c, m.artist || "", w - 150), x + 88, y + 61);
+    mi(c, "wave", x + w - 30, y + 36, 19, "rgba(255,255,255,.6)");
+    var py = y + 98, px = x + 64, pw = w - 128, pr = Math.max(0, Math.min(100, +m.prog || 0)) / 100;
     c.font = "500 12.5px " + SF; c.fillStyle = "rgba(255,255,255,.62)"; c.textAlign = "left"; c.fillText(m.el || "", x + 18, py + 4.5); c.textAlign = "right"; c.fillText(m.rem || "", x + w - 18, py + 4.5);
     LN.rr(c, px, py - 3, pw, 6, 3); c.fillStyle = "rgba(255,255,255,.22)"; c.fill(); LN.rr(c, px, py - 3, Math.max(6, pw * pr), 6, 3); c.fillStyle = "rgba(255,255,255,.8)"; c.fill();
-    var cy = y + 145;
+    var cy = y + 135;
     mi(c, "star", x + 38, cy, 24, "rgba(255,255,255,.7)", true);
     mi(c, "rew", x + w * .32, cy, 30, "#FFFFFF", true);
     mi(c, m.playing ? "pause" : "play", x + w / 2, cy, 34, "#FFFFFF", true);
@@ -11372,13 +11418,13 @@ render();
     c.setTransform(k, 0, 0, k, 0, 0); c.globalAlpha = 1; c.textBaseline = "alphabetic"; c.imageSmoothingQuality = "high";
     wallpaper(c, FW, FH);
     statusBar(c, FW, "#FFFFFF");
-    c.fillStyle = s.clock.dateColor || "#FFFFFF"; c.textAlign = "center"; c.font = "600 21px " + SF; c.save(); c.shadowColor = "rgba(0,0,0,.15)"; c.shadowBlur = 6; c.fillText(LN.fitT(c, dateLine(), FW - 40), FW / 2, 104); c.restore();
+    c.fillStyle = s.clock.dateColor || "#FFFFFF"; c.textAlign = "center"; c.font = "600 20px " + SF; c.save(); c.shadowColor = "rgba(0,0,0,.15)"; c.shadowBlur = 6; c.fillText(LN.fitT(c, dateLine(), FW - 40), FW / 2, 104); c.restore();
     var cb = drawClock(c, FW);
     var fg = s.wall.fg ? LN.img(LN.asset(s.wall.fg)) : null;
     if(fg){ var sc = Math.max(FW / fg.naturalWidth, FH / fg.naturalHeight); c.drawImage(fg, (FW - fg.naturalWidth * sc) / 2, (FH - fg.naturalHeight * sc) / 2, fg.naturalWidth * sc, fg.naturalHeight * sc); }
     drawWidgets(c, FW, cb + 18);
     var y = FH - 104, w = FW - 32, x = 16;
-    if(s.music.on){ y -= 176; drawMusic(c, x, y, w); y -= 12; }
+    if(s.music.on){ y -= 164; drawMusic(c, x, y, w); y -= 12; }
     var ns = s.notifs.slice();
     for(var i = ns.length - 1; i >= 0; i--){
       var n = ns[i], h = notifH(c, n, w), extra = (Math.min(3, +n.stack || 1) - 1) * 9;
@@ -11662,10 +11708,10 @@ render();
     var fol = a.id === me || I.follows(me, a.id), like = has(p, "likedBy"), sv = has(p, "savedBy"), rt = has(p, "rtBy");
     var sub = p.loc ? esc(p.loc) : p.music ? ic("music", 11) + " " + esc(p.music) : "";
     var h = '<article class="ig-post" data-v="' + p.id + '"><div class="ig-ph">' + av(a, 32, true) + '<div class="who"><b data-a="prof" data-v="' + a.id + '">' + esc(a.un) + badge(a.badge) + "</b>" + (sub ? "<small>" + sub + "</small>" : "") + "</div>" +
-      (fol ? "" : '<button type="button" class="ig-follow" data-a="follow" data-v="' + a.id + '">' + T("Follow", "Ikuti") + "</button>") + '<button type="button" class="ig-ib" data-a="pmore" data-v="' + p.id + '">' + ic("more", 20) + "</button></div>";
+      (fol ? "" : '<button type="button" class="ig-follow" data-a="follow" data-v="' + a.id + '">' + T("Follow", "Ikuti") + "</button>") + '<button type="button" class="ig-ib" data-a="pmore" data-v="' + p.id + '" aria-label="Opsi postingan">' + ic("more", 20) + "</button></div>";
     h += '<div class="ig-media" data-a="car" data-v="' + p.id + '" style="aspect-ratio:' + arOf(p) + '">' + (ms.length ? '<img alt="" src="' + ms[ci] + '">' : "") + (ms.length > 1 ? '<span class="pg">' + (ci + 1) + "/" + ms.length + "</span>" : "") + "</div>";
     h += '<div class="ig-dots">' + (ms.length > 1 ? ms.map(function(x, i){ return '<i class="' + (i === ci ? "on" : "") + '"></i>'; }).join("") : "") + "</div>";
-    function A(act, n, icon, cls, val, fill){ return '<button type="button" class="ig-act ' + (cls || "") + '" data-a="' + act + '" data-v="' + p.id + '">' + ic(icon, 25, fill ? { fill: 1 } : null) + (val ? "<span>" + num(val) + "</span>" : "") + "</button>"; }
+    function A(act, n, icon, cls, val, fill){ return '<button type="button" class="ig-act ' + (cls || "") + '" data-a="' + act + '" data-v="' + p.id + '">' + ic(icon, 24, fill ? { fill: 1 } : null) + (val ? "<span>" + num(val) + "</span>" : "") + "</button>"; }
     h += '<div class="ig-acts">' + A("like", 0, "heart", like ? "liked" : "", cnt(p, "like"), like) + A("cmts", 0, "cmt", "", cnt(p, "cmt")) + A("rt", 0, "rt", rt ? "liked" : "", cnt(p, "rt")) + A("share", 0, "send", "", +(p.c && p.c.share) || 0) + A("save", 0, "bm", "sp", 0, sv) + "</div>";
     var cap = p.cap || "", long = cap.length > 110;
     if(cap) h += '<div class="ig-cap"><b data-a="prof" data-v="' + a.id + '">' + esc(a.un) + "</b> " + rich(long ? cap.slice(0, 100) : cap) + (long ? '<span class="more">\u2026 ' + T("more", "selengkapnya") + "</span>" : "") + "</div>";
@@ -11712,7 +11758,7 @@ render();
   function tabbar(){
     var v = NAV[0].v, me = I.st.me;
     var dm = I.st.dmBadge != null && I.st.dmBadge !== "" ? +I.st.dmBadge : I.st.dms.filter(function(d){ return (d.a === me || d.b === me) && !d.seen && d.msgs.length && d.msgs[d.msgs.length - 1].by !== me; }).length;
-    function b(k, icon, on, c){ return '<button type="button" data-a="tab" data-v="' + k + '" class="' + (on ? "on" : "") + '" aria-label="' + k + '">' + (k === "prof" ? '<span style="display:flex;border-radius:50%;' + (on ? "box-shadow:0 0 0 2px var(--tx)" : "") + '">' + av(I.me(), 26, false, false) + "</span>" : ic(icon, 27, on && icon !== "search" && icon !== "send" ? { fill: 1, fsw: .4 } : { sw: on ? 2.6 : 1.9 })) + (c ? '<span class="cnt">' + c + "</span>" : "") + "</button>"; }
+    function b(k, icon, on, c){ return '<button type="button" data-a="tab" data-v="' + k + '" class="' + (on ? "on" : "") + '" aria-label="' + k + '">' + (k === "prof" ? '<span style="display:flex;border-radius:50%;' + (on ? "box-shadow:0 0 0 2px var(--tx)" : "") + '">' + av(I.me(), 24, false, false) + "</span>" : ic(icon, 24, on && icon !== "search" && icon !== "send" ? { fill: 1, fsw: .4 } : { sw: on ? 2.6 : 1.9 })) + (c ? '<span class="cnt">' + c + "</span>" : "") + "</button>"; }
     return b("home", "home", v === "home") + b("reels", "reels", v === "reels") + b("dms", "send", v === "dms", dm) + b("search", "search", v === "search") + b("prof", "user", v === "prof");
   }
   function render(newPage){
@@ -11735,8 +11781,8 @@ render();
   function vHome(){
     var me = I.me(), un = notifs().filter(function(x){ return x.ts > (I.st.seenN || 0); }).length;
     var h = '<div class="ig-scroll"><div class="ig-top"><span class="ttl" style="font-family:-apple-system,system-ui">Instagram' + ic("chevD", 16, { sw: 2.4 }) + '</span><button type="button" class="ig-ib" data-a="notif">' + ic("heart", 26) + (un || (I.st.nBadge > 0) ? '<span class="ig-dot"></span>' : "") + '</button><button type="button" class="ig-ib" data-a="compose">' + ic("plusSq", 26) + "</button></div>";
-    h += '<div class="ig-stories"><div class="ig-story" data-a="prof" data-v="' + me.id + '"><span style="position:relative;display:inline-flex">' + av(me, 70, true, false) + '<span class="add">' + ic("plus", 12, { sw: 3.4 }) + '</span></span><span class="n">' + T("Your story", "Cerita Anda") + "</span></div>";
-    I.st.accounts.filter(function(a){ return a.id !== me.id && a.story && canSee(a); }).sort(function(a, b){ return (a.seen ? 1 : 0) - (b.seen ? 1 : 0); }).forEach(function(a){ h += '<div class="ig-story" data-a="seen" data-v="' + a.id + '">' + av(a, 70, true, false) + '<span class="n">' + esc(a.un) + "</span></div>"; });
+    h += '<div class="ig-stories"><div class="ig-story" data-a="prof" data-v="' + me.id + '"><span style="position:relative;display:inline-flex">' + av(me, 62, true, false) + '<span class="add">' + ic("plus", 12, { sw: 3.4 }) + '</span></span><span class="n">' + T("Your story", "Cerita Anda") + "</span></div>";
+    I.st.accounts.filter(function(a){ return a.id !== me.id && a.story && canSee(a); }).sort(function(a, b){ return (a.seen ? 1 : 0) - (b.seen ? 1 : 0); }).forEach(function(a){ h += '<div class="ig-story" data-a="seen" data-v="' + a.id + '">' + av(a, 62, true, false) + '<span class="n">' + esc(a.un) + "</span></div>"; });
     h += "</div>";
     var fl = (I.st.fol[me.id] || []).concat([me.id]);
     var ps = I.st.posts.filter(function(p){ return fl.indexOf(p.by) >= 0 && canSee(I.acc(p.by)); }).sort(function(a, b){ return b.ts - a.ts; });
@@ -11842,7 +11888,7 @@ render();
     var ps = I.st.posts.filter(function(p){ return (p.media || []).length && canSee(I.acc(p.by)); }).sort(function(a, b){ return b.ts - a.ts; });
     if(!ps.length) return '<div class="ig-priv"><b>' + T("No reels yet", "Belum ada reels") + "</b></div>";
     var p = ps[RI % ps.length], a = I.acc(p.by) || {}, like = has(p, "likedBy");
-    return '<div class="ig-reel"><img alt="" src="' + I.img(p.media[0]) + '" data-a="rnext"><div class="top"><span>Reels' + ic("chevD", 16, { sw: 2.4 }) + "</span>" + ic("camera", 26) + '</div><div class="side"><button type="button" data-a="like" data-v="' + p.id + '" class="' + (like ? "liked" : "") + '">' + ic("heart", 30, like ? { fill: 1 } : null) + num(cnt(p, "like")) + '</button><button type="button" data-a="cmts" data-v="' + p.id + '">' + ic("cmt", 30) + num(cnt(p, "cmt")) + '</button><button type="button" data-a="rt" data-v="' + p.id + '">' + ic("rt", 30) + num(cnt(p, "rt")) + '</button><button type="button" data-a="share" data-v="' + p.id + '">' + ic("send", 28) + num(+(p.c && p.c.share) || 0) + '</button><button type="button" data-a="pmore" data-v="' + p.id + '">' + ic("more", 26) + "</button></div>" +
+    return '<div class="ig-reel"><img alt="" src="' + I.img(p.media[0]) + '" data-a="rnext"><div class="top"><span>Reels' + ic("chevD", 16, { sw: 2.4 }) + "</span>" + ic("camera", 26) + '</div><div class="side"><button type="button" data-a="like" data-v="' + p.id + '" class="' + (like ? "liked" : "") + '">' + ic("heart", 30, like ? { fill: 1 } : null) + num(cnt(p, "like")) + '</button><button type="button" data-a="cmts" data-v="' + p.id + '">' + ic("cmt", 30) + num(cnt(p, "cmt")) + '</button><button type="button" data-a="rt" data-v="' + p.id + '">' + ic("rt", 30) + num(cnt(p, "rt")) + '</button><button type="button" data-a="share" data-v="' + p.id + '">' + ic("send", 28) + num(+(p.c && p.c.share) || 0) + '</button><button type="button" data-a="pmore" data-v="' + p.id + '" aria-label="Opsi postingan">' + ic("more", 26) + "</button></div>" +
       '<div class="info"><div class="u">' + av(a, 32, false) + esc(a.un) + badge(a.badge, 13) + (I.follows(I.st.me, a.id) || a.id === I.st.me ? "" : ' <span style="border:1px solid rgba(255,255,255,.7);border-radius:8px;padding:3px 10px;font-size:13px">' + T("Follow", "Ikuti") + "</span>") + "</div>" + rich((p.cap || "").slice(0, 90)) + (p.music ? '<div style="margin-top:8px;font-size:13px">' + ic("music", 12) + " " + esc(p.music) + "</div>" : "") + "</div></div>";
   }
 
@@ -11983,7 +12029,7 @@ render();
       $id("sReal").checked = !s.nowMs; $id("sNow").value = dtIn(now()); $id("sNow").disabled = !s.nowMs;
       $id("sReal").onchange = function(){ s.nowMs = this.checked ? null : now(); $id("sNow").disabled = this.checked; render(); }; $id("sNow").onchange = function(){ var v = new Date(this.value).getTime(); if(isFinite(v)){ s.nowMs = v; render(); } };
       $id("sExp").onclick = function(){ var rs = refs(); LN.loadAssets(rs).then(function(){ var map = {}; rs.forEach(function(r){ var d = LN.asset(r); if(d) map[r] = d; }); var bl = new Blob([JSON.stringify({ format: "mocksy-ig", v: 1, data: I.st, assets: map })], { type: "application/json" }); var a = document.createElement("a"); a.href = URL.createObjectURL(bl); a.download = "mocksy-instagram-data.json"; document.body.appendChild(a); a.click(); a.remove(); toast("Data diekspor"); }); };
-      $id("sImp").onclick = function(){ var i = document.createElement("input"); i.type = "file"; i.accept = ".json"; i.onchange = function(){ var f = i.files[0]; if(!f) return; var r = new FileReader(); r.onload = function(){ try{ var pk = JSON.parse(r.result); if(pk.format !== "mocksy-ig") throw new Error("Bukan file data Mocksy Instagram");
+      $id("sImp").onclick = function(){ var i = document.createElement("input"); i.type = "file"; i.accept = ".json"; i.onchange = function(){ var f = i.files[0]; if(!f) return; var r = new FileReader(); r.onload = function(){ try{ var pk = JSON.parse(r.result); if(!pk || pk.format !== "mocksy-ig" || !pk.data || !Array.isArray(pk.data.accounts) || !pk.data.accounts.length || !Array.isArray(pk.data.posts)) throw new Error("Bukan file data Mocksy Instagram yang valid"); if(!confirm("Ganti data Instagram sekarang dengan isi file ini?")) return;
         Promise.all(Object.keys(pk.assets || {}).map(function(k){ return LN.putAsset(pk.assets[k]).then(function(n){ return [k, n]; }); })).then(function(ps){ var js = JSON.stringify(pk.data); ps.forEach(function(q){ js = js.split(JSON.stringify(q[0])).join(JSON.stringify(q[1])); }); I.st = JSON.parse(js); I.save(); closeSheet(); root("home"); toast("Data diimpor"); }); }catch(e){ toast(e.message); } }; r.readAsText(f); }; i.click(); };
       $id("sReset").onclick = function(){ if(confirm("Ganti data Instagram dengan data contoh?")){ I.st = seed(); I.save(); closeSheet(); root("home"); } };
     });
@@ -12076,6 +12122,126 @@ render();
   I.open = function(){ build(); I.load(); $id("igApp").classList.add("open"); document.body.style.overflow = "hidden"; render(); LN.loadAssets(refs()).then(function(){ render(); }); try{ localStorage.setItem("mocksy.svc", "ig"); }catch(e){} };
   I.close = function(){ var a = $id("igApp"); if(a) a.classList.remove("open", "photo"); document.body.style.overflow = ""; };
   I.load();
+})();
+
+/* ==========================================================================
+   MOCKSY — perbaikan audit lintas layanan
+   ========================================================================== */
+(function(){
+  "use strict";
+  /* P1: jangan biarkan data hilang diam-diam saat penyimpanan browser penuh.
+     Perilaku lama dipertahankan (error tetap dilempar ke pemanggil),
+     tetapi pengguna kini diberi tahu. */
+  var last = 0;
+  function notify(){
+    var now = Date.now(); if(now - last < 15000) return; last = now;
+    var msg = "Penyimpanan browser penuh \u2014 perubahan terakhir tidak tersimpan. Hapus beberapa foto/chat, atau ekspor data dulu.";
+    function vis(id){ var e = document.getElementById(id); return e && e.classList.contains("open"); }
+    try{
+      if(vis("igApp") && window.MIG) MIG.toast(msg);
+      else if(vis("xApp") && window.MX) MX.toast(msg);
+      else if(vis("lkApp") && window.MLock) MLock.toast(msg);
+      else if(window.showToast) showToast(msg);
+    }catch(e){}
+  }
+  try{
+    var orig = Storage.prototype.setItem;
+    Storage.prototype.setItem = function(k, v){
+      try{ return orig.call(this, k, v); }
+      catch(e){ if(e && (e.name === "QuotaExceededError" || e.code === 22 || e.code === 1014)) notify(); throw e; }
+    };
+  }catch(e){}
+  /* P2: Esc menutup sheet / kembali di Instagram */
+  window.addEventListener("keydown", function(e){
+    if(e.key !== "Escape") return;
+    var ig = document.getElementById("igApp"); if(!ig || !ig.classList.contains("open")) return;
+    var sh = document.getElementById("igSheet");
+    if(sh && sh.classList.contains("open")){ sh.classList.remove("open"); return; }
+    var b = ig.querySelector('#igView [data-a="back"]'); if(b) b.click();
+  });
+})();
+
+/* ==========================================================================
+   MOCKSY — pemisahan tema per platform + latar percakapan iMessage (iOS 26)
+   ========================================================================== */
+(function(){
+  "use strict";
+  var LN = window.LINE, U = LN.ui;
+  function $id(i){ return document.getElementById(i); }
+  /* preset latar percakapan iMessage iOS 26 (digambar prosedural) */
+  var IMP = {
+    sky: [["#4A90E2", 0], ["#8EC5FC", .55], ["#E0F0FF", 1]],
+    water: [["#0B3D5C", 0], ["#126E8C", .5], ["#5FB3C9", 1]],
+    aurora: [["#0B1026", 0], ["#1B4D5C", .45], ["#3FBF8F", .7], ["#7E4FD8", 1]]
+  };
+  var NAMES = [["none", "Tidak ada"], ["photo", "Foto"], ["color", "Warna"], ["sky", "Langit"], ["water", "Air"], ["aurora", "Aurora"], ["legacy", "Klasik"]];
+  /* dipanggil oleh renderer iMessage; true = latar sudah digambar */
+  window.IMBG = function(c, S, FW, FH, dark){
+    var b = S.imBg;
+    if(!b){ if(String(S.wall || "").indexOf("url(") === 0) return false; b = { t: "none" }; }
+    if(b.t === "legacy") return false;
+    if(b.t === "photo"){
+      var src = LN.asset(b.img) || b.img, im = src ? (LN.img(src) || (typeof gi === "function" ? gi(src) : null)) : null;
+      if(im && im.naturalWidth){ var r = Math.max(FW / im.naturalWidth, FH / im.naturalHeight), dw = im.naturalWidth * r, dh = im.naturalHeight * r; c.drawImage(im, (FW - dw) / 2, (FH - dh) / 2, dw, dh); if(b.dim){ c.fillStyle = "rgba(0,0,0," + (b.dim / 100) + ")"; c.fillRect(0, 0, FW, FH); } return true; }
+    }
+    if(b.t === "color"){ c.fillStyle = b.c || "#1C1C1E"; c.fillRect(0, 0, FW, FH); return true; }
+    if(IMP[b.t]){
+      var g = c.createLinearGradient(0, 0, FW * .35, FH); IMP[b.t].forEach(function(s){ g.addColorStop(s[1], s[0]); }); c.fillStyle = g; c.fillRect(0, 0, FW, FH);
+      if(b.t === "aurora"){ var r2 = c.createRadialGradient(FW * .7, FH * .3, 10, FW * .7, FH * .3, FH * .5); r2.addColorStop(0, "rgba(120,255,200,.35)"); r2.addColorStop(1, "rgba(120,255,200,0)"); c.fillStyle = r2; c.fillRect(0, 0, FW, FH); }
+      return true;
+    }
+    c.fillStyle = dark ? "#000000" : "#FFFFFF"; c.fillRect(0, 0, FW, FH); return true;
+  };
+  /* kelas body per platform: Chat View & Pengaturan mengikuti platform aktif */
+  var R_PREV = render;
+  render = function(){
+    var r = R_PREV.apply(this, arguments), Sx = window.S, b = document.body;
+    if(Sx){
+      var wa = !!Sx.wa && !Sx.ln, im = !Sx.wa && !Sx.ln;
+      b.classList.toggle("pl-wa", wa); b.classList.toggle("pl-im", im); b.classList.toggle("pl-dk", !!Sx.dk);
+      if(!wa) b.classList.remove("has-pal");
+      else if(window.MK && MK.applyPaletteCSS && b.classList.contains("has-pal") !== !!(Sx.pal && Sx.pal.c)){ try{ MK.applyPaletteCSS(); }catch(e){} }
+      syncImCard();
+    }
+    return r;
+  };
+  /* kartu latar percakapan iMessage di Pengaturan */
+  function initCard(){
+    var scroll = document.querySelector("#screenSettings .settings-scroll"); if(!scroll || $id("cardImBg")) return;
+    [$id("themePresetGrid"), $id("wpGrid")].forEach(function(n){ var c = n && n.closest(".settings-group-card"); if(c) c.classList.add("wa-only"); });
+    var card = document.createElement("div"); card.className = "settings-group-card im-only"; card.id = "cardImBg"; card.style.flexDirection = "column";
+    card.innerHTML = '<div class="settings-card-header">' + LN.svg("image", 20) + '<span>iMessage: Latar Percakapan (iOS 26)</span></div>' +
+      '<div class="settings-row" style="flex-direction:column;align-items:stretch;gap:10px"><div class="settings-label-box"><div class="settings-title">Latar</div><div class="settings-desc">"Tidak ada" = putih/hitam polos seperti iMessage asli</div></div>' +
+      '<div class="ln-chips" id="imBgSeg">' + NAMES.map(function(n){ return '<button type="button" class="ln-chip" data-v="' + n[0] + '">' + n[1] + "</button>"; }).join("") + "</div>" +
+      '<div class="lc-upl" id="imBgPhoto"><div class="box" id="imBgPv"></div><div class="btns"><button type="button" class="ln-btn sm" id="imBgUp">' + LN.svg("upload", 15) + '<span>Pilih foto</span></button></div></div>' +
+      '<div class="lc-range" id="imBgDimW"><span style="font-size:13px;font-weight:600;min-width:110px">Gelapkan foto</span><input type="range" min="0" max="60" id="imBgDim"><output id="imBgDimV"></output></div>' +
+      '<div id="imBgColW" style="display:flex;gap:10px;align-items:center"><span style="font-size:13px;font-weight:600">Warna</span><input type="color" id="imBgCol" style="width:60px;height:40px;border:none;background:none"></div>' +
+      '<div class="settings-row" style="padding:0;border:none"><div class="settings-label-box"><div class="settings-title">Mode gelap</div><div class="settings-desc">Latar, bubble abu, teks, dan kaca mengikuti mode gelap iOS</div></div><label class="switch-toggle" style="flex-shrink:0"><input type="checkbox" id="imDark" aria-label="Mode gelap iMessage"><span class="switch-slider"></span></label></div>' +
+      '<button type="button" class="ln-btn sm" id="imBgSys">' + LN.svg("info", 15) + '<span>Tambah pesan sistem "You changed the background."</span></button></div>';
+    var first = scroll.querySelector(".settings-group-card"); scroll.insertBefore(card, first ? first.nextSibling : null);
+    card.querySelectorAll("#imBgSeg .ln-chip").forEach(function(btn){ btn.onclick = function(){ var Sx = window.S; var b = Sx.imBg || {}; b.t = btn.dataset.v; Sx.imBg = b; if(b.t === "photo" && !b.img) $id("imBgUp").click(); U.refreshAll(); }; });
+    $id("imBgUp").onclick = function(){ U.pickFile("image/*", function(f){ LN.readImage(f, 1600, "image/jpeg", .88).then(function(d){ return LN.putAsset(d); }).then(function(ref){ var Sx = window.S; Sx.imBg = Sx.imBg || {}; Sx.imBg.t = "photo"; Sx.imBg.img = ref; U.refreshAll(); }); }); };
+    $id("imBgDim").oninput = function(){ var Sx = window.S; Sx.imBg = Sx.imBg || { t: "photo" }; Sx.imBg.dim = +this.value; render(); syncImCard(); };
+    $id("imBgCol").oninput = function(){ var Sx = window.S; Sx.imBg = { t: "color", c: this.value }; render(); };
+    $id("imDark").onchange = function(){ var on = this.checked; if(window.MK && MK.setDarkMode) MK.setDarkMode(on); else { window.S.dk = on ? 1 : 0; } U.refreshAll(); };
+    $id("imBgSys").onclick = function(){
+      var Sx = window.S, d = new Date(), h = d.getHours(), t = (h % 12 || 12) + ":" + ("0" + d.getMinutes()).slice(-2) + " " + (h < 12 ? "AM" : "PM");
+      Sx.m.push({ id: "m_" + Date.now(), k: "s", t: "Today " + t, me: false }); Sx.m.push({ id: "m_" + Date.now() + "b", k: "s", t: "You changed the background.", me: false });
+      U.refreshAll(); U.toast("Pesan sistem ditambahkan");
+    };
+  }
+  function syncImCard(){
+    var Sx = window.S; if(!Sx || !$id("cardImBg") || Sx.wa || Sx.ln) return;
+    var b = Sx.imBg || { t: String(Sx.wall || "").indexOf("url(") === 0 ? "legacy" : "none" };
+    document.querySelectorAll("#imBgSeg .ln-chip").forEach(function(x){ x.classList.toggle("active", x.dataset.v === b.t); });
+    $id("imBgPhoto").style.display = b.t === "photo" ? "" : "none"; $id("imBgDimW").style.display = b.t === "photo" ? "" : "none"; $id("imBgColW").style.display = b.t === "color" ? "" : "none";
+    var s = b.img ? (LN.asset(b.img) || b.img) : null; $id("imBgPv").style.backgroundImage = s ? "url(" + s + ")" : "";
+    if(document.activeElement !== $id("imBgDim")) $id("imBgDim").value = b.dim || 0; $id("imBgDimV").textContent = (b.dim || 0) + "%";
+    if(b.t === "color") $id("imBgCol").value = b.c || "#1C1C1E";
+    $id("imDark").checked = !!Sx.dk;
+  }
+  initCard();
+  try{ render(); }catch(e){}
 })();
 
 </script>
