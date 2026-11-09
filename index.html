@@ -4475,7 +4475,6 @@ render();
     var r = new FileReader();
     r.onload = function(e){
       S.av = e.target.result;
-      if(window.IM) window.IM[S.av] = { ok: true, img: new Image() };
       updateModalAvatarPreview();
       updateChatHeaderCapsule();
       syncSettingsUIFromState();
@@ -5354,7 +5353,6 @@ render();
     var r = new FileReader();
     r.onload = function(e){
       S.av = e.target.result;
-      if(window.IM) window.IM[S.av] = { ok: true, img: new Image() };
       syncSettingsUIFromState();
       updateChatHeaderCapsule();
       renderChatCards();
@@ -12433,6 +12431,62 @@ render();
   }
   initCard();
   try{ render(); }catch(e){}
+})();
+
+/* ==========================================================================
+   MOCKSY — penyimpanan gambar chat di IndexedDB
+   localStorage (±5MB) mudah penuh oleh foto base64 di data chat, sehingga
+   simpan gagal diam-diam (wallpaper, avatar, pesan tidak tersimpan).
+   Gambar besar dipindah ke IndexedDB; localStorage hanya menyimpan referensi.
+   ========================================================================== */
+(function(){
+  "use strict";
+  var PFX = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7#mcimg=", MIN = 4096, DB = null, OK = {}, PEND = {}, DATA = {};
+  function db(){ return new Promise(function(res, rej){ if(DB) return res(DB); var r = indexedDB.open("mocksy-chatimg", 1); r.onupgradeneeded = function(){ r.result.createObjectStore("i"); }; r.onsuccess = function(){ DB = r.result; res(DB); }; r.onerror = function(){ rej(r.error); }; }); }
+  function hash(s){ var h1 = 0x811c9dc5, h2 = 0x01000193 ^ s.length; for(var i = 0; i < s.length; i++){ var c = s.charCodeAt(i); h1 = Math.imul(h1 ^ c, 16777619); h2 = Math.imul(h2 ^ c, 2246822507); } return (h1 >>> 0).toString(36) + (h2 >>> 0).toString(36) + s.length.toString(36); }
+  function big(v){ return typeof v === "string" && v.length >= MIN && v.indexOf("data:image/") === 0; }
+  /* tulis gambar ke IndexedDB; setelah pasti tersimpan, simpan ulang chat */
+  function store(key, val){
+    if(OK[key] || PEND[key]) return; PEND[key] = 1;
+    db().then(function(d){ return new Promise(function(res, rej){ var tx = d.transaction("i", "readwrite"); tx.objectStore("i").put(val, key); tx.oncomplete = res; tx.onerror = function(){ rej(tx.error); }; }); })
+      .then(function(){ OK[key] = 1; delete PEND[key]; DATA[key] = val; resave(); }, function(){ delete PEND[key]; });
+  }
+  var rs = 0; function resave(){ if(rs) return; rs = setTimeout(function(){ rs = 0; try{ save(); }catch(e){} }, 300); }
+  /* salinan data chat dengan gambar besar diganti referensi (hanya yang sudah tersimpan) */
+  function slim(v){
+    if(big(v)){ var k = hash(v); if(OK[k]) return PFX + k; store(k, v); return v; }
+    if(Array.isArray(v)) return v.map(slim);
+    if(v && typeof v === "object"){ var o = {}; for(var p in v) if(Object.prototype.hasOwnProperty.call(v, p)) o[p] = slim(v[p]); return o; }
+    return v;
+  }
+  function save(){ if(typeof CV === "undefined") return; localStorage.setItem("imGlass2", JSON.stringify({ c: slim(CV), a: CV.indexOf(S) })); }
+  /* ganti penyimpanan bawaan: semua setItem("imGlass2") lewat versi ramping */
+  var oSet = Storage.prototype.setItem;
+  Storage.prototype.setItem = function(k, v){
+    if(this === window.localStorage && k === "imGlass2" && typeof CV !== "undefined" && !Storage.__mcInner){
+      Storage.__mcInner = 1;
+      try{ return oSet.call(this, k, JSON.stringify({ c: slim(CV), a: CV.indexOf(S) })); }
+      finally{ Storage.__mcInner = 0; }
+    }
+    return oSet.apply(this, arguments);
+  };
+  /* saat dibuka: kembalikan referensi menjadi gambar asli */
+  function refs(v, out){ if(typeof v === "string"){ if(v.indexOf(PFX) === 0) out[v.slice(PFX.length)] = 1; } else if(Array.isArray(v)) v.forEach(function(x){ refs(x, out); }); else if(v && typeof v === "object") for(var p in v) refs(v[p], out); return out; }
+  function restore(v){
+    if(Array.isArray(v)){ for(var i = 0; i < v.length; i++) v[i] = restore(v[i]); return v; }
+    if(v && typeof v === "object"){ for(var p in v) if(Object.prototype.hasOwnProperty.call(v, p)) v[p] = restore(v[p]); return v; }
+    if(typeof v === "string" && v.indexOf(PFX) === 0){ var d = DATA[v.slice(PFX.length)]; return d || v; }
+    return v;
+  }
+  var ks = Object.keys(refs(window.CV || [], {}));
+  window.MCSTORE = { ready: null, count: function(){ return Object.keys(OK).length; } };
+  window.MCSTORE.ready = (ks.length ? db().then(function(d){
+    return Promise.all(ks.map(function(k){ return new Promise(function(res){ var q = d.transaction("i").objectStore("i").get(k); q.onsuccess = function(){ if(q.result){ DATA[k] = q.result; OK[k] = 1; } res(); }; q.onerror = function(){ res(); }; }); }));
+  }) : Promise.resolve()).then(function(){
+    if(ks.length){ restore(CV); try{ if(MK && MK.renderChatCards) MK.renderChatCards(); if(MK && MK.syncSettingsUIFromState) MK.syncSettingsUIFromState(); if(MK && MK.updateChatHeaderCapsule) MK.updateChatHeaderCapsule(); render(); }catch(e){} }
+    /* migrasi data lama yang membengkak: simpan ulang (gambar akan dipindah ke IndexedDB) */
+    try{ save(); }catch(e){}
+  }, function(){});
 })();
 
 </script>
