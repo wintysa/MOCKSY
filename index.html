@@ -1753,6 +1753,15 @@ body.pl-line #screenChatView .composer-input-pill { background-color: var(--ln-i
 .svc-card { min-height: 120px; }
 @media (max-width: 639px){ .svc-card { min-height: 0; padding: 16px; gap: 6px; } .svc-card .ic { width: 44px; height: 44px; } #svcPick { overflow-y: auto; justify-content: flex-start; padding-top: 40px; } }
 
+/* mention, hashtag, tautan selalu biru di semua tempat */
+.x-phone a[data-a="handle"], .x-phone a[data-a="tag"], .x-phone a.x-link { color: var(--blue); text-decoration: none; cursor: pointer; }
+.x-addthread { display: flex; align-items: center; gap: 12px; padding: 10px 16px 12px; border-bottom: 1px solid var(--bd); color: var(--blue); font-size: 15px; cursor: pointer; }
+.x-addthread .x-av { opacity: .55; }
+/* bingkai iPhone 15/16 (393x852) yang diperkecil proporsional di layar besar */
+@media (min-width: 700px){
+  .x-phone, .ig { width: 393px !important; max-width: none !important; height: 852px !important; flex: none !important; }
+}
+
 /* ===== MOCKSY LOCKSCREEN ===== */
 #lkApp { position: fixed; inset: 0; z-index: 600; display: none; flex-direction: column; background-color: var(--bg-app, #F4F5F7); color: var(--text-main, #111); font-family: -apple-system, system-ui, sans-serif; }
 #lkApp.open { display: flex; }
@@ -10572,7 +10581,7 @@ render();
   X.rich = function(s){
     var t = esc(s);
     t = t.replace(/(https?:\/\/[^\s<]+)/g, function(u){ var d = u.replace(/^https?:\/\/(www\.)?/, ""); if(d.length > 28) d = d.slice(0, 27) + "\u2026"; return '<a class="x-link">' + d + "</a>"; });
-    t = t.replace(/(^|[^\w&])@(\w{1,15})/g, function(m, pre, h){ return pre + '<a data-a="handle" data-v="' + h + '">@' + h + "</a>"; });
+    t = t.replace(/(^|[^\w&.])@([A-Za-z0-9_](?:[\w.]{0,28}[A-Za-z0-9_])?)/g, function(m, pre, h){ return pre + '<a data-a="handle" data-v="' + h + '">@' + h + "</a>"; });
     t = t.replace(/(^|[^\w&])#(\w+)/g, function(m, pre, h){ return pre + '<a data-a="tag" data-v="' + h + '">#' + h + "</a>"; });
     return t;
   };
@@ -10778,7 +10787,21 @@ render();
     var st = [[X.cnt(p, "rt"), t("reposts")], [+(p.c && p.c.q) || 0, t("quotes")], [X.cnt(p, "like"), t("likes")], [X.cnt(p, "bm"), t("bookmarks")]].filter(function(s){ return s[0] > 0; });
     if(st.length) h += '<div class="x-dstats">' + st.map(function(s){ return "<span><b>" + X.full(s[0]) + "</b> " + s[1] + "</span>"; }).join("") + "</div>";
     h += X.actsHtml(p, true);
-    X.st.posts.filter(function(r){ return r.replyTo === p.id; }).sort(function(a, b){ return a.ts - b.ts; }).forEach(function(r){ h += X.postHtml(r, { noReplying: true }); });
+    /* thread: lanjutan tweet pemilik (tweet 2, 3, ...) langsung tampil */
+    var root = p.by, used = {}, byTs = function(a, b){ return a.ts - b.ts; };
+    function kids(x, who){ return X.st.posts.filter(function(r){ return r.replyTo === x.id && !used[r.id] && (!who || who.indexOf(r.by) >= 0); }).sort(byTs); }
+    var cont = [], cur = p;
+    for(var g0 = 0; g0 < 50; g0++){ var nx = kids(cur, [root])[0]; if(!nx) break; used[nx.id] = 1; cont.push(nx); cur = nx; }
+    cont.forEach(function(r, i){ h += X.postHtml(r, { thread: i < cont.length - 1, noReplying: true }); });
+    if(root === me) h += '<div class="x-addthread" data-a="addthread" data-v="' + (cont.length ? cont[cont.length - 1].id : p.id) + '">' + X.avatar(X.me(), 32, false) + "<span>" + (X.st.lang === "id" ? "Tambah ke thread" : "Add another post") + "</span></div>";
+    /* balasan orang lain + balasan pemilik di bawahnya (percakapan) */
+    var targets = [p].concat(cont), reps = X.st.posts.filter(function(r){ return !used[r.id] && targets.some(function(t2){ return r.replyTo === t2.id; }); }).sort(byTs);
+    reps.forEach(function(r){
+      if(used[r.id]) return; used[r.id] = 1;
+      var conv = [r], last = r;
+      for(var g1 = 0; g1 < 8; g1++){ var n2 = kids(last, [root, r.by])[0]; if(!n2) break; used[n2.id] = 1; conv.push(n2); last = n2; }
+      conv.forEach(function(q2, i){ h += X.postHtml(q2, { thread: i < conv.length - 1, noReplying: true }); });
+    });
     h += '<div style="height:20px"></div></div><div class="x-replybar">' + X.avatar(X.me(), 32, false) + '<div class="in" data-a="reply" data-v="' + p.id + '">' + t("postReply") + "</div></div>";
     return h;
   }
@@ -11046,8 +11069,8 @@ render();
     b.querySelector("#pfTs").value = dtIn(p.ts || X.now());
     mediaEd(b, media);
   }
-  X.compose = function(replyTo){
-    var p = { id: X.uid("p"), by: X.st.me, text: "", media: [], ts: X.now(), replyTo: replyTo || null, c: { rep: 0, rt: 0, q: 0, like: 0, view: 0, bm: 0 }, likedBy: [], rtBy: [], bmBy: [] };
+  X.compose = function(replyTo, by){
+    var p = { id: X.uid("p"), by: by || X.st.me, text: "", media: [], ts: X.now(), replyTo: replyTo || null, c: { rep: 0, rt: 0, q: 0, like: 0, view: 0, bm: 0 }, likedBy: [], rtBy: [], bmBy: [] };
     sheet(replyTo ? "Balas" : "Postingan baru", postForm(p, true) + '<button type="button" class="x-btn pri" id="pfGo">' + (replyTo ? (X.st.lang === "id" ? "Balas" : "Reply") : t("post")) + "</button>", function(b){
       bindPostForm(b, p, p.media);
       setTimeout(function(){ b.querySelector("#pfTx").focus(); }, 60);
@@ -11104,7 +11127,7 @@ render();
       $id("aeSave").onclick = function(){
         var dn = $id("aeDn").value.trim(), un = $id("aeUn").value.trim().replace(/^@/, "");
         if(!dn){ X.toast("Nama tampilan wajib diisi"); return; }
-        if(!/^\w{1,15}$/.test(un)){ X.toast("Username: 1\u201315 huruf, angka, atau _"); return; }
+        if(!/^[A-Za-z0-9_.]{1,30}$/.test(un) || /^\.|\.$/.test(un)){ X.toast("Username: huruf, angka, _ atau titik (tidak di awal/akhir)"); return; }
         if(X.st.accounts.some(function(o){ return o.id !== a.id && o.un.toLowerCase() === un.toLowerCase(); })){ X.toast("Username @" + un + " sudah dipakai"); return; }
         a.dn = dn; a.un = un; a.bio = $id("aeBio").value; a.loc = $id("aeLoc").value.trim(); a.web = $id("aeWeb").value.trim(); a.birth = $id("aeBirth").value.trim(); a.joined = $id("aeJoin").value.trim();
         a.cat = $id("aeCat").value.trim(); a.priv = $id("aePriv").checked ? 1 : 0; a.badge = badge; a.followers = Math.max(0, parseInt($id("aeFol").value, 10) || 0); a.following = Math.max(0, parseInt($id("aeFing").value, 10) || 0);
@@ -11292,6 +11315,7 @@ render();
       case "statusTap": if($id("xApp").classList.contains("photo")) photo(false); break;
       case "snap": X.snap(); break;
       case "shclose": closeSheet(); break;
+      case "addthread": var tp = X.post(v); if(tp) X.compose(tp.id, tp.by); break;
       case "tredit": trendEdit(); break;
       case "wtfedit": wtfEdit(); break;
       case "nedit": notifEdit(); break;
@@ -12487,6 +12511,31 @@ render();
     /* migrasi data lama yang membengkak: simpan ulang (gambar akan dipindah ke IndexedDB) */
     try{ save(); }catch(e){}
   }, function(){});
+})();
+
+/* Bingkai HP X & Instagram: ukuran iPhone asli, diperkecil proporsional agar muat di layar */
+(function(){
+  "use strict";
+  var W = 393, H = 852;
+  function fit(){
+    [["xPhone", "xApp"], ["igPhone", "igApp"]].forEach(function(q){
+      var ph = document.getElementById(q[0]), app = document.getElementById(q[1]); if(!ph || !app) return;
+      if(window.innerWidth < 700 || app.classList.contains("snapping")){ ph.style.zoom = ""; return; }
+      var tools = app.querySelector(".x-tools"), th = tools && getComputedStyle(tools).display !== "none" ? tools.offsetHeight : 0;
+      var s = Math.min(1, (window.innerHeight - th - 44) / H, (window.innerWidth - 40) / W);
+      ph.style.zoom = s.toFixed(4);
+    });
+  }
+  window.addEventListener("resize", fit);
+  setInterval(fit, 700);
+  /* saat Unduh PNG: render pada ukuran asli (tanpa zoom), lalu kembalikan */
+  document.addEventListener("click", function(e){
+    var t = e.target.closest && e.target.closest('#xApp [data-a="snap"], #igApp [data-a="snap"]'); if(!t) return;
+    var app = t.closest("#xApp, #igApp"), ph = app && app.querySelector("#xPhone, #igPhone");
+    if(app) app.classList.add("snapping"); if(ph) ph.style.zoom = "";
+    setTimeout(function(){ if(app) app.classList.remove("snapping"); fit(); }, 2500);
+  }, true);
+  fit();
 })();
 
 </script>
