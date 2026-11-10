@@ -2018,6 +2018,213 @@ body.pl-line #screenChatView .composer-input-pill { background-color: var(--ln-i
 .ig-acc .c b { display: flex; align-items: center; gap: 4px; }
 .ig-acc .c span { color: var(--tx2); font-size: 13px; }
 
+/* ===== STORY ===== */
+.ig-ring.cf { background: linear-gradient(135deg, #1DB954, #7BE495); }
+.ig.story .ig-status { position: absolute; left: 0; right: 0; top: 0; z-index: 6; background: transparent; color: #fff; }
+.ig.story .ig-view { position: absolute; inset: 0; }
+.ig-st { position: absolute; inset: 0; overflow: hidden; color: #fff; border-radius: 0 0 10px 10px; }
+.ig-st .bgimg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ig-st::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 150px; background: linear-gradient(rgba(0,0,0,.38), rgba(0,0,0,0)); z-index: 1; }
+.ig-st::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 130px; background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.4)); z-index: 1; }
+.ig-st .bars { position: absolute; left: 8px; right: 8px; top: 54px; display: flex; gap: 3px; z-index: 4; }
+.ig-st .bars i { flex: 1; height: 2px; border-radius: 2px; background-color: rgba(255,255,255,.35); position: relative; overflow: hidden; }
+.ig-st .bars i.done { background-color: #fff; }
+.ig-st .bars i.on::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 55%; background-color: #fff; border-radius: 2px; }
+.ig-st .hd { position: absolute; left: 10px; right: 2px; top: 62px; display: flex; align-items: center; gap: 8px; z-index: 5; font-size: 14px; }
+.ig-st .hd b { font-weight: 600; cursor: pointer; }
+.ig-st .hd > span { color: rgba(255,255,255,.75); }
+.ig-st .hd .sp { flex: 1; }
+.ig-st .hd .ig-ib { color: #fff; }
+.ig-st .hd .cf { width: 22px; height: 22px; border-radius: 50%; background-color: #1DB954; display: inline-flex; align-items: center; justify-content: center; }
+.ig-st .tx { position: absolute; left: 24px; right: 24px; z-index: 3; text-align: center; font-size: 26px; font-weight: 700; line-height: 1.25; word-break: break-word; pointer-events: none; }
+.ig-st .tx.p-t { top: 130px; } .ig-st .tx.p-c { top: 50%; transform: translateY(-50%); } .ig-st .tx.p-b { bottom: 120px; }
+.ig-st .tx.s-classic span { text-shadow: 0 1px 6px rgba(0,0,0,.45); }
+.ig-st .tx.s-bg span { background-color: #fff; color: #111; padding: 4px 10px; border-radius: 8px; box-decoration-break: clone; -webkit-box-decoration-break: clone; line-height: 1.6; }
+.ig-st .tx.s-neon span { text-shadow: 0 0 6px currentColor, 0 0 16px currentColor; font-style: italic; }
+.ig-st .tx a { color: inherit; }
+.ig-stk { position: absolute; left: 50%; transform: translate(-50%, -50%); z-index: 3; pointer-events: none; }
+.ig-stk.pill { background-color: #fff; border-radius: 9px; padding: 6px 12px; font-weight: 800; font-size: 17px; letter-spacing: .3px; box-shadow: 0 2px 10px rgba(0,0,0,.18); white-space: nowrap; }
+.ig-stk .grad { background: linear-gradient(90deg, #F58529, #DD2A7B 60%, #8134AF); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ig-stk.card { background-color: #fff; color: #111; border-radius: 16px; padding: 14px; width: 70%; box-shadow: 0 4px 18px rgba(0,0,0,.22); text-align: center; }
+.ig-stk.card b { display: block; font-size: 16px; font-weight: 800; margin-bottom: 10px; }
+.ig-stk.music { display: flex; align-items: center; gap: 10px; text-align: left; width: auto; max-width: 78%; padding: 10px 14px 10px 10px; }
+.ig-stk.music .cv { width: 42px; height: 42px; border-radius: 8px; background: linear-gradient(135deg, #FF5E7E, #7B3FE4); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.ig-stk.music b { margin: 0; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ig-stk.music em { font-style: normal; font-size: 13px; color: #737373; display: block; }
+.ig-stk.poll .opt { position: relative; height: 40px; border-radius: 10px; background-color: #EFEFEF; margin-top: 6px; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; overflow: hidden; font-weight: 700; font-size: 14px; }
+.ig-stk.poll .opt i { position: absolute; left: 0; top: 0; bottom: 0; background: linear-gradient(90deg, #FDC830, #F37335); opacity: .55; }
+.ig-stk.poll .opt span, .ig-stk.poll .opt em { position: relative; font-style: normal; }
+.ig-stk.ques { background: linear-gradient(160deg, #8134AF, #DD2A7B); color: #fff; }
+.ig-stk.ques .ans { background-color: #fff; color: #8E8E8E; border-radius: 10px; padding: 12px; font-size: 14px; }
+.ig-stk.cnt .dg { font-size: 26px; font-weight: 800; letter-spacing: 1px; }
+.ig-stk.cnt em { font-style: normal; font-size: 10px; color: #8E8E8E; letter-spacing: 1px; white-space: pre; }
+.ig-st .zone { position: absolute; top: 110px; bottom: 90px; z-index: 2; cursor: pointer; }
+.ig-st .zone.l { left: 0; width: 32%; } .ig-st .zone.r { right: 0; width: 68%; }
+.ig-st .ft { position: absolute; left: 12px; right: 8px; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); display: flex; align-items: center; gap: 4px; z-index: 5; }
+.ig-st .ft .msg { flex: 1; height: 44px; border-radius: 22px; border: 1.2px solid rgba(255,255,255,.7); display: flex; align-items: center; padding: 0 18px; font-size: 14px; color: #fff; }
+.ig-st .ft .ig-ib { color: #fff; width: 44px; height: 44px; }
+.ig-st .ft .ig-ib.liked { color: var(--like); }
+.ig-st .ft .sp { flex: 1; }
+.ig-st .ft.own button { background: transparent; border: none; color: #fff; display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; padding: 4px 10px; min-height: 48px; justify-content: flex-end; }
+.ig-st .ft.own em { font-style: normal; font-size: 11.5px; font-weight: 600; }
+.ig-st .ft.own .avs { display: flex; height: 26px; }
+.ig-st .ft.own .avs .ig-av { margin-left: -8px; border: 2px solid #000; } .ig-st .ft.own .avs .ig-av:first-child { margin-left: 0; }
+
+/* ===== MOCKSY TIKTOK (iOS) ===== */
+#tkApp { position: fixed; inset: 0; z-index: 600; display: none; flex-direction: column; align-items: center; background-color: #0B0D10; font-family: -apple-system, "SF Pro Text", system-ui, "Helvetica Neue", sans-serif; }
+#tkApp.open { display: flex; }
+#tkApp.photo .x-tools { display: none; }
+.tk { --bg: #FFFFFF; --tx: #161823; --tx2: rgba(22,24,35,.6); --tx3: rgba(22,24,35,.4); --bd: rgba(22,24,35,.12); --card: #F1F1F2; --red: #FE2C55; --cyan: #25F4EE; --blue: #20A0F5; --sheet: #FFFFFF; --them: #F1F1F2; }
+.tk.t-dark { --bg: #000000; --tx: #FFFFFF; --tx2: rgba(255,255,255,.6); --tx3: rgba(255,255,255,.4); --bd: rgba(255,255,255,.14); --card: #2A2A2A; --sheet: #1C1C1E; --them: #2F2F2F; }
+.tk { position: relative; width: 100%; max-width: 430px; flex: 1; min-height: 0; background-color: var(--bg); color: var(--tx); overflow: hidden; display: flex; flex-direction: column; font-size: 15px; }
+@media (min-width: 700px){ .tk { width: 393px !important; max-width: none !important; height: 852px !important; flex: none !important; border-radius: 44px; box-shadow: 0 0 0 10px #1C1F24, 0 30px 80px rgba(0,0,0,.6); margin-bottom: 20px; } }
+.tk button { font-family: inherit; }
+.tk-status { height: 50px; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 6px 28px 0 36px; font-weight: 600; font-size: 16.5px; color: var(--tx); background-color: var(--bg); z-index: 6; }
+.tk-status .r { display: flex; gap: 6px; align-items: center; }
+.tk.feed .tk-status { position: absolute; left: 0; right: 0; top: 0; background: transparent; color: #fff; }
+.tk-view { flex: 1; min-height: 0; position: relative; display: flex; flex-direction: column; }
+.tk.feed .tk-view { position: absolute; left: 0; right: 0; top: 0; bottom: 0; padding-bottom: calc(52px + env(safe-area-inset-bottom, 0px)); background-color: #000; }
+.tk-scroll { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; scrollbar-width: none; }
+.tk-scroll::-webkit-scrollbar { display: none; }
+.tk-ib { width: 40px; height: 40px; border: none; background: transparent; color: inherit; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; flex-shrink: 0; }
+.tk-av { border-radius: 50%; background: #D8D8DC center/cover no-repeat; display: block; flex-shrink: 0; overflow: hidden; cursor: pointer; }
+/* feed */
+.tk-vid { position: relative; flex: 1; min-height: 0; background-color: #111; overflow: hidden; color: #fff; }
+.tk-vid > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.tk-vid::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 230px; background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.5)); pointer-events: none; }
+.tk-vid::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 130px; background: linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,0)); pointer-events: none; z-index: 1; }
+.tk-ftop { position: absolute; left: 0; right: 0; top: 50px; height: 44px; display: flex; align-items: center; justify-content: center; gap: 20px; z-index: 3; font-size: 17px; font-weight: 600; color: rgba(255,255,255,.6); text-shadow: 0 1px 2px rgba(0,0,0,.3); }
+.tk-ftop span { cursor: pointer; position: relative; padding: 6px 0; }
+.tk-ftop span.on { color: #fff; font-weight: 700; }
+.tk-ftop span.on::after { content: ""; position: absolute; left: 50%; bottom: 0; width: 28px; height: 3px; margin-left: -14px; background-color: #fff; border-radius: 2px; }
+.tk-ftop .sr { position: absolute; right: 8px; color: #fff; }
+.tk-ftop .lv { position: absolute; left: 14px; color: #fff; font-size: 11px; font-weight: 800; border: 1.6px solid #fff; border-radius: 5px; padding: 2px 5px; letter-spacing: .5px; }
+.tk-rail { position: absolute; right: 8px; bottom: 14px; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.tk-rail button { background: transparent; border: none; color: #fff; display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 12px; font-weight: 600; cursor: pointer; padding: 0; text-shadow: 0 1px 2px rgba(0,0,0,.4); filter: drop-shadow(0 1px 2px rgba(0,0,0,.3)); }
+.tk-rail button.liked svg { color: var(--red); }
+.tk-rail button.saved svg { color: #FACE15; }
+.tk-rail .who { position: relative; margin-bottom: 10px; }
+.tk-rail .who .tk-av { border: 1.5px solid #fff; }
+.tk-rail .who i { position: absolute; left: 50%; bottom: -9px; margin-left: -11px; width: 22px; height: 22px; border-radius: 50%; background-color: var(--red); color: #fff; display: flex; align-items: center; justify-content: center; }
+.tk-rail .disc { width: 40px; height: 40px; border-radius: 50%; background: #222 center/cover no-repeat; border: 9px solid #1a1a1a; box-shadow: 0 0 0 1px rgba(255,255,255,.2); }
+.tk-info { position: absolute; left: 12px; right: 76px; bottom: 14px; z-index: 3; text-shadow: 0 1px 2px rgba(0,0,0,.45); font-size: 15px; line-height: 20px; }
+.tk-info .u { font-weight: 700; font-size: 17px; display: flex; align-items: center; gap: 5px; margin-bottom: 4px; cursor: pointer; }
+.tk-info .cap { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; word-break: break-word; }
+.tk-info .cap a { font-weight: 700; color: #fff; }
+.tk-info .mu { display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 14px; white-space: nowrap; overflow: hidden; }
+.tk-zone { position: absolute; left: 0; right: 70px; top: 100px; bottom: 150px; z-index: 2; cursor: pointer; }
+.tk-vb { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background-color: rgba(255,255,255,.25); z-index: 3; }
+.tk-vb i { display: block; height: 100%; width: 38%; background-color: rgba(255,255,255,.85); }
+/* tab bar */
+.tk-tabbar { height: calc(52px + env(safe-area-inset-bottom, 0px)); padding-bottom: env(safe-area-inset-bottom, 0px); display: flex; align-items: center; background-color: var(--bg); border-top: 1px solid var(--bd); flex-shrink: 0; z-index: 5; }
+.tk.feed .tk-tabbar { position: absolute; left: 0; right: 0; bottom: 0; background-color: #000; border-top-color: rgba(255,255,255,.12); color: #fff; }
+.tk-tabbar button { flex: 1; height: 50px; border: none; background: transparent; color: var(--tx3); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 10px; font-weight: 600; cursor: pointer; position: relative; }
+.tk.feed .tk-tabbar button { color: rgba(255,255,255,.6); }
+.tk-tabbar button.on { color: var(--tx); }
+.tk.feed .tk-tabbar button.on { color: #fff; }
+.tk-tabbar .mk { width: 44px; height: 29px; border-radius: 9px; background-color: var(--tx); color: var(--bg); display: flex; align-items: center; justify-content: center; box-shadow: -3px 0 0 var(--cyan), 3px 0 0 var(--red); }
+.tk.feed .tk-tabbar .mk { background-color: #fff; color: #000; }
+.tk-tabbar .cnt { position: absolute; top: 3px; left: 50%; margin-left: 5px; min-width: 17px; height: 17px; border-radius: 9px; background-color: var(--red); color: #fff; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; padding: 0 5px; }
+/* bar */
+.tk-bar { height: 46px; display: flex; align-items: center; padding: 0 6px; flex-shrink: 0; position: relative; }
+.tk-bar h2 { position: absolute; left: 60px; right: 60px; text-align: center; font-size: 17px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 4px; white-space: nowrap; overflow: hidden; }
+.tk-bar .sp { flex: 1; }
+/* profil */
+.tk-prof { display: flex; flex-direction: column; align-items: center; padding: 8px 16px 0; text-align: center; }
+.tk-prof .un { font-size: 17px; font-weight: 700; margin-top: 12px; display: flex; align-items: center; gap: 4px; }
+.tk-stats { display: flex; gap: 36px; margin-top: 14px; }
+.tk-stats div b { display: block; font-size: 17px; font-weight: 700; }
+.tk-stats div span { font-size: 13px; color: var(--tx2); }
+.tk-pbtns { display: flex; gap: 6px; margin-top: 14px; }
+.tk-pbtns button { height: 40px; padding: 0 20px; border-radius: 8px; border: none; background-color: var(--card); color: var(--tx); font-weight: 600; font-size: 15px; cursor: pointer; min-width: 110px; }
+.tk-pbtns button.red { background-color: var(--red); color: #fff; min-width: 150px; }
+.tk-pbtns button.sq { min-width: 0; width: 40px; padding: 0; display: flex; align-items: center; justify-content: center; }
+.tk-bio { margin-top: 12px; font-size: 14px; line-height: 19px; white-space: pre-wrap; word-break: break-word; }
+.tk-plink { margin-top: 6px; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 5px; }
+.tk-ptabs { display: flex; border-bottom: 1px solid var(--bd); margin-top: 14px; }
+.tk-ptabs button { flex: 1; height: 44px; border: none; background: transparent; color: var(--tx3); cursor: pointer; position: relative; }
+.tk-ptabs button.on { color: var(--tx); }
+.tk-ptabs button.on::after { content: ""; position: absolute; left: 50%; bottom: 0; width: 40px; margin-left: -20px; height: 2px; background-color: var(--tx); }
+.tk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; }
+.tk-grid div { aspect-ratio: 3 / 4; background: #222 center/cover no-repeat; position: relative; cursor: pointer; color: #fff; }
+.tk-grid div span { position: absolute; left: 6px; bottom: 5px; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 3px; text-shadow: 0 1px 2px rgba(0,0,0,.6); }
+.tk-grid div em { position: absolute; left: 5px; top: 5px; background-color: var(--red); font-style: normal; font-size: 11px; font-weight: 700; padding: 1px 5px; border-radius: 3px; }
+.tk-empty { text-align: center; padding: 44px 30px; color: var(--tx2); }
+.tk-empty b { display: block; color: var(--tx); font-size: 16px; margin-bottom: 4px; }
+/* komentar (sheet) */
+.tk-cm-ov { position: absolute; inset: 0; z-index: 30; background-color: rgba(0,0,0,.35); display: flex; align-items: flex-end; }
+.tk-cm { width: 100%; height: 68%; background-color: var(--sheet); color: var(--tx); border-radius: 14px 14px 0 0; display: flex; flex-direction: column; overflow: hidden; }
+.tk-cm .h { height: 46px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; position: relative; flex-shrink: 0; }
+.tk-cm .h .tk-ib { position: absolute; right: 4px; }
+.tk-c { display: flex; gap: 10px; padding: 8px 14px; align-items: flex-start; cursor: pointer; }
+.tk-c.rep { padding-left: 58px; }
+.tk-c .c { flex: 1; min-width: 0; font-size: 15px; line-height: 20px; }
+.tk-c .c .n { font-size: 13px; color: var(--tx2); font-weight: 600; display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+.tk-c .c .n em { font-style: normal; color: var(--red); font-size: 11px; font-weight: 700; }
+.tk-c .c .m { font-size: 13px; color: var(--tx3); margin-top: 3px; display: flex; gap: 14px; align-items: center; }
+.tk-c .c .m b { color: var(--tx2); font-weight: 600; }
+.tk-c .c .lc { display: inline-flex; align-items: center; gap: 4px; background-color: var(--card); border-radius: 4px; padding: 1px 6px; font-size: 11px; color: var(--tx2); margin-top: 4px; }
+.tk-c .lk { display: flex; flex-direction: column; align-items: center; gap: 1px; border: none; background: transparent; color: var(--tx3); font-size: 12px; cursor: pointer; padding: 0; min-width: 30px; }
+.tk-c .lk.on { color: var(--red); }
+.tk-cmin { border-top: 1px solid var(--bd); padding: 8px 12px calc(10px + env(safe-area-inset-bottom, 0px)); display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+.tk-cmin .in { flex: 1; height: 40px; border-radius: 20px; background-color: var(--card); display: flex; align-items: center; padding: 0 6px 0 14px; }
+.tk-cmin input, .tk-dmin input { flex: 1; border: none; outline: none; background: transparent; color: var(--tx); font-size: 15px; min-width: 0; height: 38px; }
+.tk-send { width: 32px; height: 32px; border-radius: 50%; border: none; background-color: var(--red); color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; }
+/* inbox & DM */
+.tk-sec { padding: 14px 16px 6px; font-size: 13px; font-weight: 700; color: var(--tx2); }
+.tk-row { display: flex; gap: 12px; align-items: center; padding: 9px 16px; cursor: pointer; }
+.tk-row .c { flex: 1; min-width: 0; font-size: 15px; line-height: 20px; }
+.tk-row .c b { font-weight: 600; }
+.tk-row .c span { color: var(--tx2); font-size: 13.5px; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tk-row .th { width: 44px; height: 56px; border-radius: 4px; background: #222 center/cover no-repeat; flex-shrink: 0; }
+.tk-row .fb { height: 34px; padding: 0 16px; border-radius: 6px; border: none; background-color: var(--red); color: #fff; font-weight: 600; font-size: 14px; cursor: pointer; }
+.tk-row .fb.off { background-color: var(--card); color: var(--tx); }
+.tk-row .bd { width: 9px; height: 9px; border-radius: 50%; background-color: var(--red); }
+.tk-msgs { display: flex; flex-direction: column; gap: 6px; padding: 12px 12px 16px; }
+.tk-msg { max-width: 72%; padding: 9px 13px; border-radius: 18px; font-size: 15px; line-height: 20px; white-space: pre-wrap; word-break: break-word; cursor: pointer; }
+.tk-msg.me { align-self: flex-end; background-color: var(--blue); color: #fff; border-bottom-right-radius: 5px; }
+.tk-msg.them { align-self: flex-start; background-color: var(--them); color: var(--tx); border-bottom-left-radius: 5px; }
+.tk-msg img { display: block; max-width: 200px; border-radius: 12px; }
+.tk-msg.img { padding: 0; background: transparent !important; }
+.tk-mt { align-self: center; color: var(--tx3); font-size: 12px; margin: 8px 0 4px; }
+.tk-dmin { padding: 8px 12px calc(10px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--bd); display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+.tk-dmin .in { flex: 1; height: 40px; border-radius: 20px; background-color: var(--card); display: flex; align-items: center; padding: 0 14px; }
+.tk-search { margin: 4px 14px 10px; height: 40px; border-radius: 8px; background-color: var(--card); display: flex; align-items: center; gap: 8px; padding: 0 12px; color: var(--tx2); }
+.tk-search input { flex: 1; border: none; outline: none; background: transparent; color: var(--tx); font-size: 15px; min-width: 0; }
+/* sheet editor */
+.tk-sh-ov { position: absolute; inset: 0; z-index: 40; background-color: rgba(0,0,0,.5); display: none; align-items: flex-end; }
+.tk-sh-ov.open { display: flex; }
+.tk-sh { width: 100%; max-height: 92%; background-color: var(--sheet); color: var(--tx); border-radius: 14px 14px 0 0; display: flex; flex-direction: column; overflow: hidden; padding-bottom: env(safe-area-inset-bottom, 0px); }
+.tk-sh-h { display: flex; align-items: center; padding: 6px 8px 6px 16px; min-height: 52px; border-bottom: 1px solid var(--bd); }
+.tk-sh-h b { flex: 1; font-size: 16px; }
+.tk-sh-b { overflow-y: auto; padding: 14px 16px 22px; display: flex; flex-direction: column; gap: 14px; }
+.tk-f { display: flex; flex-direction: column; gap: 6px; }
+.tk-f > label { font-size: 12.5px; color: var(--tx2); font-weight: 600; }
+.tk-in, .tk-ta, .tk-sel { width: 100%; min-height: 44px; border-radius: 8px; border: 1px solid var(--bd); background-color: var(--bg); color: var(--tx); padding: 0 12px; font-size: 15px; outline: none; font-family: inherit; }
+.tk-ta { padding: 10px 12px; min-height: 84px; resize: vertical; line-height: 1.4; }
+.tk-in:focus, .tk-ta:focus { border-color: var(--red); }
+.tk-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.tk-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+.tk-seg { display: flex; border: 1px solid var(--bd); border-radius: 8px; padding: 3px; gap: 3px; }
+.tk-seg button { flex: 1; min-height: 36px; border: none; border-radius: 6px; background: transparent; color: var(--tx2); font-weight: 700; font-size: 13px; cursor: pointer; }
+.tk-seg button.on { background-color: var(--red); color: #fff; }
+.tk-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.tk-chip { min-height: 34px; padding: 0 10px 0 4px; border-radius: 17px; border: 1px solid var(--bd); background: transparent; color: var(--tx); font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+.tk-chip.on { border-color: var(--red); background-color: rgba(254,44,85,.12); color: var(--red); }
+.tk-btn { min-height: 44px; border-radius: 8px; border: none; background-color: var(--card); color: var(--tx); font-weight: 700; font-size: 15px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 0 16px; }
+.tk-btn.pri { background-color: var(--red); color: #fff; }
+.tk-btn.dng { color: var(--red); }
+.tk-note { font-size: 12.5px; color: var(--tx2); line-height: 1.45; }
+.tk-sw { display: flex; align-items: center; justify-content: space-between; min-height: 42px; font-size: 15px; gap: 10px; }
+.tk-sw input { width: 44px; height: 26px; accent-color: var(--red); }
+.tk-imgp { display: flex; gap: 10px; align-items: center; }
+.tk-imgp .pv { width: 60px; height: 60px; border-radius: 50%; background: var(--card) center/cover no-repeat; flex-shrink: 0; }
+.tk-acc { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--bd); }
+.tk-acc .c { flex: 1; min-width: 0; }
+.tk-acc .c b { display: flex; align-items: center; gap: 4px; }
+.tk-acc .c span { color: var(--tx2); font-size: 13px; }
+.tk-toast { position: absolute; left: 50%; top: 46%; transform: translate(-50%, -50%); background-color: rgba(84,84,84,.92); color: #fff; padding: 10px 16px; border-radius: 6px; font-size: 14px; z-index: 50; white-space: nowrap; pointer-events: none; }
+
 /* ===== Perbaikan audit (lintas layanan) ===== */
 /* P1: Chat View tidak boleh meluber di layar sempit */
 #screenChatView .composer-input-pill { min-width: 0; }
@@ -10439,7 +10646,7 @@ render();
     mail: "M3.5 5h17a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-17a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z M2.5 6.5l9.5 6.5 9.5-6.5",
     people: "M8 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z M16.5 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z M1.5 20c0-3.5 2.9-6 6.5-6s6.5 2.5 6.5 6 M15 14.2c3.6-.6 7.5 1.6 7.5 5.8",
     reply: "M9.5 4h5a7.5 7.5 0 0 1 0 15H13l-5 3v-3.5A7.5 7.5 0 0 1 9.5 4z",
-    rt: "M4.5 8.5l3.5-3.5 3.5 3.5 M8 5v10.5a2.5 2.5 0 0 0 2.5 2.5H14 M19.5 15.5L16 19l-3.5-3.5 M16 19V8.5A2.5 2.5 0 0 0 13.5 6H10",
+    rt: "M1.3 8.6L4.5 5.4l3.2 3.2 M4.5 5.8V16a3 3 0 0 0 3 3H13 M22.7 15.4l-3.2 3.2-3.2-3.2 M19.5 18.2V8a3 3 0 0 0-3-3H11",
     heart: "M12 20.5S3 15.2 3 9.2A4.7 4.7 0 0 1 12 7a4.7 4.7 0 0 1 9 2.2c0 6-9 11.3-9 11.3z",
     views: "M5 20.5v-7 M10 20.5V4 M15 20.5v-11 M20 20.5v-4.5",
     bm: "M6 3.5h12a.5.5 0 0 1 .5.5v17l-6.5-4.5L5.5 21V4a.5.5 0 0 1 .5-.5z",
@@ -11359,12 +11566,14 @@ render();
         '<button type="button" class="svc-card" data-s="chat"><span class="ic" style="background-color:#7C3AED">' + LN.svg("chat", 28) + '</span><b>Chat</b><span>WhatsApp, iMessage, dan LINE \u2014 chat, panggilan, profil, tema.</span>' + (last === "chat" ? '<em class="last">TERAKHIR DIPAKAI</em>' : "") + "</button>" +
         '<button type="button" class="svc-card" data-s="lock"><span class="ic" style="background-color:#0A84FF">' + LN.svg("lock", 28) + '</span><b>Lockscreen</b><span>Layar kunci iOS 26/27: jam Liquid Glass, notifikasi, musik, widget.</span>' + (last === "lock" ? '<em class="last">TERAKHIR DIPAKAI</em>' : "") + "</button>" +
         '<button type="button" class="svc-card" data-s="ig"><span class="ic" style="background-color:#D62976">' + LN.svg("image", 28) + '</span><b>Instagram</b><span>Beranda, story, postingan carousel, komentar, profil, notifikasi, dan DM.</span>' + (last === "ig" ? '<em class="last">TERAKHIR DIPAKAI</em>' : "") + "</button>" +
+        '<button type="button" class="svc-card" data-s="tk"><span class="ic" style="background-color:#111111;box-shadow:-3px 0 0 #25F4EE,3px 0 0 #FE2C55"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l11-2v13 M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0z M20 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/></svg></span><b>TikTok</b><span>Feed For You, komentar, profil, inbox, dan pesan — semua bisa diedit.</span>' + (last === "tk" ? '<em class="last">TERAKHIR DIPAKAI</em>' : "") + "</button>" +
         '<button type="button" class="svc-card" data-s="x"><span class="ic" style="background-color:#0F1419">' + X.logo(28).replace(/currentColor/g, "#fff") + '</span><b>X</b><span>Postingan, balasan, repost, profil, akun, dan DM ala X.</span>' + (last === "x" ? '<em class="last">TERAKHIR DIPAKAI</em>' : "") + "</button>" +
       "</div>";
     el.querySelectorAll(".svc-card").forEach(function(b){
       b.onclick = function(){
         el.classList.remove("open");
-        var sv = b.dataset.s; X.close(); if(window.MLock) MLock.close(); if(window.MIG) MIG.close();
+        var sv = b.dataset.s; X.close(); if(window.MLock) MLock.close(); if(window.MIG) MIG.close(); if(window.MTK) MTK.close();
+        if(sv === "tk"){ if(window.MTK) MTK.open(); return; }
         if(sv === "x") X.open();
         else if(sv === "lock"){ if(window.MLock) MLock.open(); }
         else if(sv === "ig"){ if(window.MIG) MIG.open(); }
@@ -11872,6 +12081,9 @@ render();
     P1.likedBy = ["i_nara", "i_me"]; P2.likedBy = ["i_me", "i_raka"]; P3.likedBy = ["i_nara"]; P3.savedBy = ["i_nara"];
     P1.cm = [{ id: "c1", by: "i_nara", text: "keren banget!! langsung coba \ud83d\ude0d", ts: now - 50 * 60e3, likes: 24, likedBy: [] }];
     P3.cm = [{ id: "c2", by: "i_nara", text: "wah membantu banget", ts: now - 10 * 60e3, likes: 2, likedBy: ["i_me"] }];
+    A[1].stories = [{ id: "s1", img: "gen:0", bg: 0, text: "senja \ud83c\udf05", tpos: "b", tstyle: "classic", tcolor: "#FFFFFF", ts: now - 2 * 3600e3, cf: 0, stickers: [{ k: "loc", v: "Banjarmasin", y: 22 }], viewers: [], views: 0, likedBy: [] },
+      { id: "s2", img: null, bg: 1, text: "", tpos: "c", ts: now - 3600e3, cf: 1, stickers: [{ k: "poll", v: "Kopi atau teh?", a: "Kopi", b: "Teh", pa: 68, y: 44 }], viewers: [], views: 0, likedBy: [] }];
+    A[0].stories = [{ id: "s3", img: "gen:3", bg: 0, text: "Fitur story sudah ada!", tpos: "c", tstyle: "bg", ts: now - 30 * 60e3, cf: 0, stickers: [{ k: "mention", v: "naraaa", y: 66 }, { k: "music", v: "Judul Lagu", a: "Nama Artis", y: 24 }], viewers: ["i_nara", "i_news"], views: 127, likedBy: ["i_nara"] }];
     return { v: 1, theme: "dark", lang: "en", me: "i_me", clock: "9:41", batt: 82, nowMs: null, accounts: A, posts: [P1, P2, P3],
       fol: { i_me: ["i_nara", "i_news"], i_nara: ["i_me", "i_news"], i_raka: ["i_me"], i_news: [] },
       dms: [{ id: "d1", a: "i_me", b: "i_nara", seen: 1, seenOut: 1, msgs: [{ id: "m1", by: "i_nara", text: "eh udah liat fitur IG di Mocksy?", ts: now - 3 * 3600e3 }, { id: "m2", by: "i_me", text: "udah, lagi nyoba DM-nya nih", ts: now - 3 * 3600e3 + 60e3 }, { id: "m3", by: "i_nara", text: "mantap \ud83d\udd25", ts: now - 2.9 * 3600e3 }] }],
@@ -11905,9 +12117,11 @@ render();
   function av(a, s, ring, act){
     var src = a ? I.img(a.pfp) : null;
     var inner = '<span class="ig-av" style="width:' + s + "px;height:" + s + "px;" + (src ? "background-image:url(" + src + ")" : "") + '"' + (act !== false && a ? ' data-a="prof" data-v="' + a.id + '"' : "") + ">" + (src ? "" : '<svg width="' + s + '" height="' + s + '" viewBox="0 0 40 40"><circle cx="20" cy="16" r="7" fill="#C7C7CC"/><ellipse cx="20" cy="36" rx="13" ry="9.5" fill="#C7C7CC"/></svg>') + "</span>";
-    if(!ring || !a || !a.story) return inner;
-    return '<span class="ig-ring ' + (a.seen ? "seen" : "on") + '"><span>' + inner + "</span></span>";
+    if(!ring || !a || !hasStory(a)) return inner;
+    var cf = (a.stories || []).some(function(x){ return x.cf; });
+    return '<span class="ig-ring ' + (a.seen ? "seen" : cf ? "cf" : "on") + '"><span>' + inner + "</span></span>";
   }
+  function hasStory(a){ return !!(a && ((a.stories && a.stories.length) || a.story)); }
   function cnt(p, k){ var c = p.c || {}, b = +c[k] || 0; if(k === "like") return b + (p.likedBy || []).length; if(k === "cmt") return b + (p.cm || []).length; if(k === "rt") return b + (p.rtBy || []).length; return b; }
   function has(p, l){ return (p[l] || []).indexOf(I.st.me) >= 0; }
   function tog(arr, id){ var i = arr.indexOf(id); if(i >= 0) arr.splice(i, 1); else arr.push(id); return i < 0; }
@@ -11981,7 +12195,8 @@ render();
     var n = top(), v = n.v, h = "", tabs = true;
     if(v === "home") h = vHome(); else if(v === "prof") h = vProf(n.id || I.st.me, n.tab || "grid"); else if(v === "post") h = vPostOne(n.id);
     else if(v === "cmts"){ h = vCmts(n.id); tabs = false; } else if(v === "notif") h = vNotif(); else if(v === "dms") h = vDms(); else if(v === "dm"){ h = vDm(n.id); tabs = false; }
-    else if(v === "search") h = vSearch(n); else if(v === "reels") h = vReels();
+    else if(v === "search") h = vSearch(n); else if(v === "reels") h = vReels(); else if(v === "story"){ h = vStory(n); tabs = false; }
+    ph.classList.toggle("story", v === "story");
     $id("igView").innerHTML = h; $id("igTab").innerHTML = tabbar(); $id("igTab").style.display = tabs ? "" : "none";
     var s = document.querySelector("#igView .ig-scroll"), key = NAV.length + v + (n.id || "");
     if(s){ if(v === "dm") s.scrollTop = s.scrollHeight; else if(!newPage && SCR[key] != null) s.scrollTop = SCR[key]; }
@@ -11994,8 +12209,8 @@ render();
   function vHome(){
     var me = I.me(), un = notifs().filter(function(x){ return x.ts > (I.st.seenN || 0); }).length;
     var h = '<div class="ig-scroll"><div class="ig-top"><span class="ttl" style="font-family:-apple-system,system-ui">Instagram' + ic("chevD", 16, { sw: 2.4 }) + '</span><button type="button" class="ig-ib" data-a="notif">' + ic("heart", 26) + (un || (I.st.nBadge > 0) ? '<span class="ig-dot"></span>' : "") + '</button><button type="button" class="ig-ib" data-a="compose">' + ic("plusSq", 26) + "</button></div>";
-    h += '<div class="ig-stories"><div class="ig-story" data-a="prof" data-v="' + me.id + '"><span style="position:relative;display:inline-flex">' + av(me, 62, true, false) + '<span class="add">' + ic("plus", 12, { sw: 3.4 }) + '</span></span><span class="n">' + T("Your story", "Cerita Anda") + "</span></div>";
-    I.st.accounts.filter(function(a){ return a.id !== me.id && a.story && canSee(a); }).sort(function(a, b){ return (a.seen ? 1 : 0) - (b.seen ? 1 : 0); }).forEach(function(a){ h += '<div class="ig-story" data-a="seen" data-v="' + a.id + '">' + av(a, 62, true, false) + '<span class="n">' + esc(a.un) + "</span></div>"; });
+    h += '<div class="ig-stories"><div class="ig-story" data-a="mystory" data-v="' + me.id + '"><span style="position:relative;display:inline-flex">' + av(me, 62, true, false) + '<span class="add">' + ic("plus", 12, { sw: 3.4 }) + '</span></span><span class="n">' + T("Your story", "Cerita Anda") + "</span></div>";
+    I.st.accounts.filter(function(a){ return a.id !== me.id && hasStory(a) && canSee(a); }).sort(function(a, b){ return (a.seen ? 1 : 0) - (b.seen ? 1 : 0); }).forEach(function(a){ h += '<div class="ig-story" data-a="seen" data-v="' + a.id + '">' + av(a, 62, true, false) + '<span class="n">' + esc(a.un) + "</span></div>"; });
     h += "</div>";
     var fl = (I.st.fol[me.id] || []).concat([me.id]);
     var ps = I.st.posts.filter(function(p){ return fl.indexOf(p.by) >= 0 && canSee(I.acc(p.by)); }).sort(function(a, b){ return b.ts - a.ts; });
@@ -12011,7 +12226,7 @@ render();
     var h = '<div class="ig-top">' + (own ? '<button type="button" class="ig-ib" data-a="compose">' + ic("plus", 28, { sw: 2.2 }) + "</button>" : '<button type="button" class="ig-ib" data-a="back">' + ic("back", 26, { sw: 2.2 }) + "</button>") +
       '<span class="ttl sm ctr" data-a="' + (own ? "accts" : "") + '">' + (a.priv ? ic("lock", 16, { sw: 2.2 }) : "") + esc(a.un) + badge(a.badge, 15) + (own ? ic("chevD", 15, { sw: 2.4 }) : "") + "</span>" +
       '<button type="button" class="ig-ib" data-a="pedit" data-v="' + a.id + '">' + ic(own ? "edit" : "more", 24) + '</button><button type="button" class="ig-ib" data-a="' + (own ? "set" : "pedit") + '" data-v="' + a.id + '">' + ic(own ? "menu" : "moreV", 26) + "</button></div>";
-    h += '<div class="ig-scroll"><div class="ig-prof"><div class="ig-prow"><span style="position:relative;display:inline-flex;margin-top:14px">' + (a.note ? '<span class="ig-note">' + esc(a.note) + "</span>" : "") + av(a, 86, true, false) + (own ? '<span style="position:absolute;right:0;bottom:2px;width:26px;height:26px;border-radius:50%;background:var(--tx);color:var(--bg);display:flex;align-items:center;justify-content:center;border:3px solid var(--bg)">' + ic("plus", 12, { sw: 3.4 }) + "</span>" : "") + "</span>" +
+    h += '<div class="ig-scroll"><div class="ig-prof"><div class="ig-prow"><span style="position:relative;display:inline-flex;margin-top:14px;cursor:pointer" data-a="pstory" data-v="' + a.id + '">' + (a.note ? '<span class="ig-note">' + esc(a.note) + "</span>" : "") + av(a, 86, true, false) + (own ? '<span style="position:absolute;right:0;bottom:2px;width:26px;height:26px;border-radius:50%;background:var(--tx);color:var(--bg);display:flex;align-items:center;justify-content:center;border:3px solid var(--bg)">' + ic("plus", 12, { sw: 3.4 }) + "</span>" : "") + "</span>" +
       '<div class="stats"><div class="nm">' + esc(a.name || "") + '</div><div class="nums"><div><b>' + num(mine.length + (+a.postsExtra || 0)) + "</b><span>" + T("posts", "postingan") + "</span></div><div><b>" + num(fols) + "</b><span>" + T("followers", "pengikut") + "</span></div><div><b>" + num(fing) + "</b><span>" + T("following", "diikuti") + "</span></div></div></div></div>";
     if(a.cat) h += '<div class="ig-cat">' + esc(a.cat) + "</div>";
     if(a.bio) h += '<div class="ig-bio">' + rich(a.bio) + "</div>";
@@ -12266,6 +12481,80 @@ render();
     });
   }
 
+
+  /* ---------- STORY ---------- */
+  function curStory(){ var n = top(), a = I.acc(n.id); return a && a.stories ? a.stories[n.i || 0] : null; }
+  var GRADS = [["#F58529", "#DD2A7B"], ["#8134AF", "#515BD4"], ["#11998E", "#38EF7D"], ["#FC466B", "#3F5EFB"], ["#232526", "#414345"], ["#FDC830", "#F37335"]];
+  function stickerHtml(k){
+    var y = k.y != null ? k.y : 50, st = 'style="top:' + y + '%"', v = esc(k.v || "");
+    if(k.k === "mention") return '<div class="ig-stk pill" ' + st + '><span class="grad">@' + v.replace(/^@/, "") + "</span></div>";
+    if(k.k === "hash") return '<div class="ig-stk pill" ' + st + '><span class="grad">#' + v.replace(/^#/, "") + "</span></div>";
+    if(k.k === "loc") return '<div class="ig-stk pill" ' + st + '><span style="color:#8134AF;display:inline-flex;align-items:center;gap:4px"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s7-6.3 7-12a7 7 0 0 0-14 0c0 5.7 7 12 7 12zm0-9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>' + v.toUpperCase() + "</span></div>";
+    if(k.k === "link") return '<div class="ig-stk pill" ' + st + '><span style="color:#0095F6;display:inline-flex;align-items:center;gap:5px">' + ic("link", 15, { sw: 2.6 }) + v.toUpperCase() + "</span></div>";
+    if(k.k === "music") return '<div class="ig-stk card music" ' + st + '><span class="cv">' + ic("music", 18, { sw: 2.2 }) + '</span><span><b>' + v + "</b><em>" + esc(k.a || "") + "</em></span></div>";
+    if(k.k === "poll"){ var pa = Math.max(0, Math.min(100, +k.pa || 50)); return '<div class="ig-stk card poll" ' + st + "><b>" + v + '</b><div class="opt"><i style="width:' + pa + '%"></i><span>' + esc(k.a || "Ya") + "</span><em>" + pa + '%</em></div><div class="opt"><i style="width:' + (100 - pa) + '%"></i><span>' + esc(k.b || "Tidak") + "</span><em>" + (100 - pa) + "%</em></div></div>"; }
+    if(k.k === "question") return '<div class="ig-stk card ques" ' + st + "><b>" + v + '</b><div class="ans">' + esc(k.a || T("Type something...", "Ketik sesuatu...")) + "</div></div>";
+    if(k.k === "count") return '<div class="ig-stk card cnt" ' + st + "><b>" + v + '</b><div class="dg">' + esc(k.a || "02 : 14 : 36") + "</div><em>" + T("days   hours   minutes", "hari   jam   menit") + "</em></div>";
+    return "";
+  }
+  function vStory(n){
+    var a = I.acc(n.id); if(!a) return "";
+    var list = a.stories && a.stories.length ? a.stories : [{ id: "ph", bg: 0, text: "", ts: now() - 3600e3, stickers: [], _ph: 1 }], i = Math.min(n.i || 0, list.length - 1), s = list[i], own = a.id === I.st.me;
+    var img = I.img(s.img), g = GRADS[(+s.bg || 0) % GRADS.length], liked = (s.likedBy || []).indexOf(I.st.me) >= 0;
+    var h = '<div class="ig-st" style="background:' + (img ? "#000" : "linear-gradient(160deg," + g[0] + "," + g[1] + ")") + '">' + (img ? '<img class="bgimg" alt="" src="' + img + '">' : "");
+    h += '<div class="bars">' + list.map(function(x, j){ return '<i class="' + (j < i ? "done" : j === i ? "on" : "") + '"></i>'; }).join("") + "</div>";
+    h += '<div class="hd">' + av(a, 32, false) + '<b data-a="prof" data-v="' + a.id + '">' + esc(own ? T("Your story", "Cerita Anda") : a.un) + "</b>" + (own ? "" : badge(a.badge, 13)) + "<span>" + sh(s.ts || now()) + "</span>" + (s.cf ? '<span class="cf"><svg width="12" height="12" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>' : "") +
+      '<span class="sp"></span><button type="button" class="ig-ib" data-a="stmore" aria-label="Edit story">' + ic("more", 22) + '</button><button type="button" class="ig-ib" data-a="stclose" aria-label="Tutup">' + ic("close", 26, { sw: 2 }) + "</button></div>";
+    if(s.text) h += '<div class="tx s-' + (s.tstyle || "classic") + " p-" + (s.tpos || "c") + '" style="' + (s.tstyle === "bg" ? "" : "color:" + (s.tcolor || "#FFFFFF")) + '"><span>' + rich(s.text).replace(/\n/g, "<br>") + "</span></div>";
+    (s.stickers || []).forEach(function(k){ h += stickerHtml(k); });
+    if(s._ph) h += '<div class="tx s-classic p-c"><span style="opacity:.85">' + T("No story yet", "Belum ada story") + "</span></div>";
+    h += '<div class="zone l" data-a="stprev"></div><div class="zone r" data-a="stnext"></div>';
+    if(own){
+      var vw = (s.viewers || []).map(I.acc).filter(Boolean), nv = vw.length + (+s.views || 0);
+      h += '<div class="ft own"><button type="button" data-a="stact"><span class="avs">' + vw.slice(0, 3).map(function(x){ return av(x, 26, false, false); }).join("") + "</span><em>" + (nv ? T("Seen by ", "Dilihat ") + num(nv) : T("Activity", "Aktivitas")) + '</em></button><span class="sp"></span><button type="button" data-a="stadd">' + ic("plusSq", 24) + "<em>" + T("Add", "Tambah") + '</em></button><button type="button" data-a="stmore">' + ic("heart", 24) + "<em>" + T("Highlight", "Sorotan") + '</em></button><button type="button" data-a="stmore">' + ic("more", 24) + "<em>" + T("More", "Lainnya") + "</em></button></div>";
+    } else h += '<div class="ft"><div class="msg">' + T("Send message", "Kirim pesan") + '</div><button type="button" class="ig-ib' + (liked ? " liked" : "") + '" data-a="stlike" aria-label="Suka">' + ic("heart", 27, liked ? { fill: 1 } : null) + '</button><button type="button" class="ig-ib" data-a="share" aria-label="Bagikan">' + ic("send", 25) + "</button></div>";
+    return h + "</div>";
+  }
+  function storyViewers(){
+    var s = curStory(); if(!s) return; var vw = (s.viewers || []).map(I.acc).filter(Boolean), nv = vw.length + (+s.views || 0);
+    sheet(T("Viewers", "Yang melihat") + " \u00b7 " + num(nv), (vw.length ? vw.map(function(x){ var lk = (s.likedBy || []).indexOf(x.id) >= 0; return '<div class="ig-acc">' + av(x, 44, false, false) + '<div class="c"><b>' + esc(x.un) + badge(x.badge, 12) + "</b><span>" + esc(x.name || "") + "</span></div>" + (lk ? '<span style="color:var(--like)">' + ic("heart", 20, { fill: 1 }) + "</span>" : "") + "</div>"; }).join("") : '<div class="ig-note2">Belum ada akun yang melihat. Atur lewat Edit story.</div>') +
+      (+s.views ? '<div class="ig-note2">+ ' + num(+s.views) + " penonton lain</div>" : "") + '<button type="button" class="ig-btn" id="svEd">Edit story</button>', function(){ $id("svEd").onclick = function(){ I.editStory(top().id, top().i || 0); }; });
+  }
+  var STK = [["mention", "Mention"], ["loc", "Lokasi"], ["hash", "Hashtag"], ["link", "Tautan"], ["music", "Musik"], ["poll", "Polling"], ["question", "Pertanyaan"], ["count", "Hitung mundur"]];
+  I.editStory = function(accId, idx){
+    var a = I.acc(accId); if(!a) return; a.stories = a.stories || [];
+    var isNew = idx < 0 || !a.stories[idx], s = isNew ? { id: uid("s"), img: null, bg: 0, text: "", tpos: "c", tstyle: "classic", tcolor: "#FFFFFF", ts: now(), cf: 0, stickers: [], viewers: [], views: 0, likedBy: [] } : JSON.parse(JSON.stringify(a.stories[idx]));
+    s.stickers = s.stickers || []; s.viewers = s.viewers || []; s.likedBy = s.likedBy || [];
+    sheet(isNew ? "Story baru \u2014 @" + a.un : "Edit story \u2014 @" + a.un,
+      '<div class="ig-f"><label>Foto / video (sampul)</label><div class="ig-imgp"><div class="pv" id="sPv" style="border-radius:10px;width:54px;height:96px"></div><button type="button" class="ig-btn" id="sUp">Unggah</button><button type="button" class="ig-btn dng" id="sRm">Hapus</button></div></div>' +
+      '<div class="ig-f"><label>Latar gradasi (jika tanpa foto)</label><div class="ig-chips" id="sBg">' + GRADS.map(function(g, i){ return '<button type="button" data-v="' + i + '" style="width:40px;height:40px;border-radius:50%;border:3px solid transparent;background:linear-gradient(160deg,' + g[0] + "," + g[1] + ')" aria-label="Gradasi ' + (i + 1) + '"></button>'; }).join("") + "</div></div>" +
+      '<div class="ig-f"><label>Teks</label><textarea class="ig-ta" id="sTx" style="min-height:64px" placeholder="Tulis teks story\u2026"></textarea></div>' +
+      '<div class="ig-2"><div class="ig-f"><label>Posisi teks</label>' + segH("sPos", [["t", "Atas"], ["c", "Tengah"], ["b", "Bawah"]]) + '</div><div class="ig-f"><label>Gaya teks</label>' + segH("sSty", [["classic", "Polos"], ["bg", "Label"], ["neon", "Neon"]]) + "</div></div>" +
+      '<div class="ig-2"><div class="ig-f"><label>Warna teks</label><input type="color" class="ig-in" id="sCol" style="padding:4px"></div><div class="ig-f"><label>Waktu posting</label><input class="ig-in" type="datetime-local" id="sTs"></div></div>' +
+      '<label class="ig-sw"><span>Close Friends (cincin & lencana hijau)</span><input type="checkbox" id="sCf"></label>' +
+      '<div class="ig-f"><label>Stiker</label><div id="sStk" style="display:flex;flex-direction:column;gap:8px"></div><div class="ig-chips" id="sAdd">' + STK.map(function(k){ return '<button type="button" class="ig-chip" data-k="' + k[0] + '" style="padding:0 10px">+ ' + k[1] + "</button>"; }).join("") + "</div></div>" +
+      '<div class="ig-f"><label>Dilihat oleh</label>' + chips("sVw", s.viewers, true, a.id) + '</div><div class="ig-2"><div class="ig-f"><label>Penonton tambahan</label><input class="ig-in" type="number" min="0" id="sVn"></div><div class="ig-f"><label>Disukai oleh</label>' + chips("sLk", s.likedBy, true, a.id) + "</div></div>" +
+      '<button type="button" class="ig-btn pri" id="sSave">' + (isNew ? "Bagikan ke story" : "Simpan") + "</button>" + (isNew ? "" : '<div class="ig-2"><button type="button" class="ig-btn" id="sNew">+ Story baru</button><button type="button" class="ig-btn dng" id="sDel">Hapus story ini</button></div>'), function(b){
+      function pv(){ var x = I.img(s.img); $id("sPv").style.cssText += ";background:" + (x ? "url(" + x + ") center/cover" : "linear-gradient(160deg," + GRADS[s.bg % GRADS.length][0] + "," + GRADS[s.bg % GRADS.length][1] + ")"); b.querySelectorAll("#sBg button").forEach(function(q){ q.style.borderColor = +q.dataset.v === +s.bg ? "var(--blue)" : "transparent"; }); } pv();
+      $id("sUp").onclick = function(){ upload(1600, function(r){ s.img = r; pv(); }); }; $id("sRm").onclick = function(){ s.img = null; pv(); };
+      b.querySelectorAll("#sBg button").forEach(function(q){ q.onclick = function(){ s.bg = +q.dataset.v; pv(); }; });
+      $id("sTx").value = s.text || ""; $id("sCol").value = s.tcolor || "#FFFFFF"; $id("sTs").value = dtIn(s.ts || now()); $id("sCf").checked = !!s.cf; $id("sVn").value = +s.views || 0;
+      segB(b, "sPos", function(){ return s.tpos || "c"; }, function(v){ s.tpos = v; }); segB(b, "sSty", function(){ return s.tstyle || "classic"; }, function(v){ s.tstyle = v; });
+      bindChips(b, "sVw", true); bindChips(b, "sLk", true);
+      function ds(){ var box = $id("sStk"); box.innerHTML = ""; s.stickers.forEach(function(k, i){
+        var nm = STK.filter(function(q){ return q[0] === k.k; })[0][1], d = document.createElement("div"); d.style.cssText = "border:1px solid var(--bd);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:8px";
+        var extra = k.k === "music" ? '<input class="ig-in" data-f="a" placeholder="Artis">' : k.k === "poll" ? '<div class="ig-2"><input class="ig-in" data-f="a" placeholder="Opsi 1"><input class="ig-in" data-f="b" placeholder="Opsi 2"></div><label class="ig-note2">Persen opsi 1: <input type="range" min="0" max="100" data-f="pa" style="width:60%;vertical-align:middle"></label>' : k.k === "question" ? '<input class="ig-in" data-f="a" placeholder="Jawaban / placeholder">' : k.k === "count" ? '<input class="ig-in" data-f="a" placeholder="02 : 14 : 36">' : "";
+        d.innerHTML = '<div style="display:flex;align-items:center;gap:8px"><b style="flex:1;font-size:13px">' + nm + '</b><button type="button" class="ig-ib">' + ic("trash", 17) + '</button></div><input class="ig-in" data-f="v" placeholder="' + (k.k === "poll" || k.k === "question" || k.k === "count" ? "Judul / pertanyaan" : k.k === "music" ? "Judul lagu" : "Isi stiker") + '">' + extra + '<label class="ig-note2">Posisi vertikal: <input type="range" min="12" max="84" data-f="y" style="width:60%;vertical-align:middle"></label>';
+        d.querySelectorAll("[data-f]").forEach(function(inp){ var f = inp.dataset.f; inp.value = k[f] != null ? k[f] : (f === "y" ? 50 : f === "pa" ? 50 : ""); inp.oninput = function(){ k[f] = (f === "y" || f === "pa") ? +inp.value : inp.value; }; });
+        d.querySelector("button").onclick = function(){ s.stickers.splice(i, 1); ds(); }; box.appendChild(d); }); }
+      ds(); b.querySelectorAll("#sAdd [data-k]").forEach(function(q){ q.onclick = function(){ s.stickers.push({ k: q.dataset.k, v: "", y: 30 + s.stickers.length * 14 }); ds(); }; });
+      function read(){ s.text = $id("sTx").value; s.tcolor = $id("sCol").value; var ts = new Date($id("sTs").value).getTime(); if(isFinite(ts)) s.ts = ts; s.cf = $id("sCf").checked ? 1 : 0; s.views = Math.max(0, parseInt($id("sVn").value, 10) || 0); s.viewers = vals(b, "sVw"); s.likedBy = vals(b, "sLk"); s.stickers = s.stickers.filter(function(k){ return String(k.v || "").trim(); }); }
+      $id("sSave").onclick = function(){ read(); if(isNew){ a.stories.push(s); a.seen = 0; } else a.stories[idx] = s; a.story = 1; I.save(); closeSheet(); if(top().v !== "story") go("story", a.id, { i: isNew ? a.stories.length - 1 : idx }); else { if(isNew) top().i = a.stories.length - 1; render(); } toast(isNew ? "Story dibagikan" : "Story disimpan"); };
+      if($id("sNew")) $id("sNew").onclick = function(){ I.editStory(accId, -1); };
+      if($id("sDel")) $id("sDel").onclick = function(){ a.stories.splice(idx, 1); if(!a.stories.length) a.story = 0; I.save(); closeSheet(); if(top().v === "story"){ if(!a.stories.length) back(); else { top().i = Math.max(0, idx - 1); render(); } } else render(); };
+    });
+  };
+
   /* ---------- unduh PNG (sama seperti X) ---------- */
   function snap(){
     var app = $id("igApp"); app.classList.add("snap");
@@ -12305,7 +12594,16 @@ render();
       case "compose": I.compose(); break;
       case "notif": go("notif"); break;
       case "nedit": nEdit(); break;
-      case "seen": var sa = I.acc(v); if(sa){ sa.seen = 1; I.render(); } break;
+      case "seen": var sa = I.acc(v); if(sa){ sa.seen = 1; go("story", sa.id, { i: 0 }); } break;
+      case "mystory": if(hasStory(I.me())) go("story", I.st.me, { i: 0 }); else I.editStory(I.st.me, -1); break;
+      case "pstory": var pa2 = I.acc(v); if(pa2 && hasStory(pa2)){ pa2.seen = pa2.id === I.st.me ? pa2.seen : 1; go("story", pa2.id, { i: 0 }); } else if(pa2 && pa2.id === I.st.me) I.editStory(pa2.id, -1); break;
+      case "stnext": var sn = top(), sl = (I.acc(sn.id) || {}).stories || []; if((sn.i || 0) < sl.length - 1){ sn.i = (sn.i || 0) + 1; render(); } else back(); break;
+      case "stprev": var sp = top(); if((sp.i || 0) > 0){ sp.i--; render(); } break;
+      case "stclose": back(); break;
+      case "stmore": I.editStory(top().id, top().i || 0); break;
+      case "stadd": I.editStory(top().id, -1); break;
+      case "stlike": var so = curStory(); if(so){ so.likedBy = so.likedBy || []; tog(so.likedBy, I.st.me); render(); } break;
+      case "stact": storyViewers(); break;
       case "ptab": top().tab = v; render(); break;
       case "accts": I.accounts(); break;
       case "acctadd": I.editAcc(null, true); break;
@@ -12335,6 +12633,363 @@ render();
   I.open = function(){ build(); I.load(); $id("igApp").classList.add("open"); document.body.style.overflow = "hidden"; render(); LN.loadAssets(refs()).then(function(){ render(); }); try{ localStorage.setItem("mocksy.svc", "ig"); }catch(e){} };
   I.close = function(){ var a = $id("igApp"); if(a) a.classList.remove("open", "photo"); document.body.style.overflow = ""; };
   I.load();
+})();
+
+/* ==========================================================================
+   MOCKSY TIKTOK — layanan TikTok ala TwiNote (lokal & bisa diedit), gaya iOS.
+   Logo merek tidak digambar.
+   ========================================================================== */
+(function(){
+  "use strict";
+  var LN = window.LINE, K = window.MTK = {}, KEY = "mocksy.tk.v1", esc = LN.esc;
+  function $id(i){ return document.getElementById(i); }
+  function uid(p){ return (p || "k") + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
+  var P = {
+    home: "M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z",
+    friends: "M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6 M16.5 11a3 3 0 1 0 0-6 M17.5 14.2c2.4.5 4 2.5 4 5.3",
+    inbox: "M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z M3 13h5l1.5 2.5h5L16 13h5",
+    user: "M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9z M3.5 21c0-4.4 3.8-7.5 8.5-7.5s8.5 3.1 8.5 7.5",
+    heart: "M12 20.5S3 15.2 3 9.2A4.7 4.7 0 0 1 12 7a4.7 4.7 0 0 1 9 2.2c0 6-9 11.3-9 11.3z",
+    cmt: "M12 3.5c5 0 9 3.4 9 7.7s-4 7.7-9 7.7c-.9 0-1.8-.1-2.6-.3L5 20.5l.9-3.4C4.1 15.700 3 13.600 3 11.200c0-4.300 4-7.700 9-7.700z M8 11.200h.01 M12 11.200h.01 M16 11.200h.01",
+    save: "M6 3h12a1 1 0 0 1 1 1v17l-7-4.500L5 21V4a1 1 0 0 1 1-1z",
+    share: "M13 5l8 7-8 7v-4.200C7.500 14.800 4.500 16.500 3 20c0-6.500 4-10.300 10-10.800z",
+    plus: "M12 5v14 M5 12h14", search: "M10.5 3a7.500 7.500 0 1 0 0 15 7.500 7.500 0 0 0 0-15z M21 21l-5.200-5.200",
+    back: "M15 5l-7 7 7 7", chevD: "M6 9l6 6 6-6", close: LN.ICONS.close, more: "M5 12h.01 M12 12h.01 M19 12h.01", menu: "M4 6h16 M4 12h16 M4 18h16",
+    music: "M9 18V5l11-2v13 M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0z M20 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z", play: "M7 4.500v15l13-7.500z",
+    grid: "M4 4h6v6H4z M14 4h6v6h-6z M4 14h6v6H4z M14 14h6v6h-6z", lock: "M6.500 10.500h11a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1z M8.500 10.500V7.500a3.500 3.500 0 0 1 7 0v3",
+    rt: "M4.500 8.500l3.500-3.500 3.500 3.500 M8 5v10.500a2.500 2.500 0 0 0 2.500 2.500H14 M19.500 15.500L16 19l-3.500-3.500 M16 19V8.500A2.500 2.500 0 0 0 13.500 6H10",
+    link: "M10 13.500a4.500 4.500 0 0 0 6.400.400l3-3a4.500 4.500 0 0 0-6.400-6.400l-1.200 1.200 M14 10.500a4.500 4.500 0 0 0-6.400-.400l-3 3a4.500 4.500 0 0 0 6.400 6.400l1.200-1.200",
+    edit: LN.ICONS.compose, trash: LN.ICONS.trash, image: LN.ICONS.image, check: LN.ICONS.check, camera: LN.ICONS.camera, send: "M21.500 2.500L10.600 13.400 M21.500 2.500l-7 19-3.900-8.100L2.500 9.500z",
+    userAdd: "M10 12a4.500 4.500 0 1 0 0-9 4.500 4.500 0 0 0 0 9z M2 21.500c0-4.500 3.600-7.500 8-7.500 2 0 3.800.600 5.200 1.600 M19 14v6 M16 17h6", at: "M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z M16 12v1.500a2.500 2.500 0 0 0 5 0V12a9 9 0 1 0-3.500 7.100"
+  };
+  function ic(n, s, o){ o = o || {}; s = s || 24; var d = P[n] || ""; if(o.fill) return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width=".6" stroke-linejoin="round"><path d="' + d + '"/></svg>';
+    return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="' + (n === "more" ? 3 : (o.sw || 1.9)) + '" stroke-linecap="round" stroke-linejoin="round"><path d="' + d + '"/></svg>'; }
+  function badge(on, s){ s = s || 14; return on ? '<svg width="' + s + '" height="' + s + '" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="12" cy="12" r="11" fill="#20D5EC"/><path d="M7 12.300l3.300 3.300L17.200 8.700" fill="none" stroke="#fff" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ""; }
+  var GEN = {};
+  function gen(n){ if(GEN[n]) return GEN[n]; var c = document.createElement("canvas"); c.width = 540; c.height = 960; var g = c.getContext("2d"), r = LN.prng(+n * 17 + 5);
+    var pal = [["#1F1C2C", "#928DAB", "#F5AF19"], ["#0F2027", "#2C5364", "#25F4EE"], ["#42275A", "#734B6D", "#FE2C55"], ["#134E5E", "#71B280", "#FFFFFF"], ["#373B44", "#4286F4", "#FFD86B"]][(+n) % 5];
+    var gr = g.createLinearGradient(0, 0, 540, 960); gr.addColorStop(0, pal[0]); gr.addColorStop(1, pal[1]); g.fillStyle = gr; g.fillRect(0, 0, 540, 960);
+    for(var i = 0; i < 9; i++){ g.globalAlpha = .12 + r() * .2; g.fillStyle = pal[2]; g.beginPath(); g.arc(r() * 540, r() * 960, 30 + r() * 120, 0, 7); g.fill(); }
+    g.globalAlpha = .9; g.fillStyle = "#fff"; g.beginPath(); g.arc(270, 430, 70, 0, 7); g.fill(); g.beginPath(); g.ellipse(270, 640, 120, 130, 0, Math.PI, 0); g.fill();
+    GEN[n] = c.toDataURL("image/jpeg", .8); return GEN[n]; }
+  K.img = function(ref){ if(!ref) return null; if(String(ref).indexOf("gen:") === 0) return gen(ref.slice(4)); return LN.asset(ref); };
+
+  function seed(){
+    var now = Date.now();
+    var A = [
+      { id: "k_me", un: "mocksy.app", name: "Mocksy", pfp: null, bio: "Bikin mockup chat & sosmed \u2728", link: "mocksy.app", badge: 1, priv: 0, followers: 48200, following: 120, likes: 1200000 },
+      { id: "k_nara", un: "naraaa", name: "nara \u2601\ufe0f", pfp: null, bio: "daily vlog & kopi", link: "", badge: 0, priv: 0, followers: 2310, following: 480, likes: 31400 },
+      { id: "k_dims", un: "dimas.edit", name: "Dimas", pfp: null, bio: "editor video", link: "", badge: 0, priv: 0, followers: 15800, following: 210, likes: 402000 },
+      { id: "k_raka", un: "rakaa_", name: "Raka", pfp: null, bio: "", link: "", badge: 0, priv: 1, followers: 96, following: 130, likes: 0 }
+    ];
+    function V(id, by, cover, cap, music, mins, c, ex){ var v = { id: id, by: by, cover: cover, cap: cap, music: music, ts: now - mins * 60e3, c: c, likedBy: [], savedBy: [], cm: [], pinned: 0 }; for(var k in ex || {}) v[k] = ex[k]; return v; }
+    var v1 = V("v1", "k_dims", "gen:1", "tutorial transisi yang lagi rame \ud83d\udd25 #fyp #edit #tutorial", "original sound - dimas.edit", 180, { like: 284000, cmt: 1890, save: 21400, share: 5120, view: 3100000 });
+    var v2 = V("v2", "k_nara", "gen:2", "pov: ngopi sore sambil nunggu hujan reda \u2615 #fyp #coffee", "Judul Lagu - Nama Artis", 60, { like: 1240, cmt: 22, save: 88, share: 14, view: 18300 });
+    var v3 = V("v3", "k_me", "gen:0", "Semua angka di sini bisa diedit. Ketuk \u22ef di kanan untuk mengubah. #mocksy", "original sound - mocksy.app", 25, { like: 9100, cmt: 40, save: 620, share: 210, view: 152000 }, { pinned: 1 });
+    v1.likedBy = ["k_me", "k_nara"]; v3.likedBy = ["k_nara", "k_dims"]; v3.savedBy = ["k_nara"];
+    v1.cm = [{ id: "c1", by: "k_nara", text: "akhirnya ada tutorialnya \ud83d\ude2d", ts: now - 150 * 60e3, likes: 1204, likedBy: [], cl: 1 }, { id: "c2", by: "k_dims", text: "sama-sama! part 2 besok ya", ts: now - 140 * 60e3, likes: 310, likedBy: [], replyTo: "c1" }];
+    v3.cm = [{ id: "c3", by: "k_nara", text: "membantu banget buat AU aku", ts: now - 10 * 60e3, likes: 12, likedBy: ["k_me"], cl: 1 }];
+    return { v: 1, theme: "light", lang: "en", me: "k_me", clock: "9:41", batt: 82, nowMs: null, accounts: A, videos: [v1, v2, v3], fol: { k_me: ["k_nara", "k_dims"], k_nara: ["k_me", "k_dims"], k_dims: [], k_raka: ["k_me"] },
+      dms: [{ id: "d1", a: "k_me", b: "k_nara", seen: 0, msgs: [{ id: "m1", by: "k_nara", text: "kak videonya lucu banget \ud83d\ude02", ts: now - 2 * 3600e3 }, { id: "m2", by: "k_me", text: "makasih yaa", ts: now - 2 * 3600e3 + 90e3 }, { id: "m3", by: "k_nara", text: "collab dong kapan-kapan", ts: now - 30 * 60e3 }] }],
+      nCustom: [], nHide: [], inboxBadge: null };
+  }
+  K.load = function(){ try{ var s = JSON.parse(localStorage.getItem(KEY) || "null"); if(s && s.accounts && s.accounts.length) K.st = s; }catch(e){} if(!K.st) K.st = seed(); if(!K.acc(K.st.me)) K.st.me = K.st.accounts[0].id; };
+  K.save = function(){ try{ localStorage.setItem(KEY, JSON.stringify(K.st)); }catch(e){ toast("Penyimpanan penuh"); } };
+  K.acc = function(id){ var a = K.st.accounts; for(var i = 0; i < a.length; i++) if(a[i].id === id) return a[i]; return null; };
+  K.vid = function(id){ var a = K.st.videos; for(var i = 0; i < a.length; i++) if(a[i].id === id) return a[i]; return null; };
+  K.me = function(){ return K.acc(K.st.me); };
+  K.follows = function(a, b){ return (K.st.fol[a] || []).indexOf(b) >= 0; };
+  K.byUn = function(u){ u = String(u || "").toLowerCase(); return K.st.accounts.filter(function(a){ return a.un.toLowerCase() === u; })[0] || null; };
+  function refs(){ var r = []; K.st.accounts.forEach(function(a){ r.push(a.pfp); }); K.st.videos.forEach(function(v){ r.push(v.cover); }); K.st.dms.forEach(function(d){ d.msgs.forEach(function(m){ r.push(m.img); }); }); return r.filter(function(x){ return x && String(x).indexOf("idb:") === 0; }); }
+  function num(n){ n = +n || 0; if(n < 10000) return String(n); if(n < 1e6){ var k = n / 1000; return (k < 100 ? k.toFixed(1).replace(/\.0$/, "") : Math.floor(k)) + "K"; } var m = n / 1e6; return (m < 100 ? m.toFixed(1).replace(/\.0$/, "") : Math.floor(m)) + "M"; }
+  K.num = num;
+  function now(){ return K.st.nowMs || Date.now(); }
+  function T(en, idn){ return K.st.lang === "id" ? idn : en; }
+  function sh(ts){ var d = now() - ts, id = K.st.lang === "id"; if(d < 60e3) return id ? "baru saja" : "just now"; if(d < 3600e3) return Math.floor(d / 60e3) + (id ? " mnt lalu" : "m ago"); if(d < 864e5) return Math.floor(d / 3600e3) + (id ? " jam lalu" : "h ago"); if(d < 7 * 864e5) return Math.floor(d / 864e5) + (id ? " hr lalu" : "d ago"); var dt = new Date(ts); return (dt.getMonth() + 1) + "-" + dt.getDate(); }
+  function rich(s){ var t = esc(s); t = t.replace(/(^|[^\w&.])@([A-Za-z0-9_](?:[\w.]{0,28}[A-Za-z0-9_])?)/g, function(m, pre, h){ return pre + '<a data-a="un" data-v="' + h + '">@' + h + "</a>"; }); return t.replace(/(^|[^\w&])#([\p{L}\p{N}_]+)/gu, function(m, pre, h){ return pre + "<a>#" + h + "</a>"; }); }
+  function av(a, s, act){ var src = a ? K.img(a.pfp) : null; return '<span class="tk-av" style="width:' + s + "px;height:" + s + "px;" + (src ? "background-image:url(" + src + ")" : "") + '"' + (act !== false && a ? ' data-a="prof" data-v="' + a.id + '"' : "") + ">" + (src ? "" : '<svg width="' + s + '" height="' + s + '" viewBox="0 0 40 40"><circle cx="20" cy="16" r="7" fill="#fff"/><ellipse cx="20" cy="36" rx="13" ry="9.500" fill="#fff"/></svg>') + "</span>"; }
+  function cnt(v, k){ var c = v.c || {}, b = +c[k] || 0; if(k === "like") return b + (v.likedBy || []).length; if(k === "cmt") return b + (v.cm || []).length; if(k === "save") return b + (v.savedBy || []).length; return b; }
+  function has(v, l){ return (v[l] || []).indexOf(K.st.me) >= 0; }
+  function tog(arr, id){ var i = arr.indexOf(id); if(i >= 0) arr.splice(i, 1); else arr.push(id); }
+  function canSee(a){ return a && (!a.priv || a.id === K.st.me || K.follows(K.st.me, a.id)); }
+  function likesOf(a){ return (+a.likes || 0) + K.st.videos.filter(function(v){ return v.by === a.id; }).reduce(function(s, v){ return s + (v.likedBy || []).length; }, 0); }
+
+  var NAV = [{ v: "feed" }], FI = 0, FTAB = "fy", CMV = null, CMAS = null, RT = null;
+  function top(){ return NAV[NAV.length - 1]; }
+  function go(v, id, ex){ var o = { v: v, id: id }; for(var k in ex || {}) o[k] = ex[k]; NAV.push(o); render(); }
+  function back(){ if(NAV.length > 1){ NAV.pop(); render(); } }
+  function root(v){ NAV = [{ v: v }]; CMV = null; render(); }
+  function toast(m){ var ph = $id("tkPhone"); if(!ph) return; var d = document.createElement("div"); d.className = "tk-toast"; d.textContent = m; ph.appendChild(d); setTimeout(function(){ d.remove(); }, 2000); }
+  K.toast = toast;
+  function build(){
+    if($id("tkApp")) return;
+    var a = document.createElement("div"); a.id = "tkApp";
+    a.innerHTML = '<div class="x-tools"><button type="button" data-a="svc">' + LN.svg("back", 16, 2.4) + '<span>Layanan</span></button><button type="button" data-a="photo" class="pri">' + LN.svg("camera", 16) + '<span>Mode Foto</span></button><button type="button" data-a="snap">' + LN.svg("download", 16) + '<span>Unduh PNG</span></button><button type="button" data-a="accts">' + LN.svg("user", 16) + '<span>Akun</span></button><button type="button" data-a="set">' + LN.svg("gear", 16) + "<span>Pengaturan TikTok</span></button></div>" +
+      '<div class="tk" id="tkPhone"><div class="tk-status" id="tkStatus"></div><div class="tk-view" id="tkView"></div><nav class="tk-tabbar" id="tkTab"></nav>' +
+      '<div class="tk-sh-ov" id="tkSheet"><div class="tk-sh"><div class="tk-sh-h"><b id="tkShT"></b><button type="button" class="tk-ib" data-a="shclose">' + ic("close", 20) + '</button></div><div class="tk-sh-b" id="tkShB"></div></div></div></div>';
+    document.body.appendChild(a); a.addEventListener("click", onClick);
+    $id("tkSheet").addEventListener("click", function(e){ if(e.target.id === "tkSheet") closeSheet(); });
+  }
+  function status(){ var bt = Math.max(1, Math.min(100, +K.st.batt || 80)); return '<span data-a="stap">' + esc(K.st.clock || "9:41") + '</span><span class="r"><svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1" fill="currentColor"/><rect x="5" y="5.500" width="3" height="6.500" rx="1" fill="currentColor"/><rect x="10" y="3" width="3" height="9" rx="1" fill="currentColor"/><rect x="15" y="0" width="3" height="12" rx="1" fill="currentColor"/></svg><svg width="17" height="12" viewBox="0 0 17 12"><path d="M8.500 2.500c2.400 0 4.600.900 6.200 2.500l1.300-1.300A10.600 10.600 0 0 0 8.500.700 10.600 10.600 0 0 0 1 3.700L2.300 5A8.800 8.800 0 0 1 8.500 2.500zm0 3.600c1.400 0 2.700.500 3.600 1.500l1.300-1.300A6.900 6.900 0 0 0 8.500 4.300a6.900 6.900 0 0 0-4.900 2l1.300 1.300a5.100 5.100 0 0 1 3.600-1.500zM8.500 9.700 10.400 8a2.700 2.700 0 0 0-3.800 0z" fill="currentColor"/></svg><svg width="27" height="13" viewBox="0 0 27 13"><rect x=".500" y=".500" width="23" height="12" rx="3.800" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="' + (20 * bt / 100).toFixed(1) + '" height="9" rx="2.400" fill="currentColor"/></svg></span>'; }
+  function notifs(){
+    var me = K.st.me, out = [], hide = K.st.nHide || [];
+    K.st.videos.forEach(function(v){
+      if(v.by !== me) return;
+      var lk = (v.likedBy || []).filter(function(x){ return x !== me; }); if(lk.length) out.push({ k: "like", who: lk, v: v, ts: v.ts + 120e3 });
+      (v.cm || []).forEach(function(c){ if(c.by !== me) out.push({ k: "cmt", who: [c.by], v: v, text: c.text, ts: c.ts, key: "cmt:" + c.id }); });
+    });
+    K.st.accounts.forEach(function(a){ if(a.id !== me && K.follows(a.id, me)) out.push({ k: "fol", who: [a.id], ts: now() - 2 * 864e5 }); });
+    out.forEach(function(n){ if(!n.key) n.key = n.k + ":" + (n.v ? n.v.id : n.who[0]); });
+    out = out.filter(function(n){ return hide.indexOf(n.key) < 0; });
+    (K.st.nCustom || []).forEach(function(c){ if(c.acc && c.acc !== me) return; out.push({ k: c.k, who: (c.who || []).filter(K.acc), v: c.vid ? K.vid(c.vid) : null, text: c.text, ts: c.ts, cid: c.id }); });
+    return out.sort(function(a, b){ return b.ts - a.ts; });
+  }
+  function tabbar(){
+    var v = NAV[0].v, me = K.st.me;
+    var ib = K.st.inboxBadge != null && K.st.inboxBadge !== "" ? +K.st.inboxBadge : K.st.dms.filter(function(d){ return (d.a === me || d.b === me) && !d.seen && d.msgs.length && d.msgs[d.msgs.length - 1].by !== me; }).length;
+    function b(k, icon, lab, on, c){ return '<button type="button" data-a="tab" data-v="' + k + '" class="' + (on ? "on" : "") + '">' + ic(icon, 25, on ? { fill: 1 } : null) + "<span>" + lab + "</span>" + (c ? '<span class="cnt">' + c + "</span>" : "") + "</button>"; }
+    return b("feed", "home", T("Home", "Beranda"), v === "feed") + b("friends", "friends", T("Friends", "Teman"), v === "friends") + '<button type="button" data-a="compose" aria-label="Buat"><span class="mk">' + ic("plus", 18, { sw: 3 }) + "</span></button>" + b("inbox", "inbox", T("Inbox", "Kotak Masuk"), v === "inbox", ib) + b("prof", "user", T("Profile", "Profil"), v === "prof");
+  }
+  function render(){
+    var ph = $id("tkPhone"); if(!ph) return;
+    var n = top(), v = n.v, feed = v === "feed" || v === "friends" || v === "watch", h = "", tabs = true;
+    ph.className = "tk t-" + (K.st.theme || "light") + (feed ? " feed" : "");
+    $id("tkStatus").innerHTML = status();
+    if(v === "feed" || v === "friends") h = vFeed(v); else if(v === "watch"){ h = vWatch(n); } else if(v === "prof") h = vProf(n.id || K.st.me, n.tab || "grid"); else if(v === "inbox") h = vInbox(); else if(v === "dm"){ h = vDm(n.id); tabs = false; } else if(v === "search") h = vSearch(n);
+    if(CMV && feed) h += vCmts(CMV);
+    $id("tkView").innerHTML = h; $id("tkTab").innerHTML = tabbar(); $id("tkTab").style.display = tabs ? "" : "none";
+    var s = document.querySelector("#tkView .tk-scroll.dm"); if(s) s.scrollTop = s.scrollHeight;
+    K.save();
+  }
+  K.render = render;
+  function bar(title, left, right){ return '<div class="tk-bar">' + (left || '<button type="button" class="tk-ib" data-a="back">' + ic("back", 26, { sw: 2.2 }) + "</button>") + "<h2>" + title + '</h2><span class="sp"></span>' + (right || "") + "</div>"; }
+  function vidHtml(v, opts){
+    var a = K.acc(v.by) || { un: "?" }, me = K.st.me, like = has(v, "likedBy"), sv = has(v, "savedBy"), fol = a.id === me || K.follows(me, a.id), cov = K.img(v.cover), pf = K.img(a.pfp);
+    return '<div class="tk-vid">' + (cov ? '<img alt="" src="' + cov + '">' : "") + (opts && opts.top ? opts.top : "") + '<div class="tk-zone" data-a="vnext"></div>' +
+      '<div class="tk-rail"><span class="who">' + av(a, 46) + (fol ? "" : '<i data-a="follow" data-v="' + a.id + '">' + ic("plus", 13, { sw: 3.4 }) + "</i>") + '</span><button type="button" data-a="like" data-v="' + v.id + '" class="' + (like ? "liked" : "") + '">' + ic("heart", 34, { fill: 1 }) + num(cnt(v, "like")) + '</button><button type="button" data-a="cmts" data-v="' + v.id + '">' + ic("cmt", 33, { fill: 1 }) + num(cnt(v, "cmt")) + '</button><button type="button" data-a="save" data-v="' + v.id + '" class="' + (sv ? "saved" : "") + '">' + ic("save", 31, { fill: 1 }) + num(cnt(v, "save")) + '</button><button type="button" data-a="share" data-v="' + v.id + '">' + ic("share", 32, { fill: 1 }) + num(+(v.c && v.c.share) || 0) + '</button><button type="button" data-a="vedit" data-v="' + v.id + '" aria-label="Edit video">' + ic("more", 26) + '</button><span class="disc" style="' + (pf ? "background-image:url(" + pf + ")" : "") + '"></span></div>' +
+      '<div class="tk-info"><div class="u" data-a="prof" data-v="' + a.id + '">' + esc(a.name || a.un) + badge(a.badge, 15) + '</div><div class="cap">' + rich(v.cap || "") + '</div><div class="mu">' + ic("music", 13, { sw: 2.4 }) + "<span>" + esc(v.music || "original sound - " + a.un) + '</span></div></div><div class="tk-vb"><i></i></div></div>';
+  }
+  function feedList(tab){ var me = K.st.me, fl = K.st.fol[me] || []; return K.st.videos.filter(function(v){ var a = K.acc(v.by); return canSee(a) && (tab !== "fol" || fl.indexOf(v.by) >= 0); }).sort(function(a, b){ return b.ts - a.ts; }); }
+  function vFeed(v){
+    var tab = v === "friends" ? "fol" : FTAB, list = feedList(tab);
+    var topH = '<div class="tk-ftop"><span class="lv">LIVE</span><span data-a="ftab" data-v="fol" class="' + (tab === "fol" ? "on" : "") + '">' + T("Following", "Mengikuti") + '</span><span data-a="ftab" data-v="fy" class="' + (tab === "fy" ? "on" : "") + '">' + T("For You", "Untuk Anda") + '</span><button type="button" class="tk-ib sr" data-a="search">' + ic("search", 24, { sw: 2.2 }) + "</button></div>";
+    if(!list.length) return '<div class="tk-vid">' + topH + '<div class="tk-empty" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;color:#fff"><b style="color:#fff">' + T("No videos yet", "Belum ada video") + "</b>" + T("Tap + to create one.", "Ketuk + untuk membuat.") + "</div></div>";
+    return vidHtml(list[FI % list.length], { top: topH });
+  }
+  function vWatch(n){ var v = K.vid(n.id); if(!v) return bar(""); return vidHtml(v, { top: '<div class="tk-ftop" style="justify-content:flex-start;padding-left:4px"><button type="button" class="tk-ib" data-a="back" style="color:#fff">' + ic("back", 28, { sw: 2.4 }) + "</button></div>" }); }
+  function vCmts(id){
+    var v = K.vid(id); if(!v) return ""; var as = K.acc(CMAS) || K.me(), list = (v.cm || []).slice().sort(function(a, b){ return a.ts - b.ts; });
+    function row(c, rep){ var a = K.acc(c.by) || { un: "?" }, lk = (c.likedBy || []).indexOf(K.st.me) >= 0, n = (+c.likes || 0) + (c.likedBy || []).length;
+      return '<div class="tk-c' + (rep ? " rep" : "") + '" data-a="cedit" data-v="' + v.id + "|" + c.id + '">' + av(a, rep ? 24 : 34) + '<div class="c"><div class="n">' + esc(a.name || a.un) + (a.id === v.by ? "<em>\u00b7 " + T("Creator", "Kreator") + "</em>" : "") + "</div><div>" + rich(c.text) + '</div><div class="m"><span>' + sh(c.ts) + "</span><b data-a=\"creply\" data-v=\"" + c.id + '">' + T("Reply", "Balas") + "</b></div>" + (c.cl ? '<span class="lc">' + ic("heart", 10, { fill: 1 }) + T("Liked by creator", "Disukai kreator") + "</span>" : "") + '</div><button type="button" class="lk' + (lk ? " on" : "") + '" data-a="clike" data-v="' + v.id + "|" + c.id + '">' + ic("heart", 18, lk ? { fill: 1 } : null) + (n ? num(n) : "") + "</button></div>"; }
+    var h = '<div class="tk-cm-ov" data-a="cmclose"><div class="tk-cm" data-a="noop"><div class="h">' + num(cnt(v, "cmt")) + " " + T("comments", "komentar") + '<button type="button" class="tk-ib" data-a="cmclose">' + ic("close", 18, { sw: 2.4 }) + '</button></div><div class="tk-scroll">';
+    list.filter(function(c){ return !c.replyTo; }).forEach(function(c){ h += row(c); list.filter(function(r){ return r.replyTo === c.id; }).forEach(function(r){ h += row(r, true); }); });
+    if(!list.length) h += '<div class="tk-empty">' + T("Be the first to comment", "Jadilah yang pertama berkomentar") + "</div>";
+    var rt = RT ? (v.cm || []).filter(function(c){ return c.id === RT; })[0] : null;
+    return h + '</div><div class="tk-cmin"><span data-a="cmas" title="Ganti akun yang berkomentar" style="cursor:pointer">' + av(as, 32, false) + '</span><div class="in"><input id="tkCmIn" placeholder="' + (rt ? T("Reply to ", "Balas ") + esc((K.acc(rt.by) || {}).un || "") : T("Add comment...", "Tambahkan komentar...")) + '" autocomplete="off"><span style="color:var(--tx2);display:flex;gap:6px;padding-right:4px">' + ic("at", 20) + '</span></div><button type="button" class="tk-send" data-a="cpost" data-v="' + v.id + '">' + ic("send", 16, { sw: 2.4 }) + "</button></div></div></div>";
+  }
+  function vProf(id, tab){
+    var a = K.acc(id); if(!a) return bar("");
+    var me = K.st.me, own = a.id === me, fol = K.follows(me, a.id), mine = K.st.videos.filter(function(v){ return v.by === a.id; }).sort(function(x, y){ return (y.pinned ? 1 : 0) - (x.pinned ? 1 : 0) || y.ts - x.ts; });
+    var fols = (+a.followers || 0) + K.st.accounts.filter(function(o){ return o.id !== a.id && K.follows(o.id, a.id); }).length, fing = (+a.following || 0) + (K.st.fol[a.id] || []).length;
+    var h = bar(esc(a.name || a.un) + (own ? ic("chevD", 14, { sw: 2.6 }) : ""), own ? '<button type="button" class="tk-ib" data-a="acctadd">' + ic("userAdd", 24) + "</button>" : null, '<button type="button" class="tk-ib" data-a="' + (own ? "set" : "pedit") + '" data-v="' + a.id + '">' + ic(own ? "menu" : "more", 24) + "</button>") + '<div class="tk-scroll"><div class="tk-prof">' + av(a, 96, false) +
+      '<div class="un">@' + esc(a.un) + badge(a.badge, 15) + '</div><div class="tk-stats"><div><b>' + num(fing) + "</b><span>" + T("Following", "Mengikuti") + "</span></div><div><b>" + num(fols) + "</b><span>" + T("Followers", "Pengikut") + "</span></div><div><b>" + num(likesOf(a)) + "</b><span>" + T("Likes", "Suka") + "</span></div></div>" +
+      '<div class="tk-pbtns">' + (own ? '<button type="button" data-a="pedit" data-v="' + a.id + '">' + T("Edit profile", "Edit profil") + '</button><button type="button" data-a="share">' + T("Share profile", "Bagikan profil") + '</button><button type="button" class="sq" data-a="acctadd">' + ic("userAdd", 18) + "</button>"
+        : (fol ? '<button type="button" data-a="dmwith" data-v="' + a.id + '">' + T("Message", "Pesan") + '</button><button type="button" class="sq" data-a="follow" data-v="' + a.id + '">' + ic("check", 18, { sw: 2.6 }) + "</button>" : '<button type="button" class="red" data-a="follow" data-v="' + a.id + '">' + T("Follow", "Ikuti") + '</button><button type="button" class="sq" data-a="dmwith" data-v="' + a.id + '">' + ic("send", 17) + "</button>")) + "</div>" +
+      (a.bio ? '<div class="tk-bio">' + rich(a.bio) + "</div>" : "") + (a.link ? '<div class="tk-plink">' + ic("link", 14, { sw: 2.4 }) + esc(a.link) + "</div>" : "") + "</div>";
+    h += '<div class="tk-ptabs">' + [["grid", "grid"], ["rt", "rt"], ["saved", "save"], ["liked", "heart"]].map(function(t2){ return '<button type="button" data-a="ptab" data-v="' + t2[0] + '" class="' + (tab === t2[0] ? "on" : "") + '">' + ic(t2[1], 22) + "</button>"; }).join("") + "</div>";
+    if(a.priv && !own && !fol) return h + '<div class="tk-empty">' + ic("lock", 34) + "<b>" + T("This account is private", "Akun ini privat") + "</b>" + T("Follow this account to see their videos.", "Ikuti akun ini untuk melihat videonya.") + "</div></div>";
+    var list = tab === "saved" ? K.st.videos.filter(function(v){ return (v.savedBy || []).indexOf(a.id) >= 0; }) : tab === "liked" ? K.st.videos.filter(function(v){ return (v.likedBy || []).indexOf(a.id) >= 0; }) : tab === "rt" ? [] : mine;
+    if(!list.length) h += '<div class="tk-empty"><b>' + T("No videos yet", "Belum ada video") + "</b></div>";
+    else h += '<div class="tk-grid">' + list.map(function(v){ var s = K.img(v.cover); return '<div data-a="watch" data-v="' + v.id + '" style="' + (s ? "background-image:url(" + s + ")" : "") + '">' + (v.pinned && tab === "grid" ? "<em>" + T("Pinned", "Disematkan") + "</em>" : "") + "<span>" + ic("play", 11, { fill: 1 }) + num(+(v.c && v.c.view) || 0) + "</span></div>"; }).join("") + "</div>";
+    return h + "</div>";
+  }
+  function threads(){ var me = K.st.me; return K.st.dms.filter(function(d){ return d.a === me || d.b === me; }).sort(function(a, b){ return lts(b) - lts(a); }); }
+  function lts(d){ return d.msgs.length ? d.msgs[d.msgs.length - 1].ts : 0; }
+  function vInbox(){
+    var h = bar(T("Inbox", "Kotak Masuk"), '<button type="button" class="tk-ib" data-a="dmnew">' + ic("userAdd", 24) + "</button>", '<button type="button" class="tk-ib" data-a="nedit">' + ic("edit", 22) + "</button>") + '<div class="tk-scroll">';
+    var ns = notifs();
+    if(ns.length){ h += '<div class="tk-sec">' + T("Activity", "Aktivitas") + "</div>"; ns.forEach(function(n){
+      var w = n.who.map(K.acc).filter(Boolean), nm = w.length ? "<b>" + esc(w[0].un) + "</b>" + (w.length > 1 ? T(" and ", " dan ") + (w.length - 1) + T(" others", " lainnya") : "") : "";
+      var txt = n.k === "like" ? T(" liked your video.", " menyukai video Anda.") : n.k === "cmt" ? T(" commented: ", " berkomentar: ") + esc(n.text || "") : n.k === "fol" ? T(" started following you.", " mulai mengikuti Anda.") : n.k === "mention" ? T(" mentioned you: ", " menyebut Anda: ") + esc(n.text || "") : " " + esc(n.text || "");
+      var th = n.v ? K.img(n.v.cover) : null, f = w[0] && K.follows(K.st.me, w[0].id);
+      h += '<div class="tk-row" data-a="' + (n.v ? "watch" : w[0] ? "prof" : "") + '" data-v="' + (n.v ? n.v.id : w[0] ? w[0].id : "") + '">' + (w[0] ? av(w[0], 48, false) : '<span class="tk-av" style="width:48px;height:48px;background:var(--red);display:flex;align-items:center;justify-content:center;color:#fff">' + ic("inbox", 24) + "</span>") + '<div class="c" style="white-space:normal">' + nm + txt + ' <span style="display:inline;color:var(--tx3)">' + sh(n.ts) + "</span></div>" + (n.k === "fol" ? '<button type="button" class="fb' + (f ? " off" : "") + '" data-a="follow" data-v="' + w[0].id + '">' + (f ? T("Friends", "Teman") : T("Follow back", "Ikuti balik")) + "</button>" : th ? '<span class="th" style="background-image:url(' + th + ')"></span>' : "") + "</div>"; }); }
+    h += '<div class="tk-sec">' + T("Messages", "Pesan") + "</div>";
+    var me = K.st.me;
+    threads().forEach(function(d){ var o = K.acc(d.a === me ? d.b : d.a); if(!o) return; var lm = d.msgs[d.msgs.length - 1], un = lm && lm.by !== me && !d.seen;
+      h += '<div class="tk-row" data-a="dm" data-v="' + d.id + '">' + av(o, 52, false) + '<div class="c"><b>' + esc(o.name || o.un) + "</b><span" + (un ? ' style="color:var(--tx);font-weight:600"' : "") + ">" + (lm ? esc(lm.text || T("Sent a photo", "Mengirim foto")) : "") + (lm ? " \u00b7 " + sh(lm.ts) : "") + "</span></div>" + (un ? '<span class="bd"></span>' : "") + "</div>"; });
+    return h + "</div>";
+  }
+  function vDm(id){
+    var d = K.st.dms.filter(function(x){ return x.id === id; })[0]; if(!d) return bar("");
+    var me = K.st.me, o = K.acc(d.a === me ? d.b : d.a) || {}; if(d.msgs.length && d.msgs[d.msgs.length - 1].by !== me) d.seen = 1;
+    var h = bar('<span data-a="prof" data-v="' + o.id + '" style="display:flex;align-items:center;gap:6px">' + esc(o.name || o.un) + badge(o.badge, 14) + "</span>", null, '<button type="button" class="tk-ib" data-a="dmset" data-v="' + d.id + '">' + ic("more", 24) + "</button>") + '<div class="tk-scroll dm"><div class="tk-msgs">', last = 0;
+    d.msgs.forEach(function(m){ if(m.ts - last > 1800e3){ var dt = new Date(m.ts); h += '<div class="tk-mt">' + dt.getHours() + ":" + ("0" + dt.getMinutes()).slice(-2) + "</div>"; } last = m.ts; var src = m.img ? K.img(m.img) : null;
+      h += '<div class="tk-msg ' + (m.by === me ? "me" : "them") + (src && !m.text ? " img" : "") + '" data-a="dmmsg" data-v="' + d.id + "|" + m.id + '">' + (src ? '<img alt="" src="' + src + '">' : "") + rich(m.text || "") + "</div>"; });
+    return h + '</div></div><div class="tk-dmin"><button type="button" class="tk-ib" data-a="dmimg" data-v="' + d.id + '" style="color:var(--tx2)">' + ic("image", 24) + '</button><div class="in"><input id="tkDmIn" placeholder="' + T("Message...", "Kirim pesan...") + '" autocomplete="off"></div><button type="button" class="tk-send" data-a="dmsend" data-v="' + d.id + '">' + ic("send", 16, { sw: 2.4 }) + "</button></div>";
+  }
+  function vSearch(n){
+    var q = (n.q || "").trim().toLowerCase(), h = '<div class="tk-bar"><button type="button" class="tk-ib" data-a="back">' + ic("back", 26, { sw: 2.2 }) + '</button><div class="tk-search" style="flex:1;margin:0 8px 0 0">' + ic("search", 17, { sw: 2.2 }) + '<input id="tkQ" placeholder="' + T("Search", "Cari") + '" value="' + esc(n.q || "") + '" autocomplete="off"></div></div><div class="tk-scroll">';
+    if(q) K.st.accounts.filter(function(a){ return (a.un + " " + (a.name || "")).toLowerCase().indexOf(q) >= 0; }).forEach(function(a){ h += '<div class="tk-row" data-a="prof" data-v="' + a.id + '">' + av(a, 48, false) + '<div class="c"><b style="display:flex;gap:4px;align-items:center">' + esc(a.name || a.un) + badge(a.badge, 13) + "</b><span>@" + esc(a.un) + " \u00b7 " + num(+a.followers || 0) + T(" followers", " pengikut") + "</span></div></div>"; });
+    var vs = K.st.videos.filter(function(v){ return canSee(K.acc(v.by)) && (!q || (v.cap || "").toLowerCase().indexOf(q) >= 0); });
+    return h + '<div class="tk-grid" style="padding-top:6px">' + vs.map(function(v){ var s = K.img(v.cover); return '<div data-a="watch" data-v="' + v.id + '" style="' + (s ? "background-image:url(" + s + ")" : "") + '"><span>' + ic("heart", 11, { fill: 1 }) + num(cnt(v, "like")) + "</span></div>"; }).join("") + "</div></div>";
+  }
+
+  /* ---------- sheet & editor ---------- */
+  function sheet(t, html, bind){ $id("tkShT").textContent = t; var b = $id("tkShB"); b.innerHTML = html; b.scrollTop = 0; $id("tkSheet").classList.add("open"); if(bind) bind(b); }
+  function closeSheet(){ $id("tkSheet").classList.remove("open"); }
+  function upload(max, cb){ var i = document.createElement("input"); i.type = "file"; i.accept = "image/*"; i.style.display = "none"; document.body.appendChild(i); i.onchange = function(){ var f = i.files && i.files[0]; i.remove(); if(f) LN.readImage(f, max, "image/jpeg", .88).then(function(d){ return LN.putAsset(d); }).then(cb, function(e){ toast(e.message); }); }; i.click(); }
+  function dtIn(ms){ var d = new Date(ms); function z(n){ return ("0" + n).slice(-2); } return d.getFullYear() + "-" + z(d.getMonth() + 1) + "-" + z(d.getDate()) + "T" + z(d.getHours()) + ":" + z(d.getMinutes()); }
+  function chips(id, sel, multi, exclude){ return '<div class="tk-chips" id="' + id + '">' + K.st.accounts.filter(function(a){ return a.id !== exclude; }).map(function(a){ var on = multi ? sel.indexOf(a.id) >= 0 : sel === a.id; return '<button type="button" class="tk-chip' + (on ? " on" : "") + '" data-id="' + a.id + '">' + av(a, 26, false) + esc(a.un) + "</button>"; }).join("") + "</div>"; }
+  function bindChips(root, id, multi){ root.querySelectorAll("#" + id + " .tk-chip").forEach(function(b){ b.onclick = function(){ if(!multi) root.querySelectorAll("#" + id + " .tk-chip").forEach(function(x){ x.classList.remove("on"); }); b.classList.toggle("on", multi ? !b.classList.contains("on") : true); }; }); }
+  function vals(root, id){ return Array.prototype.map.call(root.querySelectorAll("#" + id + " .tk-chip.on"), function(b){ return b.dataset.id; }); }
+  function segH(id, opts){ return '<div class="tk-seg" id="' + id + '">' + opts.map(function(o){ return '<button type="button" data-v="' + o[0] + '">' + o[1] + "</button>"; }).join("") + "</div>"; }
+  function segB(root, id, get, set){ root.querySelectorAll("#" + id + " button").forEach(function(b){ b.classList.toggle("on", b.dataset.v === String(get())); b.onclick = function(){ set(b.dataset.v); segB(root, id, get, set); }; }); }
+  var CN = [["like", "Suka"], ["cmt", "Komentar"], ["save", "Disimpan"], ["share", "Dibagikan"], ["view", "Tayangan"]];
+  K.editVideo = function(id){
+    var isNew = !id, v = isNew ? { id: uid("v"), by: K.st.me, cover: null, cap: "", music: "", ts: now(), c: { like: 0, cmt: 0, save: 0, share: 0, view: 0 }, likedBy: [], savedBy: [], cm: [], pinned: 0 } : K.vid(id); if(!v) return; var tmp = { cover: v.cover };
+    sheet(isNew ? T("New video", "Video baru") : "Edit video", '<div class="tk-f"><label>Diposting oleh</label>' + chips("vBy", v.by, false) + '</div><div class="tk-f"><label>Sampul video (foto 9:16)</label><div class="tk-imgp"><div class="pv" id="vPv" style="border-radius:8px;width:54px;height:96px"></div><button type="button" class="tk-btn" id="vUp">Unggah</button></div></div>' +
+      '<div class="tk-f"><label>Caption</label><textarea class="tk-ta" id="vCap" placeholder="Tulis caption\u2026 #hashtag @mention"></textarea></div><div class="tk-f"><label>Musik</label><input class="tk-in" id="vMus" placeholder="original sound - username"></div><div class="tk-f"><label>Waktu posting</label><input class="tk-in" type="datetime-local" id="vTs"></div>' +
+      '<div class="tk-f"><label>Angka (tambahan)</label><div class="tk-3">' + CN.map(function(k){ return '<div class="tk-f"><label>' + k[1] + '</label><input class="tk-in" type="number" min="0" data-c="' + k[0] + '" value="' + (+(v.c || {})[k[0]] || 0) + '"></div>'; }).join("") + "</div></div>" +
+      '<label class="tk-sw"><span>Sematkan di profil (Pinned)</span><input type="checkbox" id="vPin"></label>' + (isNew ? "" : '<div class="tk-f"><label>Disukai oleh</label>' + chips("vLk", v.likedBy || [], true) + '</div><div class="tk-f"><label>Disimpan oleh</label>' + chips("vSv", v.savedBy || [], true) + "</div>") +
+      '<button type="button" class="tk-btn pri" id="vSave">' + (isNew ? T("Post", "Posting") : "Simpan") + "</button>" + (isNew ? "" : '<button type="button" class="tk-btn dng" id="vDel">Hapus video</button>'), function(b){
+      function pv(){ var s = K.img(tmp.cover); $id("vPv").style.backgroundImage = s ? "url(" + s + ")" : ""; } pv(); $id("vUp").onclick = function(){ upload(1280, function(r){ tmp.cover = r; pv(); }); };
+      bindChips(b, "vBy", false); if(!isNew){ bindChips(b, "vLk", true); bindChips(b, "vSv", true); }
+      $id("vCap").value = v.cap || ""; $id("vMus").value = v.music || ""; $id("vTs").value = dtIn(v.ts); $id("vPin").checked = !!v.pinned;
+      $id("vSave").onclick = function(){ if(!tmp.cover){ toast("Unggah sampul video dulu"); return; } v.by = vals(b, "vBy")[0] || v.by; v.cover = tmp.cover; v.cap = $id("vCap").value; v.music = $id("vMus").value.trim(); var ts = new Date($id("vTs").value).getTime(); if(isFinite(ts)) v.ts = ts; v.pinned = $id("vPin").checked ? 1 : 0;
+        b.querySelectorAll("[data-c]").forEach(function(i){ v.c[i.dataset.c] = Math.max(0, parseInt(i.value, 10) || 0); }); if(!isNew){ v.likedBy = vals(b, "vLk"); v.savedBy = vals(b, "vSv"); } else { K.st.videos.push(v); FI = 0; FTAB = "fy"; }
+        K.save(); closeSheet(); if(isNew) root("feed"); else render(); toast(isNew ? "Video diposting" : "Video diperbarui"); };
+      if($id("vDel")) $id("vDel").onclick = function(){ if(!confirm("Hapus video ini?")) return; K.st.videos = K.st.videos.filter(function(x){ return x !== v; }); closeSheet(); CMV = null; if(top().v === "watch") back(); else render(); };
+    });
+  };
+  K.editAcc = function(id, isNew){
+    var a = id ? K.acc(id) : { id: uid("k_"), un: "", name: "", pfp: null, bio: "", link: "", badge: 0, priv: 0, followers: 0, following: 0, likes: 0 }; if(!a) return; var tmp = { pfp: a.pfp };
+    sheet(isNew ? "Tambah akun" : T("Edit profile", "Edit profil"), '<div class="tk-f"><label>Foto profil</label><div class="tk-imgp"><div class="pv" id="aPv"></div><button type="button" class="tk-btn" id="aUp">Unggah</button><button type="button" class="tk-btn dng" id="aRm">Hapus</button></div></div>' +
+      '<div class="tk-2"><div class="tk-f"><label>Nama</label><input class="tk-in" id="aName" maxlength="30"></div><div class="tk-f"><label>Username</label><input class="tk-in" id="aUn" maxlength="24" autocapitalize="off"></div></div><div class="tk-f"><label>Bio</label><textarea class="tk-ta" id="aBio" maxlength="80" style="min-height:60px"></textarea></div><div class="tk-f"><label>Tautan</label><input class="tk-in" id="aLink"></div>' +
+      '<label class="tk-sw"><span>Centang terverifikasi</span><input type="checkbox" id="aBadge"></label><label class="tk-sw"><span>Akun privat</span><input type="checkbox" id="aPriv"></label>' +
+      '<div class="tk-3"><div class="tk-f"><label>Mengikuti +</label><input class="tk-in" type="number" min="0" id="aFing"></div><div class="tk-f"><label>Pengikut +</label><input class="tk-in" type="number" min="0" id="aFol"></div><div class="tk-f"><label>Suka +</label><input class="tk-in" type="number" min="0" id="aLk"></div></div>' +
+      '<div class="tk-f"><label>Akun ini mengikuti</label>' + chips("aFl", K.st.fol[a.id] || [], true, a.id) + '</div><button type="button" class="tk-btn pri" id="aSave">' + (isNew ? "Buat akun" : "Simpan") + "</button>" + (!isNew && K.st.accounts.length > 1 ? '<button type="button" class="tk-btn dng" id="aDel">Hapus akun</button>' : ""), function(b){
+      function pv(){ var s = K.img(tmp.pfp); $id("aPv").style.backgroundImage = s ? "url(" + s + ")" : ""; } pv(); $id("aUp").onclick = function(){ upload(500, function(r){ tmp.pfp = r; pv(); }); }; $id("aRm").onclick = function(){ tmp.pfp = null; pv(); };
+      $id("aName").value = a.name || ""; $id("aUn").value = a.un || ""; $id("aBio").value = a.bio || ""; $id("aLink").value = a.link || ""; $id("aBadge").checked = !!a.badge; $id("aPriv").checked = !!a.priv; $id("aFing").value = +a.following || 0; $id("aFol").value = +a.followers || 0; $id("aLk").value = +a.likes || 0; bindChips(b, "aFl", true);
+      $id("aSave").onclick = function(){ var un = $id("aUn").value.trim().replace(/^@/, ""); if(!/^[\w.]{2,24}$/.test(un)){ toast("Username: huruf, angka, titik, garis bawah"); return; } if(K.st.accounts.some(function(o){ return o.id !== a.id && o.un.toLowerCase() === un.toLowerCase(); })){ toast("Username sudah dipakai"); return; }
+        a.un = un; a.name = $id("aName").value.trim(); a.bio = $id("aBio").value; a.link = $id("aLink").value.trim(); a.badge = $id("aBadge").checked ? 1 : 0; a.priv = $id("aPriv").checked ? 1 : 0; a.following = Math.max(0, parseInt($id("aFing").value, 10) || 0); a.followers = Math.max(0, parseInt($id("aFol").value, 10) || 0); a.likes = Math.max(0, parseInt($id("aLk").value, 10) || 0); a.pfp = tmp.pfp; K.st.fol[a.id] = vals(b, "aFl");
+        if(isNew) K.st.accounts.push(a); K.save(); closeSheet(); render(); toast(isNew ? "Akun dibuat" : "Profil disimpan"); };
+      if($id("aDel")) $id("aDel").onclick = function(){ if(!confirm("Hapus akun @" + a.un + " beserta videonya?")) return; K.st.accounts = K.st.accounts.filter(function(o){ return o !== a; }); K.st.videos = K.st.videos.filter(function(v){ return v.by !== a.id; }); K.st.dms = K.st.dms.filter(function(d){ return d.a !== a.id && d.b !== a.id; }); delete K.st.fol[a.id]; if(K.st.me === a.id) K.st.me = K.st.accounts[0].id; K.save(); closeSheet(); root("feed"); };
+    });
+  };
+  K.accounts = function(){
+    sheet(T("Switch account", "Ganti akun"), '<div class="tk-note">Akun aktif dipakai untuk posting, suka, komentar, follow, dan pesan.</div>' + K.st.accounts.map(function(a){ return '<div class="tk-acc">' + av(a, 44, false) + '<div class="c"><b>' + esc(a.name || a.un) + badge(a.badge, 13) + "</b><span>@" + esc(a.un) + "</span></div>" + (a.id === K.st.me ? '<span style="color:var(--red)">' + ic("check", 22, { sw: 2.6 }) + "</span>" : '<button type="button" class="tk-btn" style="min-height:34px" data-sw="' + a.id + '">Pakai</button>') + '<button type="button" class="tk-ib" data-ed="' + a.id + '">' + ic("edit", 19) + "</button></div>"; }).join("") + '<button type="button" class="tk-btn pri" id="acAdd">' + ic("plus", 16) + " Tambah akun</button>", function(b){
+      b.querySelectorAll("[data-sw]").forEach(function(x){ x.onclick = function(){ K.st.me = x.dataset.sw; K.save(); closeSheet(); render(); toast("Sekarang memakai @" + K.me().un); }; });
+      b.querySelectorAll("[data-ed]").forEach(function(x){ x.onclick = function(){ K.editAcc(x.dataset.ed); }; }); $id("acAdd").onclick = function(){ K.editAcc(null, true); };
+    });
+  };
+  function cEdit(ref){
+    var pr = ref.split("|"), v = K.vid(pr[0]); if(!v) return; var c = (v.cm || []).filter(function(x){ return x.id === pr[1]; })[0]; if(!c) return;
+    var tops = (v.cm || []).filter(function(x){ return !x.replyTo && x !== c; });
+    sheet("Edit komentar", '<div class="tk-f"><label>Oleh</label>' + chips("cBy", c.by, false) + '</div><div class="tk-f"><label>Komentar</label><textarea class="tk-ta" id="cTx" style="min-height:64px"></textarea></div><div class="tk-2"><div class="tk-f"><label>Suka (tambahan)</label><input class="tk-in" type="number" min="0" id="cLk"></div><div class="tk-f"><label>Waktu</label><input class="tk-in" type="datetime-local" id="cTs"></div></div>' +
+      '<div class="tk-f"><label>Balasan untuk</label><select class="tk-sel" id="cRt"><option value="">(komentar utama)</option>' + tops.map(function(x){ return '<option value="' + x.id + '">' + esc(((K.acc(x.by) || {}).un || "") + ": " + (x.text || "").slice(0, 30)) + "</option>"; }).join("") + '</select></div><label class="tk-sw"><span>Lencana "Liked by creator"</span><input type="checkbox" id="cCl"></label><button type="button" class="tk-btn pri" id="cSv">Simpan</button><button type="button" class="tk-btn dng" id="cDl">Hapus komentar</button>', function(b){
+      bindChips(b, "cBy", false); $id("cTx").value = c.text || ""; $id("cLk").value = +c.likes || 0; $id("cTs").value = dtIn(c.ts); $id("cRt").value = c.replyTo || ""; $id("cCl").checked = !!c.cl;
+      $id("cSv").onclick = function(){ c.by = vals(b, "cBy")[0] || c.by; c.text = $id("cTx").value; c.likes = Math.max(0, parseInt($id("cLk").value, 10) || 0); var ts = new Date($id("cTs").value).getTime(); if(isFinite(ts)) c.ts = ts; c.replyTo = $id("cRt").value || null; c.cl = $id("cCl").checked ? 1 : 0; K.save(); closeSheet(); render(); };
+      $id("cDl").onclick = function(){ v.cm = v.cm.filter(function(x){ return x !== c && x.replyTo !== c.id; }); K.save(); closeSheet(); render(); };
+    });
+  }
+  function nEdit(){
+    var me = K.st.me, hide = (K.st.nHide || []).slice(), keep = K.st.nHide; K.st.nHide = []; var autos = notifs().filter(function(n){ return !n.cid; }); K.st.nHide = keep; var mine = K.st.videos.filter(function(v){ return v.by === me; });
+    function lab(n){ return ({ like: "Suka", cmt: "Komentar", fol: "Ikuti", mention: "Sebut", custom: "Bebas" })[n.k] + " \u2014 " + esc((n.who || []).map(K.acc).filter(Boolean).map(function(a){ return a.un; }).join(", ")) + (n.text ? ': "' + esc(n.text.slice(0, 28)) + '"' : ""); }
+    sheet("Edit aktivitas & badge", '<div class="tk-f"><label>Angka badge Inbox (kosong = otomatis)</label><input class="tk-in" type="number" min="0" id="nBd"></div><div class="tk-f"><label>Aktivitas otomatis</label><div id="nAuto"></div></div><div class="tk-f"><label>Aktivitas buatan</label><div id="nCus"></div></div>' +
+      '<div style="border:1px solid var(--bd);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:10px"><b>Tambah aktivitas</b>' + segH("nK", [["like", "Suka"], ["cmt", "Komentar"], ["fol", "Ikuti"], ["mention", "Sebut"], ["custom", "Bebas"]]) + '<div class="tk-f"><label>Dari akun</label>' + chips("nWho", [], true, me) + '</div><div class="tk-f"><label>Video Anda</label><select class="tk-sel" id="nV"><option value="">(tanpa)</option>' + mine.map(function(v){ return '<option value="' + v.id + '">' + esc((v.cap || "Video").slice(0, 40)) + "</option>"; }).join("") + '</select></div><div class="tk-f"><label>Teks</label><input class="tk-in" id="nTx"></div><div class="tk-f"><label>Waktu</label><input class="tk-in" type="datetime-local" id="nTs"></div><button type="button" class="tk-btn pri" id="nAdd">Tambahkan</button></div>', function(b){
+      var bd = $id("nBd"); bd.value = K.st.inboxBadge != null ? K.st.inboxBadge : ""; bd.oninput = function(){ K.st.inboxBadge = bd.value === "" ? null : Math.max(0, parseInt(bd.value, 10) || 0); K.save(); render(); };
+      var ab = $id("nAuto"); autos.forEach(function(n){ var d = document.createElement("label"); d.className = "tk-sw"; d.innerHTML = '<span style="font-size:13.500px">' + lab(n) + '</span><input type="checkbox">'; var cb = d.querySelector("input"); cb.checked = hide.indexOf(n.key) < 0; cb.onchange = function(){ var i = hide.indexOf(n.key); if(cb.checked && i >= 0) hide.splice(i, 1); if(!cb.checked && i < 0) hide.push(n.key); K.st.nHide = hide; K.save(); render(); }; ab.appendChild(d); });
+      function dc(){ var box = $id("nCus"); box.innerHTML = ""; (K.st.nCustom || []).filter(function(c){ return !c.acc || c.acc === me; }).forEach(function(c){ var d = document.createElement("div"); d.className = "tk-sw"; d.innerHTML = '<span style="font-size:13.500px">' + lab(c) + '</span><button type="button" class="tk-ib">' + ic("trash", 17) + "</button>"; d.querySelector("button").onclick = function(){ K.st.nCustom = K.st.nCustom.filter(function(x){ return x !== c; }); K.save(); dc(); render(); }; box.appendChild(d); }); }
+      dc(); var k = "like"; segB(b, "nK", function(){ return k; }, function(v){ k = v; }); bindChips(b, "nWho", true); $id("nTs").value = dtIn(now());
+      $id("nAdd").onclick = function(){ var who = vals(b, "nWho"), ts = new Date($id("nTs").value).getTime(); if(k !== "custom" && !who.length){ toast("Pilih akun"); return; } K.st.nCustom = K.st.nCustom || []; K.st.nCustom.push({ id: uid("n"), acc: me, k: k, who: who, vid: $id("nV").value || null, text: $id("nTx").value.trim(), ts: isFinite(ts) ? ts : now() }); K.save(); dc(); render(); toast("Aktivitas ditambahkan"); };
+    });
+  }
+  function settings(){
+    var s = K.st;
+    sheet("Pengaturan TikTok", '<div class="tk-f"><label>Tema (profil, inbox, pesan)</label>' + segH("sTh", [["light", "Terang"], ["dark", "Gelap"]]) + '</div><div class="tk-f"><label>Bahasa tampilan</label>' + segH("sLg", [["en", "English"], ["id", "Indonesia"]]) + '</div><div class="tk-2"><div class="tk-f"><label>Jam status bar</label><input class="tk-in" id="sClk"></div><div class="tk-f"><label>Baterai %</label><input class="tk-in" type="number" id="sBat"></div></div>' +
+      '<div class="tk-f"><label>Waktu "sekarang"</label><input class="tk-in" type="datetime-local" id="sNow"><label class="tk-sw"><span>Pakai waktu nyata</span><input type="checkbox" id="sReal"></label></div><div class="tk-2"><button type="button" class="tk-btn" id="sExp">Ekspor data</button><button type="button" class="tk-btn" id="sImp">Impor data</button></div><button type="button" class="tk-btn dng" id="sReset">Kembalikan data contoh</button><div class="tk-note">Pengaturan ini khusus layanan TikTok. Mocksy tidak berafiliasi dengan TikTok/ByteDance.</div>', function(b){
+      segB(b, "sTh", function(){ return s.theme; }, function(v){ s.theme = v; render(); }); segB(b, "sLg", function(){ return s.lang; }, function(v){ s.lang = v; render(); });
+      $id("sClk").value = s.clock; $id("sClk").oninput = function(){ s.clock = this.value; render(); }; $id("sBat").value = s.batt; $id("sBat").oninput = function(){ s.batt = +this.value || 80; render(); };
+      $id("sReal").checked = !s.nowMs; $id("sNow").value = dtIn(now()); $id("sNow").disabled = !s.nowMs; $id("sReal").onchange = function(){ s.nowMs = this.checked ? null : now(); $id("sNow").disabled = this.checked; render(); }; $id("sNow").onchange = function(){ var v = new Date(this.value).getTime(); if(isFinite(v)){ s.nowMs = v; render(); } };
+      $id("sExp").onclick = function(){ var rs = refs(); LN.loadAssets(rs).then(function(){ var map = {}; rs.forEach(function(r){ var d = LN.asset(r); if(d) map[r] = d; }); var bl = new Blob([JSON.stringify({ format: "mocksy-tiktok", v: 1, data: K.st, assets: map })], { type: "application/json" }); var a = document.createElement("a"); a.href = URL.createObjectURL(bl); a.download = "mocksy-tiktok-data.json"; document.body.appendChild(a); a.click(); a.remove(); toast("Data diekspor"); }); };
+      $id("sImp").onclick = function(){ var i = document.createElement("input"); i.type = "file"; i.accept = ".json"; i.onchange = function(){ var f = i.files[0]; if(!f) return; var r = new FileReader(); r.onload = function(){ try{ var pk = JSON.parse(r.result); if(!pk || pk.format !== "mocksy-tiktok" || !pk.data || !Array.isArray(pk.data.accounts) || !pk.data.accounts.length || !Array.isArray(pk.data.videos)) throw new Error("Bukan file data Mocksy TikTok yang valid"); if(!confirm("Ganti data TikTok sekarang dengan isi file ini?")) return;
+        Promise.all(Object.keys(pk.assets || {}).map(function(k){ return LN.putAsset(pk.assets[k]).then(function(n){ return [k, n]; }); })).then(function(ps){ var js = JSON.stringify(pk.data); ps.forEach(function(q){ js = js.split(JSON.stringify(q[0])).join(JSON.stringify(q[1])); }); K.st = JSON.parse(js); K.save(); closeSheet(); root("feed"); toast("Data diimpor"); }); }catch(e){ toast(e.message); } }; r.readAsText(f); }; i.click(); };
+      $id("sReset").onclick = function(){ if(confirm("Ganti data TikTok dengan data contoh?")){ K.st = seed(); K.save(); closeSheet(); root("feed"); } };
+    });
+  }
+  function dmWith(id){ var me = K.st.me; if(id === me) return; var d = K.st.dms.filter(function(x){ return (x.a === me && x.b === id) || (x.b === me && x.a === id); })[0]; if(!d){ d = { id: uid("d"), a: me, b: id, msgs: [], seen: 1 }; K.st.dms.push(d); } go("dm", d.id); }
+  function dmSet(id){ var d = K.st.dms.filter(function(x){ return x.id === id; })[0]; if(!d) return; var me = K.st.me, o = K.acc(d.a === me ? d.b : d.a) || {};
+    sheet("Percakapan dengan @" + (o.un || ""), '<div class="tk-f"><label>Kirim pesan sebagai @' + esc(o.un || "") + '</label><textarea class="tk-ta" id="dsTx" style="min-height:64px"></textarea></div><button type="button" class="tk-btn pri" id="dsGo">Kirim sebagai @' + esc(o.un || "") + '</button><button type="button" class="tk-btn dng" id="dsDel">Hapus percakapan</button>', function(){
+      $id("dsGo").onclick = function(){ var v = $id("dsTx").value.trim(); if(!v) return; d.msgs.push({ id: uid("m"), by: o.id, text: v, ts: now() }); K.save(); closeSheet(); render(); };
+      $id("dsDel").onclick = function(){ if(!confirm("Hapus percakapan?")) return; K.st.dms = K.st.dms.filter(function(x){ return x !== d; }); closeSheet(); back(); }; }); }
+  function dmMsg(ref){ var pr = ref.split("|"), d = K.st.dms.filter(function(x){ return x.id === pr[0]; })[0]; if(!d) return; var m = d.msgs.filter(function(x){ return x.id === pr[1]; })[0]; if(!m) return;
+    sheet("Edit pesan", '<div class="tk-f"><label>Pengirim</label><div class="tk-chips" id="mBy">' + [d.a, d.b].map(function(id){ var a = K.acc(id) || {}; return '<button type="button" class="tk-chip' + (m.by === id ? " on" : "") + '" data-id="' + id + '">' + av(a, 26, false) + esc(a.un || "") + "</button>"; }).join("") + '</div></div><div class="tk-f"><label>Pesan</label><textarea class="tk-ta" id="mTx"></textarea></div><div class="tk-f"><label>Waktu</label><input class="tk-in" type="datetime-local" id="mTs"></div><button type="button" class="tk-btn pri" id="mSv">Simpan</button><button type="button" class="tk-btn dng" id="mDl">Hapus</button>', function(b){
+      bindChips(b, "mBy", false); $id("mTx").value = m.text || ""; $id("mTs").value = dtIn(m.ts);
+      $id("mSv").onclick = function(){ m.by = vals(b, "mBy")[0] || m.by; m.text = $id("mTx").value; var ts = new Date($id("mTs").value).getTime(); if(isFinite(ts)) m.ts = ts; d.msgs.sort(function(x, y){ return x.ts - y.ts; }); K.save(); closeSheet(); render(); };
+      $id("mDl").onclick = function(){ d.msgs = d.msgs.filter(function(x){ return x !== m; }); K.save(); closeSheet(); render(); }; }); }
+  function snap(){
+    var app = $id("tkApp"), ph = $id("tkPhone"); ph.style.zoom = ""; var W = ph.clientWidth, H = ph.clientHeight;
+    function fail(){ toast("Unduh langsung tidak didukung di browser ini. Pakai Mode Foto lalu screenshot."); }
+    try{ var cl = ph.cloneNode(true);
+      (function walk(src, dst){ var cs = getComputedStyle(src), s = dst.style; for(var i = 0; i < cs.length; i++) s.setProperty(cs[i], cs.getPropertyValue(cs[i])); if(src.scrollTop > 0){ var w = document.createElement("div"); w.style.transform = "translateY(" + (-src.scrollTop) + "px)"; while(dst.firstChild) w.appendChild(dst.firstChild); dst.appendChild(w); s.overflow = "hidden"; for(var j = 0; j < src.children.length; j++) walk(src.children[j], w.children[j]); return; } for(var c = 0; c < src.children.length; c++) if(dst.children[c]) walk(src.children[c], dst.children[c]); })(ph, cl);
+      cl.style.borderRadius = "0"; cl.style.boxShadow = "none"; cl.style.margin = "0"; cl.style.zoom = "1"; cl.querySelectorAll(".tk-toast").forEach(function(x){ x.remove(); }); cl.setAttribute("xmlns", "http://www.w3.org/1999/xhtml");
+      var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + W + '" height="' + H + '"><foreignObject width="100%" height="100%">' + new XMLSerializer().serializeToString(cl) + "</foreignObject></svg>", img = new Image();
+      img.onload = function(){ try{ var cv = document.createElement("canvas"); cv.width = W * 3; cv.height = H * 3; var g = cv.getContext("2d"); g.scale(3, 3); g.drawImage(img, 0, 0); cv.toBlob(function(bl){ if(!bl) return fail(); var a = document.createElement("a"); a.href = URL.createObjectURL(bl); a.download = "tiktok-" + top().v + "-" + Date.now() + ".png"; document.body.appendChild(a); a.click(); a.remove(); toast("Gambar diunduh"); }, "image/png"); }catch(e){ fail(); } };
+      img.onerror = fail; img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+    }catch(e){ fail(); }
+  }
+  function onClick(e){
+    var el = e.target.closest("[data-a]"); if(!el) return; var a = el.dataset.a, v = el.dataset.v;
+    switch(a){
+      case "noop": break;
+      case "tab": FI = 0; root(v); break;
+      case "back": if(CMV){ CMV = null; render(); } else back(); break;
+      case "ftab": FTAB = v; FI = 0; if(NAV[0].v !== "feed") root("feed"); else render(); break;
+      case "vnext": if(top().v === "watch") break; FI++; render(); break;
+      case "prof": CMV = null; if(!(top().v === "prof" && (top().id || K.st.me) === v)) go("prof", v); break;
+      case "un": var ac = K.byUn(v); if(ac){ CMV = null; go("prof", ac.id); } break;
+      case "watch": go("watch", v); break;
+      case "like": case "save": var vd = K.vid(v); if(!vd) break; var l = a === "like" ? "likedBy" : "savedBy"; vd[l] = vd[l] || []; tog(vd[l], K.st.me); render(); break;
+      case "cmts": CMV = v; RT = null; render(); break;
+      case "cmclose": if(e.target.closest(".tk-cm") && !e.target.closest(".tk-ib")) break; CMV = null; render(); break;
+      case "share": toast(T("Link copied", "Tautan disalin")); break;
+      case "vedit": K.editVideo(v); break;
+      case "compose": K.editVideo(null); break;
+      case "pedit": K.editAcc(v); break;
+      case "follow": if(!v) break; K.st.fol[K.st.me] = K.st.fol[K.st.me] || []; tog(K.st.fol[K.st.me], v); render(); break;
+      case "ptab": top().tab = v; render(); break;
+      case "accts": K.accounts(); break;
+      case "acctadd": K.editAcc(null, true); break;
+      case "set": settings(); break;
+      case "search": go("search"); break;
+      case "nedit": nEdit(); break;
+      case "cmas": var ids = K.st.accounts.map(function(x){ return x.id; }), cur = CMAS || K.st.me; CMAS = ids[(ids.indexOf(cur) + 1) % ids.length]; render(); toast("Berkomentar sebagai @" + K.acc(CMAS).un); break;
+      case "creply": RT = v; render(); var ri = $id("tkCmIn"); if(ri) ri.focus(); break;
+      case "cpost": var inp = $id("tkCmIn"), pv = K.vid(v); if(!inp || !pv || !inp.value.trim()) break; pv.cm = pv.cm || []; var par = RT ? pv.cm.filter(function(c){ return c.id === RT; })[0] : null; pv.cm.push({ id: uid("c"), by: CMAS || K.st.me, text: inp.value.trim(), ts: now(), likes: 0, likedBy: [], replyTo: par ? (par.replyTo || par.id) : null }); RT = null; K.save(); render(); break;
+      case "clike": var q = v.split("|"), pc = K.vid(q[0]), cc = pc && (pc.cm || []).filter(function(x){ return x.id === q[1]; })[0]; if(cc){ cc.likedBy = cc.likedBy || []; tog(cc.likedBy, K.st.me); render(); } break;
+      case "cedit": if(e.target.closest("[data-a=clike],[data-a=creply],.tk-av")) break; cEdit(v); break;
+      case "dm": go("dm", v); break;
+      case "dmwith": dmWith(v); break;
+      case "dmnew": sheet(T("New message", "Pesan baru"), K.st.accounts.filter(function(x){ return x.id !== K.st.me; }).map(function(x){ return '<div class="tk-acc" data-a="dmpick" data-v="' + x.id + '" style="cursor:pointer">' + av(x, 44, false) + '<div class="c"><b>' + esc(x.name || x.un) + "</b><span>@" + esc(x.un) + "</span></div></div>"; }).join("")); break;
+      case "dmpick": closeSheet(); dmWith(v); break;
+      case "dmsend": var di = $id("tkDmIn"), dd = K.st.dms.filter(function(x){ return x.id === v; })[0]; if(!di || !dd || !di.value.trim()) break; dd.msgs.push({ id: uid("m"), by: K.st.me, text: di.value.trim(), ts: now() }); K.save(); render(); break;
+      case "dmimg": upload(1200, function(r){ var d2 = K.st.dms.filter(function(x){ return x.id === v; })[0]; if(d2){ d2.msgs.push({ id: uid("m"), by: K.st.me, text: "", img: r, ts: now() }); K.save(); render(); } }); break;
+      case "dmset": dmSet(v); break;
+      case "dmmsg": dmMsg(v); break;
+      case "shclose": closeSheet(); break;
+      case "svc": K.close(); if(window.MocksySvc) MocksySvc.open(); break;
+      case "photo": $id("tkApp").classList.toggle("photo"); if($id("tkApp").classList.contains("photo")) toast("Mode Foto: ketuk jam untuk keluar"); break;
+      case "stap": $id("tkApp").classList.remove("photo"); break;
+      case "snap": snap(); break;
+    }
+  }
+  document.addEventListener("keydown", function(e){ if(!e.target) return; var app = $id("tkApp"); if(!app || !app.classList.contains("open")) return;
+    if(e.key === "Enter"){ if(e.target.id === "tkDmIn"){ var b = app.querySelector('[data-a="dmsend"]'); if(b) b.click(); } if(e.target.id === "tkCmIn"){ var c = app.querySelector('[data-a="cpost"]'); if(c) c.click(); } }
+    if(e.key === "Escape"){ if($id("tkSheet").classList.contains("open")) closeSheet(); else if(CMV){ CMV = null; render(); } else back(); } });
+  document.addEventListener("input", function(e){ if(e.target && e.target.id === "tkQ"){ top().q = e.target.value; var pos = e.target.selectionStart; render(); var q = $id("tkQ"); if(q){ q.focus(); try{ q.setSelectionRange(pos, pos); }catch(_){} } } });
+  K.open = function(){ build(); K.load(); $id("tkApp").classList.add("open"); document.body.style.overflow = "hidden"; render(); LN.loadAssets(refs()).then(function(){ render(); }); try{ localStorage.setItem("mocksy.svc", "tk"); }catch(e){} };
+  K.close = function(){ var a = $id("tkApp"); if(a) a.classList.remove("open", "photo"); document.body.style.overflow = ""; };
+  K.load();
 })();
 
 /* ==========================================================================
@@ -12518,7 +13173,7 @@ render();
   "use strict";
   var W = 393, H = 852;
   function fit(){
-    [["xPhone", "xApp"], ["igPhone", "igApp"]].forEach(function(q){
+    [["xPhone", "xApp"], ["igPhone", "igApp"], ["tkPhone", "tkApp"]].forEach(function(q){
       var ph = document.getElementById(q[0]), app = document.getElementById(q[1]); if(!ph || !app) return;
       if(window.innerWidth < 700 || app.classList.contains("snapping")){ ph.style.zoom = ""; return; }
       var tools = app.querySelector(".x-tools"), th = tools && getComputedStyle(tools).display !== "none" ? tools.offsetHeight : 0;
@@ -12530,8 +13185,8 @@ render();
   setInterval(fit, 700);
   /* saat Unduh PNG: render pada ukuran asli (tanpa zoom), lalu kembalikan */
   document.addEventListener("click", function(e){
-    var t = e.target.closest && e.target.closest('#xApp [data-a="snap"], #igApp [data-a="snap"]'); if(!t) return;
-    var app = t.closest("#xApp, #igApp"), ph = app && app.querySelector("#xPhone, #igPhone");
+    var t = e.target.closest && e.target.closest('#xApp [data-a="snap"], #igApp [data-a="snap"], #tkApp [data-a="snap"]'); if(!t) return;
+    var app = t.closest("#xApp, #igApp, #tkApp"), ph = app && app.querySelector("#xPhone, #igPhone, #tkPhone");
     if(app) app.classList.add("snapping"); if(ph) ph.style.zoom = "";
     setTimeout(function(){ if(app) app.classList.remove("snapping"); fit(); }, 2500);
   }, true);
