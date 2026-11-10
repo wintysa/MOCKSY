@@ -2069,6 +2069,30 @@ body.pl-line #screenChatView .composer-input-pill { background-color: var(--ln-i
 .ig-st .ft.own em { font-style: normal; font-size: 11.5px; font-weight: 600; }
 .ig-st .ft.own .avs { display: flex; height: 26px; }
 .ig-st .ft.own .avs .ig-av { margin-left: -8px; border: 2px solid #000; } .ig-st .ft.own .avs .ig-av:first-child { margin-left: 0; }
+/* ===== LIVE (Instagram) ===== */
+.ig-ring.live { background: linear-gradient(135deg, #FF3B5C, #FF7A59); position: relative; }
+.ig-livetag { position: absolute; left: 50%; bottom: -5px; transform: translateX(-50%); background-color: #FE2C55; color: #fff; font-size: 9px; font-weight: 800; letter-spacing: .3px; padding: 1.5px 6px; border-radius: 5px; white-space: nowrap; z-index: 2; }
+.ig-live { position: absolute; inset: 0; overflow: hidden; color: #fff; background-color: #000; }
+.ig-live .bgimg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ig-live::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 150px; background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,0)); z-index: 1; }
+.ig-live .hd { position: absolute; left: 10px; right: 8px; top: 62px; display: flex; align-items: center; gap: 8px; z-index: 3; font-size: 13.5px; }
+.ig-live .hd .livepill { background-color: #FE2C55; font-weight: 800; font-size: 11px; letter-spacing: .4px; padding: 3px 8px; border-radius: 4px; }
+.ig-live .hd .who { cursor: pointer; line-height: 1.25; }
+.ig-live .hd .who b { font-weight: 600; display: flex; align-items: center; gap: 4px; }
+.ig-live .hd .who span { color: rgba(255,255,255,.8); display: flex; align-items: center; gap: 3px; font-size: 12px; }
+.ig-live .hd .ig-ib { color: #fff; }
+.ig-live .cm { position: absolute; left: 10px; right: 70px; bottom: 76px; display: flex; flex-direction: column; gap: 7px; max-height: 42%; overflow: hidden; z-index: 2; mask-image: linear-gradient(transparent, #000 25%); }
+.ig-live .cm .msg, .ig-live .cm .gift { background-color: rgba(0,0,0,.32); backdrop-filter: blur(3px); border-radius: 16px; padding: 6px 12px; font-size: 13.5px; line-height: 18px; align-self: flex-start; max-width: 100%; word-break: break-word; }
+.ig-live .cm .msg b { font-weight: 700; margin-right: 4px; }
+.ig-live .cm .gift { color: #FFD86B; display: flex; align-items: center; gap: 5px; }
+.ig-live .cm .gift b { color: #fff; }
+.ig-live .cm .sys { color: rgba(255,255,255,.65); font-size: 12.5px; padding: 0 4px; }
+.ig-live .ft { position: absolute; left: 10px; right: 10px; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); display: flex; align-items: center; gap: 8px; z-index: 3; }
+.ig-live .ft .in { flex: 1; height: 38px; border-radius: 19px; background-color: rgba(255,255,255,.18); display: flex; align-items: center; padding: 0 14px; }
+.ig-live .ft .in input { width: 100%; border: none; outline: none; background: transparent; color: #fff; font-size: 14px; }
+.ig-live .ft .in input::placeholder { color: rgba(255,255,255,.75); }
+.ig-live .ft .ig-ib { color: #fff; }
+.ig-live .ft .ig-ib.liked { color: var(--like); }
 
 /* ===== MOCKSY TIKTOK (iOS) ===== */
 #tkApp { position: fixed; inset: 0; z-index: 600; display: none; flex-direction: column; align-items: center; background-color: #0B0D10; font-family: -apple-system, "SF Pro Text", system-ui, "Helvetica Neue", sans-serif; }
@@ -2224,6 +2248,18 @@ body.pl-line #screenChatView .composer-input-pill { background-color: var(--ln-i
 .tk-acc .c b { display: flex; align-items: center; gap: 4px; }
 .tk-acc .c span { color: var(--tx2); font-size: 13px; }
 .tk-toast { position: absolute; left: 50%; top: 46%; transform: translate(-50%, -50%); background-color: rgba(84,84,84,.92); color: #fff; padding: 10px 16px; border-radius: 6px; font-size: 14px; z-index: 50; white-space: nowrap; pointer-events: none; }
+/* ===== LIVE (TikTok) ===== */
+.tk-livecm { position: absolute; left: 12px; right: 70px; bottom: 78px; display: flex; flex-direction: column; gap: 7px; max-height: 42%; overflow: hidden; z-index: 2; mask-image: linear-gradient(transparent, #000 25%); }
+.tk-livecm .msg, .tk-livecm .gift { background-color: rgba(0,0,0,.32); backdrop-filter: blur(3px); border-radius: 16px; padding: 6px 12px; font-size: 13.5px; line-height: 18px; color: #fff; align-self: flex-start; max-width: 100%; word-break: break-word; }
+.tk-livecm .msg b { font-weight: 700; margin-right: 4px; }
+.tk-livecm .gift { color: #FACE15; display: flex; align-items: center; gap: 5px; }
+.tk-livecm .gift b { color: #fff; }
+.tk-livecm .sys { color: rgba(255,255,255,.65); font-size: 12.5px; padding: 0 4px; }
+.tk-liveft { position: absolute; left: 12px; right: 12px; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); display: flex; align-items: center; gap: 8px; z-index: 3; }
+.tk-liveft .in { flex: 1; height: 38px; border-radius: 19px; background-color: rgba(255,255,255,.18); display: flex; align-items: center; padding: 0 14px; }
+.tk-liveft .in input { width: 100%; border: none; outline: none; background: transparent; color: #fff; font-size: 14px; }
+.tk-liveft .in input::placeholder { color: rgba(255,255,255,.75); }
+.tk-liveft .tk-ib.liked { color: var(--red); }
 
 /* ===== Perbaikan audit (lintas layanan) ===== */
 /* P1: Chat View tidak boleh meluber di layar sempit */
@@ -9412,6 +9448,31 @@ render();
   }
 })();
 
+/* ---------- Kelola Daftar Chat: pilih chat mana yang ikut tampil di Daftar Chat (WA/iMessage) ---------- */
+(function(){
+  "use strict";
+  var LN = window.LINE, U = LN.ui;
+  function $id(i){ return document.getElementById(i); }
+  U.manageChatList = function(plt, current){
+    var all = (window.CV || []).filter(function(c){ return !c.ln && (plt === "wa" ? !!c.wa : !c.wa); });
+    function row(c){
+      var hidden = !!c.lnHide, nm = c.name || (plt === "wa" ? "Kontak" : "Kontak");
+      return '<label class="settings-row" data-cid="' + all.indexOf(c) + '" style="padding:10px 0;cursor:pointer">' +
+        '<div class="settings-label-box"><div class="settings-title">' + LN.esc(nm) + (c.grp ? " (Grup)" : "") + (c === current ? ' <span style="color:var(--text-muted,#888);font-weight:400">\u2014 sedang dibuka</span>' : "") + '</div></div>' +
+        '<span class="switch-toggle"><input type="checkbox" data-idx="' + all.indexOf(c) + '" aria-label="Tampilkan ' + LN.esc(nm) + ' di daftar"' + (hidden ? "" : " checked") + '><span class="switch-slider"></span></span></label>';
+    }
+    U.sheet("Kelola Daftar Chat", function(b){
+      b.innerHTML = '<div class="ln-note" style="margin-bottom:10px">Matikan sakelar untuk chat yang tidak ingin ikut muncul di layar Daftar Chat (mis. kontak dari cerita/AU lain).</div>' +
+        (all.length ? all.map(row).join("") : '<div class="ln-note">Belum ada chat ' + (plt === "wa" ? "WhatsApp" : "iMessage") + ' lain.</div>') +
+        '<button type="button" class="ln-btn pri block" id="mclDone" style="margin-top:14px">Selesai</button>';
+      b.querySelectorAll("input[data-idx]").forEach(function(inp){
+        inp.onchange = function(){ var c = all[+inp.dataset.idx]; c.lnHide = inp.checked ? 0 : 1; if(typeof render === "function") render(); };
+      });
+      $id("mclDone").onclick = function(){ if(LN.openScreenSheet) LN.openScreenSheet(); else U.closeSheet(); };
+    });
+  };
+})();
+
 /* ==========================================================================
    MOCKSY LINE UI — bagian 5: ekspor / impor / bagikan tema + boot modul
    ========================================================================== */
@@ -10179,10 +10240,11 @@ render();
           '<div class="ln-field"><label>Foto</label><div class="ln-btnrow">' + (cur === "video" ? '<button type="button" class="ln-btn sm" data-img="remote">' + LN.svg("video", 15) + '<span>Video lawan</span></button><button type="button" class="ln-btn sm" data-img="self">' + LN.svg("camera", 15) + '<span>Kamera saya</span></button>' : '<button type="button" class="ln-btn sm" data-img="bg">' + LN.svg("image", 15) + '<span>Latar panggilan</span></button>') + '<button type="button" class="ln-btn sm danger" id="scClr">' + LN.svg("trash", 15) + '<span>Hapus foto</span></button></div><div class="settings-desc">Tanpa foto, latar memakai foto profil kontak.</div></div>';
       }
       if(cur === "list" && !Sx.ln){
-        h += '<div class="ln-field"><label>Chat ini di daftar</label><div class="ln-chips" id="scListTog"><button type="button" class="ln-chip" data-k="lnPin">Sematkan</button><button type="button" class="ln-chip" data-k="lnMute">Bisukan</button></div></div>' +
+        h += '<div class="ln-field"><label>Chat ini di daftar</label><div class="ln-chips" id="scListTog"><button type="button" class="ln-chip" data-k="lnPin">Sematkan</button><button type="button" class="ln-chip" data-k="lnMute">Bisukan</button><button type="button" class="ln-chip" data-k="lnHide">Sembunyikan dari daftar</button></div></div>' +
           '<div class="ln-field"><label>Jumlah belum dibaca</label><input class="ln-in" id="scUnread" type="number" min="0" max="999"></div>' +
           (plt === "wa" ? '<div class="ln-field"><label>Filter aktif</label><div class="ln-seg" id="scWaF"><button type="button" data-v="all">Semua</button><button type="button" data-v="unread">Belum dibaca</button><button type="button" data-v="fav">Favorit</button><button type="button" data-v="grp">Grup</button></div></div>' : "") +
-          '<div class="settings-desc">Daftar menampilkan semua chat ' + (plt === "wa" ? "WhatsApp" : "iMessage") + ' Anda. Buka chat lain lalu atur pin/belum dibaca di sini untuk chat tersebut.' + (plt === "im" ? " Chat yang disematkan tampil sebagai lingkaran besar di atas." : "") + '</div>';
+          '<button type="button" class="ln-btn sm" id="scManageList">' + LN.svg("grid", 16) + '<span>Kelola Daftar Chat</span></button>' +
+          '<div class="settings-desc">Daftar menampilkan chat ' + (plt === "wa" ? "WhatsApp" : "iMessage") + ' yang tidak disembunyikan. Pakai "Kelola Daftar Chat" untuk memilih chat mana saja yang ikut tampil \u2014 berguna kalau beberapa cerita/AU memakai kontak yang sama.' + (plt === "im" ? " Chat yang disematkan tampil sebagai lingkaran besar di atas." : "") + '</div>';
       }
       if(cur === "profile" && !Sx.ln){
         h += '<div class="ln-field"><label>' + (Sx.grp ? "Deskripsi grup" : plt === "wa" ? "Info (About)" : "Catatan") + '</label><input class="ln-in" id="scDesc"></div>';
@@ -10229,6 +10291,7 @@ render();
       }
       if(cur === "list" && !Sx.ln){
         b.querySelectorAll("#scListTog .ln-chip").forEach(function(x){ x.classList.toggle("active", !!Sx[x.dataset.k]); x.onclick = function(){ Sx[x.dataset.k] = Sx[x.dataset.k] ? 0 : 1; x.classList.toggle("active", !!Sx[x.dataset.k]); live(); }; });
+        if($id("scManageList")) $id("scManageList").onclick = function(){ U.manageChatList(plt, Sx); };
         $id("scUnread").value = +Sx.lnUnread || 0; $id("scUnread").oninput = function(){ Sx.lnUnread = Math.max(0, parseInt(this.value, 10) || 0); live(); };
         b.querySelectorAll("#scWaF button").forEach(function(x){ x.classList.toggle("active", x.dataset.v === (Sx.waFilter || "all")); x.onclick = function(){ Sx.waFilter = x.dataset.v; b.querySelectorAll("#scWaF button").forEach(function(y){ y.classList.toggle("active", y === x); }); live(); }; });
       }
@@ -10494,8 +10557,8 @@ render();
   function timeOf(ch){ var m = lastMsg(ch); return (m && (m.ts || m.tm)) || ch.time || ""; }
   function convsFor(S){
     var plt = S.wa ? "wa" : "im";
-    var a = (window.CV || []).filter(function(c){ return !c.ln && (plt === "wa" ? !!c.wa : !c.wa); });
-    if(a.indexOf(S) < 0) a.unshift(S);
+    var a = (window.CV || []).filter(function(c){ return !c.ln && (plt === "wa" ? !!c.wa : !c.wa) && !c.lnHide; });
+    if(a.indexOf(S) < 0 && !S.lnHide) a.unshift(S);
     return a.slice().sort(function(x, y){ return (y.lnPin ? 1 : 0) - (x.lnPin ? 1 : 0); });
   }
   function dark(S){ return !!S.dk; }
@@ -12071,7 +12134,8 @@ render();
     var A = [
       { id: "i_me", un: "mocksy.app", name: "Mocksy", pfp: null, bio: "Bikin mockup chat, X, dan IG \u2728\nSemua bisa diedit.", cat: "Aplikasi", link: "mocksy.app", badge: 1, priv: 0, followers: 12800, following: 312, postsExtra: 0, note: "lagi bikin fitur baru", story: 1, seen: 0, hl: [{ id: "h1", t: "Update", img: "gen:3" }, { id: "h2", t: "Tips", img: "gen:4" }] },
       { id: "i_nara", un: "naraaa", name: "Nara", pfp: null, bio: "kopi \u2022 kucing \u2022 senja", cat: "", link: "", badge: 0, priv: 0, followers: 845, following: 610, postsExtra: 0, note: "", story: 1, seen: 0, hl: [] },
-      { id: "i_news", un: "mocksynews", name: "Mocksy News", pfp: null, bio: "Kabar terbaru Mocksy.", cat: "Media/berita", link: "mocksy.app/news", badge: 1, priv: 0, followers: 1203400, following: 12, postsExtra: 120, note: "", story: 1, seen: 1, hl: [] },
+      { id: "i_news", un: "mocksynews", name: "Mocksy News", pfp: null, bio: "Kabar terbaru Mocksy.", cat: "Media/berita", link: "mocksy.app/news", badge: 1, priv: 0, followers: 1203400, following: 12, postsExtra: 120, note: "", story: 1, seen: 1, hl: [],
+        live: { on: 1, cover: "gen:5", title: "Tanya jawab fitur baru", viewers: 341, likedBy: ["i_nara"], msgs: [{ id: "lm1", by: "i_nara", text: "halo semua!", ts: now - 60e3, kind: "join" }, { id: "lm2", by: "i_nara", text: "kapan fitur story rilis?", ts: now - 40e3, kind: "msg" }, { id: "lm3", by: "i_raka", text: "Rose", ts: now - 20e3, kind: "gift" }] } },
       { id: "i_raka", un: "rakaa_", name: "Raka", pfp: null, bio: "akun pribadi", cat: "", link: "", badge: 0, priv: 1, followers: 132, following: 140, postsExtra: 0, note: "", story: 0, seen: 0, hl: [] }
     ];
     function post(id, by, media, cap, mins, c, ex){ var p = { id: id, by: by, media: media, ar: "4:5", cap: cap, loc: "", music: "", ts: now - mins * 60e3, c: c, likedBy: [], savedBy: [], rtBy: [], cm: [] }; for(var k in ex || {}) p[k] = ex[k]; return p; }
@@ -12117,7 +12181,9 @@ render();
   function av(a, s, ring, act){
     var src = a ? I.img(a.pfp) : null;
     var inner = '<span class="ig-av" style="width:' + s + "px;height:" + s + "px;" + (src ? "background-image:url(" + src + ")" : "") + '"' + (act !== false && a ? ' data-a="prof" data-v="' + a.id + '"' : "") + ">" + (src ? "" : '<svg width="' + s + '" height="' + s + '" viewBox="0 0 40 40"><circle cx="20" cy="16" r="7" fill="#C7C7CC"/><ellipse cx="20" cy="36" rx="13" ry="9.5" fill="#C7C7CC"/></svg>') + "</span>";
-    if(!ring || !a || !hasStory(a)) return inner;
+    if(!ring || !a) return inner;
+    if(a.live && a.live.on) return '<span class="ig-ring live"><span>' + inner + '</span><em class="ig-livetag">LIVE</em></span>';
+    if(!hasStory(a)) return inner;
     var cf = (a.stories || []).some(function(x){ return x.cf; });
     return '<span class="ig-ring ' + (a.seen ? "seen" : cf ? "cf" : "on") + '"><span>' + inner + "</span></span>";
   }
@@ -12195,8 +12261,8 @@ render();
     var n = top(), v = n.v, h = "", tabs = true;
     if(v === "home") h = vHome(); else if(v === "prof") h = vProf(n.id || I.st.me, n.tab || "grid"); else if(v === "post") h = vPostOne(n.id);
     else if(v === "cmts"){ h = vCmts(n.id); tabs = false; } else if(v === "notif") h = vNotif(); else if(v === "dms") h = vDms(); else if(v === "dm"){ h = vDm(n.id); tabs = false; }
-    else if(v === "search") h = vSearch(n); else if(v === "reels") h = vReels(); else if(v === "story"){ h = vStory(n); tabs = false; }
-    ph.classList.toggle("story", v === "story");
+    else if(v === "search") h = vSearch(n); else if(v === "reels") h = vReels(); else if(v === "story"){ h = vStory(n); tabs = false; } else if(v === "live"){ h = vLive(n); tabs = false; }
+    ph.classList.toggle("story", v === "story" || v === "live");
     $id("igView").innerHTML = h; $id("igTab").innerHTML = tabbar(); $id("igTab").style.display = tabs ? "" : "none";
     var s = document.querySelector("#igView .ig-scroll"), key = NAV.length + v + (n.id || "");
     if(s){ if(v === "dm") s.scrollTop = s.scrollHeight; else if(!newPage && SCR[key] != null) s.scrollTop = SCR[key]; }
@@ -12210,7 +12276,7 @@ render();
     var me = I.me(), un = notifs().filter(function(x){ return x.ts > (I.st.seenN || 0); }).length;
     var h = '<div class="ig-scroll"><div class="ig-top"><span class="ttl" style="font-family:-apple-system,system-ui">Instagram' + ic("chevD", 16, { sw: 2.4 }) + '</span><button type="button" class="ig-ib" data-a="notif">' + ic("heart", 26) + (un || (I.st.nBadge > 0) ? '<span class="ig-dot"></span>' : "") + '</button><button type="button" class="ig-ib" data-a="compose">' + ic("plusSq", 26) + "</button></div>";
     h += '<div class="ig-stories"><div class="ig-story" data-a="mystory" data-v="' + me.id + '"><span style="position:relative;display:inline-flex">' + av(me, 62, true, false) + '<span class="add">' + ic("plus", 12, { sw: 3.4 }) + '</span></span><span class="n">' + T("Your story", "Cerita Anda") + "</span></div>";
-    I.st.accounts.filter(function(a){ return a.id !== me.id && hasStory(a) && canSee(a); }).sort(function(a, b){ return (a.seen ? 1 : 0) - (b.seen ? 1 : 0); }).forEach(function(a){ h += '<div class="ig-story" data-a="seen" data-v="' + a.id + '">' + av(a, 62, true, false) + '<span class="n">' + esc(a.un) + "</span></div>"; });
+    I.st.accounts.filter(function(a){ return a.id !== me.id && (hasStory(a) || (a.live && a.live.on)) && canSee(a); }).sort(function(a, b){ return ((a.live && a.live.on) ? -1 : (a.seen ? 1 : 0)) - ((b.live && b.live.on) ? -1 : (b.seen ? 1 : 0)); }).forEach(function(a){ var lv = a.live && a.live.on; h += '<div class="ig-story" data-a="' + (lv ? "live" : "seen") + '" data-v="' + a.id + '">' + av(a, 62, true, false) + '<span class="n">' + esc(lv ? (I.st.lang === "id" ? "Langsung" : "LIVE") : a.un) + "</span></div>"; });
     h += "</div>";
     var fl = (I.st.fol[me.id] || []).concat([me.id]);
     var ps = I.st.posts.filter(function(p){ return fl.indexOf(p.by) >= 0 && canSee(I.acc(p.by)); }).sort(function(a, b){ return b.ts - a.ts; });
@@ -12226,7 +12292,7 @@ render();
     var h = '<div class="ig-top">' + (own ? '<button type="button" class="ig-ib" data-a="compose">' + ic("plus", 28, { sw: 2.2 }) + "</button>" : '<button type="button" class="ig-ib" data-a="back">' + ic("back", 26, { sw: 2.2 }) + "</button>") +
       '<span class="ttl sm ctr" data-a="' + (own ? "accts" : "") + '">' + (a.priv ? ic("lock", 16, { sw: 2.2 }) : "") + esc(a.un) + badge(a.badge, 15) + (own ? ic("chevD", 15, { sw: 2.4 }) : "") + "</span>" +
       '<button type="button" class="ig-ib" data-a="pedit" data-v="' + a.id + '">' + ic(own ? "edit" : "more", 24) + '</button><button type="button" class="ig-ib" data-a="' + (own ? "set" : "pedit") + '" data-v="' + a.id + '">' + ic(own ? "menu" : "moreV", 26) + "</button></div>";
-    h += '<div class="ig-scroll"><div class="ig-prof"><div class="ig-prow"><span style="position:relative;display:inline-flex;margin-top:14px;cursor:pointer" data-a="pstory" data-v="' + a.id + '">' + (a.note ? '<span class="ig-note">' + esc(a.note) + "</span>" : "") + av(a, 86, true, false) + (own ? '<span style="position:absolute;right:0;bottom:2px;width:26px;height:26px;border-radius:50%;background:var(--tx);color:var(--bg);display:flex;align-items:center;justify-content:center;border:3px solid var(--bg)">' + ic("plus", 12, { sw: 3.4 }) + "</span>" : "") + "</span>" +
+    h += '<div class="ig-scroll"><div class="ig-prof"><div class="ig-prow"><span style="position:relative;display:inline-flex;margin-top:14px;cursor:pointer" data-a="' + (a.live && a.live.on ? "live" : "pstory") + '" data-v="' + a.id + '">' + (a.note ? '<span class="ig-note">' + esc(a.note) + "</span>" : "") + av(a, 86, true, false) + (own ? '<span style="position:absolute;right:0;bottom:2px;width:26px;height:26px;border-radius:50%;background:var(--tx);color:var(--bg);display:flex;align-items:center;justify-content:center;border:3px solid var(--bg)">' + ic("plus", 12, { sw: 3.4 }) + "</span>" : "") + "</span>" +
       '<div class="stats"><div class="nm">' + esc(a.name || "") + '</div><div class="nums"><div><b>' + num(mine.length + (+a.postsExtra || 0)) + "</b><span>" + T("posts", "postingan") + "</span></div><div><b>" + num(fols) + "</b><span>" + T("followers", "pengikut") + "</span></div><div><b>" + num(fing) + "</b><span>" + T("following", "diikuti") + "</span></div></div></div></div>";
     if(a.cat) h += '<div class="ig-cat">' + esc(a.cat) + "</div>";
     if(a.bio) h += '<div class="ig-bio">' + rich(a.bio) + "</div>";
@@ -12320,6 +12386,49 @@ render();
       '<div class="info"><div class="u">' + av(a, 32, false) + esc(a.un) + badge(a.badge, 13) + (I.follows(I.st.me, a.id) || a.id === I.st.me ? "" : ' <span style="border:1px solid rgba(255,255,255,.7);border-radius:8px;padding:3px 10px;font-size:13px">' + T("Follow", "Ikuti") + "</span>") + "</div>" + rich((p.cap || "").slice(0, 90)) + (p.music ? '<div style="margin-top:8px;font-size:13px">' + ic("music", 12) + " " + esc(p.music) + "</div>" : "") + "</div></div>";
   }
 
+
+  /* ---------- LIVE ---------- */
+  function vLive(n){
+    var a = I.acc(n.id); if(!a || !a.live) return "";
+    var lv = a.live, img = I.img(lv.cover), own = a.id === I.st.me, fol = I.follows(I.st.me, a.id), liked = (lv.likedBy || []).indexOf(I.st.me) >= 0;
+    var h = '<div class="ig-live" style="background:' + (img ? "#000" : "linear-gradient(160deg,#333,#111)") + '">' + (img ? '<img class="bgimg" alt="" src="' + img + '">' : "") +
+      '<div class="hd"><span class="livepill">' + T("LIVE", "LANGSUNG") + '</span>' + av(a, 34, false) + '<div class="who" data-a="prof" data-v="' + a.id + '"><b>' + esc(a.un) + badge(a.badge, 12) + '</b><span>' + ic("heart", 11, { fill: 1 }) + " " + num(lv.viewers || 0) + " " + T("watching", "menonton") + "</span></div>" +
+      (own ? "" : '<button type="button" class="ig-follow ' + (fol ? "" : "blue") + '" data-a="follow" data-v="' + a.id + '">' + (fol ? T("Following", "Mengikuti") : T("Follow", "Ikuti")) + "</button>") +
+      '<button type="button" class="ig-ib" data-a="liveedit" data-v="' + a.id + '" aria-label="Edit live">' + ic("more", 22) + '</button><button type="button" class="ig-ib" data-a="stclose" aria-label="Tutup">' + ic("close", 24, { sw: 2 }) + "</button></div>";
+    h += '<div class="cm">' + (lv.msgs || []).slice(-30).map(function(m){
+      var ma = I.acc(m.by) || { un: "?" };
+      if(m.kind === "join") return '<div class="sys">' + esc(ma.un) + " " + T("joined", "bergabung") + "</div>";
+      if(m.kind === "gift") return '<div class="gift">' + ic("heart", 13, { fill: 1 }) + "<b>" + esc(ma.un) + "</b> " + T("sent", "mengirim") + " " + esc(m.text || "a gift") + "</div>";
+      return '<div class="msg"><b>' + esc(ma.un) + "</b> " + rich(m.text || "") + "</div>";
+    }).join("") + "</div>";
+    h += '<div class="ft"><div class="in"><input id="igLiveIn" placeholder="' + T("Comment...", "Kirim komentar...") + '" autocomplete="off"></div><button type="button" class="ig-ib send" data-a="livesend" aria-label="Kirim">' + ic("send", 20, { sw: 2.2 }) + '</button><button type="button" class="ig-ib' + (liked ? " liked" : "") + '" data-a="livelike" aria-label="Suka">' + ic("heart", 24, liked ? { fill: 1 } : null) + "</button></div>";
+    return h + "</div>";
+  }
+  var LKIND = [["msg", "Pesan"], ["join", "Bergabung"], ["gift", "Hadiah"]];
+  I.editLive = function(accId){
+    var a = I.acc(accId); if(!a) return; a.live = a.live || { on: 0, cover: null, title: "", viewers: 120, msgs: [], likedBy: [] };
+    var lv = a.live, tmp = { cover: lv.cover };
+    sheet("LIVE \u2014 @" + a.un, '<label class="ig-sw"><span>Sedang LIVE sekarang</span><input type="checkbox" id="lvOn"></label>' +
+      '<div class="ig-f"><label>Sampul siaran</label><div class="ig-imgp"><div class="pv" id="lvPv" style="border-radius:10px;width:54px;height:96px"></div><button type="button" class="ig-btn" id="lvUp">Unggah</button><button type="button" class="ig-btn dng" id="lvRm">Hapus</button></div></div>' +
+      '<div class="ig-2"><div class="ig-f"><label>Judul siaran</label><input class="ig-in" id="lvTitle" placeholder="mis. Tanya jawab santai"></div><div class="ig-f"><label>Penonton</label><input class="ig-in" type="number" min="0" id="lvViewers"></div></div>' +
+      '<div class="ig-f"><label>Komentar live</label><div id="lvMsgs" style="display:flex;flex-direction:column;gap:8px"></div><button type="button" class="ig-btn" id="lvAdd">' + ic("plus", 16) + " Tambah komentar</button></div>" +
+      '<button type="button" class="ig-btn pri" id="lvSave">Simpan</button>', function(b){
+      function pv(){ var s = I.img(tmp.cover); $id("lvPv").style.backgroundImage = s ? "url(" + s + ")" : ""; } pv();
+      $id("lvUp").onclick = function(){ upload(1600, function(r){ tmp.cover = r; pv(); }); }; $id("lvRm").onclick = function(){ tmp.cover = null; pv(); };
+      $id("lvOn").checked = !!lv.on; $id("lvTitle").value = lv.title || ""; $id("lvViewers").value = +lv.viewers || 0;
+      function ds(){ var box = $id("lvMsgs"); box.innerHTML = ""; (lv.msgs || []).forEach(function(m, i){
+        var d = document.createElement("div"); d.style.cssText = "border:1px solid var(--bd);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:8px";
+        d.innerHTML = '<div class="ig-chips" data-f="by"></div><div class="ig-2"><select class="ig-sel" data-f="kind">' + LKIND.map(function(k){ return '<option value="' + k[0] + '">' + k[1] + "</option>"; }).join("") + '</select><button type="button" class="ig-ib" style="justify-self:end">' + ic("trash", 17) + "</button></div><input class=\"ig-in\" data-f=\"text\" placeholder=\"Isi pesan / nama hadiah\">";
+        var chipsEl = d.querySelector('[data-f="by"]');
+        I.st.accounts.forEach(function(ac){ var c2 = document.createElement("button"); c2.type = "button"; c2.className = "ig-chip" + (m.by === ac.id ? " on" : ""); c2.textContent = ac.un; c2.onclick = function(){ m.by = ac.id; chipsEl.querySelectorAll(".ig-chip").forEach(function(x){ x.classList.toggle("on", x === c2); }); }; chipsEl.appendChild(c2); });
+        d.querySelector('[data-f="kind"]').value = m.kind || "msg"; d.querySelector('[data-f="kind"]').onchange = function(){ m.kind = this.value; };
+        d.querySelector('[data-f="text"]').value = m.text || ""; d.querySelector('[data-f="text"]').oninput = function(){ m.text = this.value; };
+        d.querySelector(".ig-ib").onclick = function(){ lv.msgs.splice(i, 1); ds(); };
+        box.appendChild(d); }); }
+      ds(); $id("lvAdd").onclick = function(){ lv.msgs = lv.msgs || []; lv.msgs.push({ id: uid("lm"), by: I.st.me, text: "", kind: "msg", ts: now() }); ds(); };
+      $id("lvSave").onclick = function(){ lv.on = $id("lvOn").checked ? 1 : 0; lv.cover = tmp.cover; lv.title = $id("lvTitle").value.trim(); lv.viewers = Math.max(0, parseInt($id("lvViewers").value, 10) || 0); I.save(); closeSheet(); if(lv.on && top().v !== "live") go("live", a.id); else render(); toast(lv.on ? "LIVE aktif" : "Disimpan"); };
+    });
+  };
   /* ---------- sheet & editor ---------- */
   function sheet(t, html, bind){ $id("igShT").textContent = t; var b = $id("igShB"); b.innerHTML = html; b.scrollTop = 0; $id("igSheet").classList.add("open"); if(bind) bind(b); }
   function closeSheet(){ $id("igSheet").classList.remove("open"); }
@@ -12386,6 +12495,7 @@ render();
       '<div class="ig-3"><div class="ig-f"><label>Postingan +</label><input class="ig-in" type="number" min="0" id="aPx"></div><div class="ig-f"><label>Pengikut +</label><input class="ig-in" type="number" min="0" id="aFol"></div><div class="ig-f"><label>Diikuti +</label><input class="ig-in" type="number" min="0" id="aFing"></div></div>' +
       '<div class="ig-f"><label>Sorotan (highlight)</label><div id="aHl" style="display:flex;flex-direction:column;gap:8px"></div><button type="button" class="ig-btn" id="aHlAdd">' + ic("plus", 16) + " Tambah sorotan</button></div>" +
       '<div class="ig-f"><label>Akun ini mengikuti</label>' + chips("aFl", I.st.fol[a.id] || [], true, a.id) + "</div>" +
+      (isNew ? "" : '<button type="button" class="ig-btn" id="aLive">' + ic("video", 16) + " Atur LIVE</button>") +
       '<button type="button" class="ig-btn pri" id="aSave">' + (isNew ? "Buat akun" : "Simpan") + "</button>" + (!isNew && I.st.accounts.length > 1 ? '<button type="button" class="ig-btn dng" id="aDel">Hapus akun</button>' : ""), function(b){
       function pv(){ var s = I.img(tmp.pfp); $id("aPv").style.backgroundImage = s ? "url(" + s + ")" : ""; } pv();
       $id("aUp").onclick = function(){ upload(500, function(r){ tmp.pfp = r; pv(); }); }; $id("aRm").onclick = function(){ tmp.pfp = null; pv(); };
@@ -12410,6 +12520,7 @@ render();
         if(isNew) I.st.accounts.push(a);
         I.save(); closeSheet(); I.render(); toast(isNew ? "Akun dibuat" : "Profil disimpan");
       };
+      if($id("aLive")) $id("aLive").onclick = function(){ closeSheet(); I.editLive(a.id); };
       if($id("aDel")) $id("aDel").onclick = function(){ if(!confirm("Hapus akun @" + a.un + " beserta postingannya?")) return; I.st.accounts = I.st.accounts.filter(function(o){ return o !== a; }); I.st.posts = I.st.posts.filter(function(p){ return p.by !== a.id; }); I.st.dms = I.st.dms.filter(function(d){ return d.a !== a.id && d.b !== a.id; }); delete I.st.fol[a.id]; if(I.st.me === a.id) I.st.me = I.st.accounts[0].id; I.save(); closeSheet(); root("home"); };
     });
   };
@@ -12597,6 +12708,10 @@ render();
       case "seen": var sa = I.acc(v); if(sa){ sa.seen = 1; go("story", sa.id, { i: 0 }); } break;
       case "mystory": if(hasStory(I.me())) go("story", I.st.me, { i: 0 }); else I.editStory(I.st.me, -1); break;
       case "pstory": var pa2 = I.acc(v); if(pa2 && hasStory(pa2)){ pa2.seen = pa2.id === I.st.me ? pa2.seen : 1; go("story", pa2.id, { i: 0 }); } else if(pa2 && pa2.id === I.st.me) I.editStory(pa2.id, -1); break;
+      case "live": var la = I.acc(v); if(la && la.live && la.live.on) go("live", la.id); break;
+      case "livelike": var ld = I.acc(top().id); if(ld){ ld.live.likedBy = ld.live.likedBy || []; tog(ld.live.likedBy, I.st.me); render(); } break;
+      case "livesend": var li = $id("igLiveIn"), lacc = I.acc(top().id); if(!li || !lacc || !li.value.trim()) break; lacc.live.msgs = lacc.live.msgs || []; lacc.live.msgs.push({ id: uid("lm"), by: I.st.me, text: li.value.trim(), ts: now(), kind: "msg" }); li.value = ""; I.save(); render(); break;
+      case "liveedit": I.editLive(top().id); break;
       case "stnext": var sn = top(), sl = (I.acc(sn.id) || {}).stories || []; if((sn.i || 0) < sl.length - 1){ sn.i = (sn.i || 0) + 1; render(); } else back(); break;
       case "stprev": var sp = top(); if((sp.i || 0) > 0){ sp.i--; render(); } break;
       case "stclose": back(); break;
@@ -12628,7 +12743,7 @@ render();
       case "snap": snap(); break;
     }
   }
-  document.addEventListener("keydown", function(e){ if(e.key !== "Enter" || !e.target) return; if(e.target.id === "igDmIn"){ var b = document.querySelector('#igApp [data-a="dmsend"]'); if(b) b.click(); } if(e.target.id === "igCmIn"){ var c = document.querySelector('#igApp [data-a="cpost"]'); if(c) c.click(); } });
+  document.addEventListener("keydown", function(e){ if(e.key !== "Enter" || !e.target) return; if(e.target.id === "igDmIn"){ var b = document.querySelector('#igApp [data-a="dmsend"]'); if(b) b.click(); } if(e.target.id === "igCmIn"){ var c = document.querySelector('#igApp [data-a="cpost"]'); if(c) c.click(); } if(e.target.id === "igLiveIn"){ var l = document.querySelector('#igApp [data-a="livesend"]'); if(l) l.click(); } });
   document.addEventListener("input", function(e){ if(e.target && e.target.id === "igQ"){ top().q = e.target.value; var pos = e.target.selectionStart; render(); var q = $id("igQ"); if(q){ q.focus(); try{ q.setSelectionRange(pos, pos); }catch(_){} } } });
   I.open = function(){ build(); I.load(); $id("igApp").classList.add("open"); document.body.style.overflow = "hidden"; render(); LN.loadAssets(refs()).then(function(){ render(); }); try{ localStorage.setItem("mocksy.svc", "ig"); }catch(e){} };
   I.close = function(){ var a = $id("igApp"); if(a) a.classList.remove("open", "photo"); document.body.style.overflow = ""; };
@@ -12679,7 +12794,8 @@ render();
     var A = [
       { id: "k_me", un: "mocksy.app", name: "Mocksy", pfp: null, bio: "Bikin mockup chat & sosmed \u2728", link: "mocksy.app", badge: 1, priv: 0, followers: 48200, following: 120, likes: 1200000 },
       { id: "k_nara", un: "naraaa", name: "nara \u2601\ufe0f", pfp: null, bio: "daily vlog & kopi", link: "", badge: 0, priv: 0, followers: 2310, following: 480, likes: 31400 },
-      { id: "k_dims", un: "dimas.edit", name: "Dimas", pfp: null, bio: "editor video", link: "", badge: 0, priv: 0, followers: 15800, following: 210, likes: 402000 },
+      { id: "k_dims", un: "dimas.edit", name: "Dimas", pfp: null, bio: "editor video", link: "", badge: 0, priv: 0, followers: 15800, following: 210, likes: 402000,
+        live: { on: 1, cover: "gen:4", title: "ngobrol santai malam ini", viewers: 842, likedBy: [], msgs: [{ id: "lm1", by: "k_nara", text: "bergabung", ts: now - 90e3, kind: "join" }, { id: "lm2", by: "k_nara", text: "halo kak!", ts: now - 60e3, kind: "msg" }, { id: "lm3", by: "k_raka", text: "Rose", ts: now - 30e3, kind: "gift" }] } },
       { id: "k_raka", un: "rakaa_", name: "Raka", pfp: null, bio: "", link: "", badge: 0, priv: 1, followers: 96, following: 130, likes: 0 }
     ];
     function V(id, by, cover, cap, music, mins, c, ex){ var v = { id: id, by: by, cover: cover, cap: cap, music: music, ts: now - mins * 60e3, c: c, likedBy: [], savedBy: [], cm: [], pinned: 0 }; for(var k in ex || {}) v[k] = ex[k]; return v; }
@@ -12724,7 +12840,7 @@ render();
   function build(){
     if($id("tkApp")) return;
     var a = document.createElement("div"); a.id = "tkApp";
-    a.innerHTML = '<div class="x-tools"><button type="button" data-a="svc">' + LN.svg("back", 16, 2.4) + '<span>Layanan</span></button><button type="button" data-a="photo" class="pri">' + LN.svg("camera", 16) + '<span>Mode Foto</span></button><button type="button" data-a="snap">' + LN.svg("download", 16) + '<span>Unduh PNG</span></button><button type="button" data-a="accts">' + LN.svg("user", 16) + '<span>Akun</span></button><button type="button" data-a="set">' + LN.svg("gear", 16) + "<span>Pengaturan TikTok</span></button></div>" +
+    a.innerHTML = '<div class="x-tools"><button type="button" data-a="svc">' + LN.svg("back", 16, 2.4) + '<span>Layanan</span></button><button type="button" data-a="photo" class="pri">' + LN.svg("camera", 16) + '<span>Mode Foto</span></button><button type="button" data-a="snap">' + LN.svg("download", 16) + '<span>Unduh PNG</span></button><button type="button" data-a="theme">' + LN.svg("moon", 16) + '<span>Tema Gelap</span></button><button type="button" data-a="accts">' + LN.svg("user", 16) + '<span>Akun</span></button><button type="button" data-a="set">' + LN.svg("gear", 16) + "<span>Pengaturan TikTok</span></button></div>" +
       '<div class="tk" id="tkPhone"><div class="tk-status" id="tkStatus"></div><div class="tk-view" id="tkView"></div><nav class="tk-tabbar" id="tkTab"></nav>' +
       '<div class="tk-sh-ov" id="tkSheet"><div class="tk-sh"><div class="tk-sh-h"><b id="tkShT"></b><button type="button" class="tk-ib" data-a="shclose">' + ic("close", 20) + '</button></div><div class="tk-sh-b" id="tkShB"></div></div></div></div>';
     document.body.appendChild(a); a.addEventListener("click", onClick);
@@ -12755,7 +12871,7 @@ render();
     var n = top(), v = n.v, feed = v === "feed" || v === "friends" || v === "watch", h = "", tabs = true;
     ph.className = "tk t-" + (K.st.theme || "light") + (feed ? " feed" : "");
     $id("tkStatus").innerHTML = status();
-    if(v === "feed" || v === "friends") h = vFeed(v); else if(v === "watch"){ h = vWatch(n); } else if(v === "prof") h = vProf(n.id || K.st.me, n.tab || "grid"); else if(v === "inbox") h = vInbox(); else if(v === "dm"){ h = vDm(n.id); tabs = false; } else if(v === "search") h = vSearch(n);
+    if(v === "feed" || v === "friends") h = vFeed(v); else if(v === "watch"){ h = vWatch(n); } else if(v === "live"){ h = vLiveTK(n); tabs = false; } else if(v === "prof") h = vProf(n.id || K.st.me, n.tab || "grid"); else if(v === "inbox") h = vInbox(); else if(v === "dm"){ h = vDm(n.id); tabs = false; } else if(v === "search") h = vSearch(n);
     if(CMV && feed) h += vCmts(CMV);
     $id("tkView").innerHTML = h; $id("tkTab").innerHTML = tabbar(); $id("tkTab").style.display = tabs ? "" : "none";
     var s = document.querySelector("#tkView .tk-scroll.dm"); if(s) s.scrollTop = s.scrollHeight;
@@ -12772,7 +12888,13 @@ render();
   function feedList(tab){ var me = K.st.me, fl = K.st.fol[me] || []; return K.st.videos.filter(function(v){ var a = K.acc(v.by); return canSee(a) && (tab !== "fol" || fl.indexOf(v.by) >= 0); }).sort(function(a, b){ return b.ts - a.ts; }); }
   function vFeed(v){
     var tab = v === "friends" ? "fol" : FTAB, list = feedList(tab);
-    var topH = '<div class="tk-ftop"><span class="lv">LIVE</span><span data-a="ftab" data-v="fol" class="' + (tab === "fol" ? "on" : "") + '">' + T("Following", "Mengikuti") + '</span><span data-a="ftab" data-v="fy" class="' + (tab === "fy" ? "on" : "") + '">' + T("For You", "Untuk Anda") + '</span><button type="button" class="tk-ib sr" data-a="search">' + ic("search", 24, { sw: 2.2 }) + "</button></div>";
+    var topH = '<div class="tk-ftop"><span data-a="ftab" data-v="live" class="' + (tab === "live" ? "on" : "") + '">LIVE</span><span data-a="ftab" data-v="fol" class="' + (tab === "fol" ? "on" : "") + '">' + T("Following", "Mengikuti") + '</span><span data-a="ftab" data-v="fy" class="' + (tab === "fy" ? "on" : "") + '">' + T("For You", "Untuk Anda") + '</span><button type="button" class="tk-ib sr" data-a="search">' + ic("search", 24, { sw: 2.2 }) + "</button></div>";
+    if(tab === "live"){
+      var lives = K.st.accounts.filter(function(a){ return a.live && a.live.on && canSee(a); });
+      var cells = '<div data-a="livestart" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background-color:#1C1C1E;color:#fff;aspect-ratio:3/4;cursor:pointer">' + ic("plus", 28, { sw: 2.2 }) + "<span>" + T("Go LIVE", "Mulai LIVE") + "</span></div>" +
+        lives.map(function(a){ var s = K.img(a.live.cover); return '<div data-a="livewatch" data-v="' + a.id + '" style="' + (s ? "background-image:url(" + s + ")" : "") + '"><em style="background-color:var(--red);position:absolute;top:6px;left:6px;font-style:normal;font-size:11px;font-weight:800;padding:1px 6px;border-radius:4px">LIVE</em><span>' + ic("heart", 11, { fill: 1 }) + num(a.live.viewers || 0) + "</span></div>"; }).join("");
+      return '<div class="tk-vid" style="background-color:#000">' + topH + '<div class="tk-scroll" style="position:absolute;inset:100px 0 0;padding:12px"><div class="tk-grid" style="grid-template-columns:repeat(2,1fr);gap:6px">' + cells + "</div>" + (lives.length ? "" : '<div class="tk-empty" style="color:#fff;margin-top:20px"><b style="color:#fff">' + T("No one is live right now", "Belum ada yang live") + "</b></div>") + "</div></div>";
+    }
     if(!list.length) return '<div class="tk-vid">' + topH + '<div class="tk-empty" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;color:#fff"><b style="color:#fff">' + T("No videos yet", "Belum ada video") + "</b>" + T("Tap + to create one.", "Ketuk + untuk membuat.") + "</div></div>";
     return vidHtml(list[FI % list.length], { top: topH });
   }
@@ -12834,6 +12956,49 @@ render();
     return h + '<div class="tk-grid" style="padding-top:6px">' + vs.map(function(v){ var s = K.img(v.cover); return '<div data-a="watch" data-v="' + v.id + '" style="' + (s ? "background-image:url(" + s + ")" : "") + '"><span>' + ic("heart", 11, { fill: 1 }) + num(cnt(v, "like")) + "</span></div>"; }).join("") + "</div></div>";
   }
 
+
+  /* ---------- LIVE ---------- */
+  function vLiveTK(n){
+    var a = K.acc(n.id); if(!a || !a.live) return "";
+    var lv = a.live, img = K.img(lv.cover), own = a.id === K.st.me, fol = K.follows(K.st.me, a.id), liked = (lv.likedBy || []).indexOf(K.st.me) >= 0;
+    var h = '<div class="tk-vid" style="background:' + (img ? "#000" : "#111") + '">' + (img ? '<img alt="" src="' + img + '">' : "") +
+      '<div class="tk-ftop" style="justify-content:flex-start;gap:8px;padding:0 8px"><button type="button" class="tk-ib" data-a="back" style="color:#fff">' + ic("back", 26, { sw: 2.4 }) + "</button>" + av(a, 32, false) + '<div style="flex:1;min-width:0;color:#fff;line-height:1.2"><b style="font-weight:700;display:flex;align-items:center;gap:4px">' + esc(a.un) + badge(a.badge, 13) + '</b><span style="font-size:11.5px;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:4px">' + ic("heart", 10, { fill: 1 }) + num(lv.viewers || 0) + " " + T("watching", "menonton") + "</span></div>" +
+      (own ? "" : '<button type="button" style="height:30px;padding:0 12px;border-radius:15px;border:1.5px solid #fff;background:transparent;color:#fff;font-weight:700;font-size:12.5px" data-a="follow" data-v="' + a.id + '">' + (fol ? T("Following", "Mengikuti") : T("Follow", "Ikuti")) + "</button>") +
+      '<button type="button" class="tk-ib" data-a="liveedit" data-v="' + a.id + '" style="color:#fff" aria-label="Edit live">' + ic("more", 22) + "</button></div>";
+    h += '<div class="tk-livecm">' + (lv.msgs || []).slice(-30).map(function(m){
+      var ma = K.acc(m.by) || { un: "?" };
+      if(m.kind === "join") return '<div class="sys">' + esc(ma.un) + " " + T("joined", "bergabung") + "</div>";
+      if(m.kind === "gift") return '<div class="gift">' + ic("heart", 13, { fill: 1 }) + "<b>" + esc(ma.un) + "</b> " + T("sent", "mengirim") + " " + esc(m.text || "a gift") + "</div>";
+      return '<div class="msg"><b>' + esc(ma.un) + "</b> " + rich(m.text || "") + "</div>";
+    }).join("") + "</div>";
+    h += '<div class="tk-liveft"><div class="in"><input id="tkLiveIn" placeholder="' + T("Say something nice...", "Kirim komentar...") + '" autocomplete="off"></div><button type="button" class="tk-send" data-a="livesend" aria-label="Kirim">' + ic("send", 15, { sw: 2.4 }) + '</button><button type="button" class="tk-ib' + (liked ? " liked" : "") + '" data-a="livelike" style="color:#fff" aria-label="Suka">' + ic("heart", 24, liked ? { fill: 1 } : null) + "</button></div>";
+    return h + "</div>";
+  }
+  var LKIND = [["msg", "Pesan"], ["join", "Bergabung"], ["gift", "Hadiah"]];
+  K.editLive = function(accId){
+    var a = K.acc(accId); if(!a) return; a.live = a.live || { on: 0, cover: null, title: "", viewers: 120, msgs: [], likedBy: [] };
+    var lv = a.live, tmp = { cover: lv.cover };
+    sheet("LIVE \u2014 @" + a.un, '<label class="tk-sw"><span>Sedang LIVE sekarang</span><input type="checkbox" id="lvOn"></label>' +
+      '<div class="tk-f"><label>Sampul siaran</label><div class="tk-imgp"><div class="pv" id="lvPv" style="border-radius:8px;width:54px;height:96px"></div><button type="button" class="tk-btn" id="lvUp">Unggah</button><button type="button" class="tk-btn dng" id="lvRm">Hapus</button></div></div>' +
+      '<div class="tk-2"><div class="tk-f"><label>Judul siaran</label><input class="tk-in" id="lvTitle" placeholder="mis. ngobrol santai"></div><div class="tk-f"><label>Penonton</label><input class="tk-in" type="number" min="0" id="lvViewers"></div></div>' +
+      '<div class="tk-f"><label>Komentar live</label><div id="lvMsgs" style="display:flex;flex-direction:column;gap:8px"></div><button type="button" class="tk-btn" id="lvAdd">' + ic("plus", 16) + " Tambah komentar</button></div>" +
+      '<button type="button" class="tk-btn pri" id="lvSave">Simpan</button>', function(b){
+      function pv(){ var s = K.img(tmp.cover); $id("lvPv").style.backgroundImage = s ? "url(" + s + ")" : ""; } pv();
+      $id("lvUp").onclick = function(){ upload(1600, function(r){ tmp.cover = r; pv(); }); }; $id("lvRm").onclick = function(){ tmp.cover = null; pv(); };
+      $id("lvOn").checked = !!lv.on; $id("lvTitle").value = lv.title || ""; $id("lvViewers").value = +lv.viewers || 0;
+      function ds(){ var box = $id("lvMsgs"); box.innerHTML = ""; (lv.msgs || []).forEach(function(m, i){
+        var d = document.createElement("div"); d.style.cssText = "border:1px solid var(--bd);border-radius:8px;padding:10px;display:flex;flex-direction:column;gap:8px";
+        d.innerHTML = '<div class="tk-chips" data-f="by"></div><div class="tk-2"><select class="tk-sel" data-f="kind">' + LKIND.map(function(k){ return '<option value="' + k[0] + '">' + k[1] + "</option>"; }).join("") + '</select><button type="button" class="tk-ib" style="justify-self:end">' + ic("trash", 17) + "</button></div><input class=\"tk-in\" data-f=\"text\" placeholder=\"Isi pesan / nama hadiah\">";
+        var chipsEl = d.querySelector('[data-f="by"]');
+        K.st.accounts.forEach(function(ac){ var c2 = document.createElement("button"); c2.type = "button"; c2.className = "tk-chip" + (m.by === ac.id ? " on" : ""); c2.textContent = ac.un; c2.onclick = function(){ m.by = ac.id; chipsEl.querySelectorAll(".tk-chip").forEach(function(x){ x.classList.toggle("on", x === c2); }); }; chipsEl.appendChild(c2); });
+        d.querySelector('[data-f="kind"]').value = m.kind || "msg"; d.querySelector('[data-f="kind"]').onchange = function(){ m.kind = this.value; };
+        d.querySelector('[data-f="text"]').value = m.text || ""; d.querySelector('[data-f="text"]').oninput = function(){ m.text = this.value; };
+        d.querySelector(".tk-ib").onclick = function(){ lv.msgs.splice(i, 1); ds(); };
+        box.appendChild(d); }); }
+      ds(); $id("lvAdd").onclick = function(){ lv.msgs = lv.msgs || []; lv.msgs.push({ id: uid("lm"), by: K.st.me, text: "", kind: "msg", ts: now() }); ds(); };
+      $id("lvSave").onclick = function(){ lv.on = $id("lvOn").checked ? 1 : 0; lv.cover = tmp.cover; lv.title = $id("lvTitle").value.trim(); lv.viewers = Math.max(0, parseInt($id("lvViewers").value, 10) || 0); K.save(); closeSheet(); if(lv.on && top().v !== "live") go("live", a.id); else render(); toast(lv.on ? "LIVE aktif" : "Disimpan"); };
+    });
+  };
   /* ---------- sheet & editor ---------- */
   function sheet(t, html, bind){ $id("tkShT").textContent = t; var b = $id("tkShB"); b.innerHTML = html; b.scrollTop = 0; $id("tkSheet").classList.add("open"); if(bind) bind(b); }
   function closeSheet(){ $id("tkSheet").classList.remove("open"); }
@@ -12867,12 +13032,14 @@ render();
       '<div class="tk-2"><div class="tk-f"><label>Nama</label><input class="tk-in" id="aName" maxlength="30"></div><div class="tk-f"><label>Username</label><input class="tk-in" id="aUn" maxlength="24" autocapitalize="off"></div></div><div class="tk-f"><label>Bio</label><textarea class="tk-ta" id="aBio" maxlength="80" style="min-height:60px"></textarea></div><div class="tk-f"><label>Tautan</label><input class="tk-in" id="aLink"></div>' +
       '<label class="tk-sw"><span>Centang terverifikasi</span><input type="checkbox" id="aBadge"></label><label class="tk-sw"><span>Akun privat</span><input type="checkbox" id="aPriv"></label>' +
       '<div class="tk-3"><div class="tk-f"><label>Mengikuti +</label><input class="tk-in" type="number" min="0" id="aFing"></div><div class="tk-f"><label>Pengikut +</label><input class="tk-in" type="number" min="0" id="aFol"></div><div class="tk-f"><label>Suka +</label><input class="tk-in" type="number" min="0" id="aLk"></div></div>' +
-      '<div class="tk-f"><label>Akun ini mengikuti</label>' + chips("aFl", K.st.fol[a.id] || [], true, a.id) + '</div><button type="button" class="tk-btn pri" id="aSave">' + (isNew ? "Buat akun" : "Simpan") + "</button>" + (!isNew && K.st.accounts.length > 1 ? '<button type="button" class="tk-btn dng" id="aDel">Hapus akun</button>' : ""), function(b){
+      '<div class="tk-f"><label>Akun ini mengikuti</label>' + chips("aFl", K.st.fol[a.id] || [], true, a.id) + '</div>' + (isNew ? "" : '<button type="button" class="tk-btn" id="aLive">' + ic("play", 16, { fill: 1 }) + " Atur LIVE</button>") +
+      '<button type="button" class="tk-btn pri" id="aSave">' + (isNew ? "Buat akun" : "Simpan") + "</button>" + (!isNew && K.st.accounts.length > 1 ? '<button type="button" class="tk-btn dng" id="aDel">Hapus akun</button>' : ""), function(b){
       function pv(){ var s = K.img(tmp.pfp); $id("aPv").style.backgroundImage = s ? "url(" + s + ")" : ""; } pv(); $id("aUp").onclick = function(){ upload(500, function(r){ tmp.pfp = r; pv(); }); }; $id("aRm").onclick = function(){ tmp.pfp = null; pv(); };
       $id("aName").value = a.name || ""; $id("aUn").value = a.un || ""; $id("aBio").value = a.bio || ""; $id("aLink").value = a.link || ""; $id("aBadge").checked = !!a.badge; $id("aPriv").checked = !!a.priv; $id("aFing").value = +a.following || 0; $id("aFol").value = +a.followers || 0; $id("aLk").value = +a.likes || 0; bindChips(b, "aFl", true);
       $id("aSave").onclick = function(){ var un = $id("aUn").value.trim().replace(/^@/, ""); if(!/^[\w.]{2,24}$/.test(un)){ toast("Username: huruf, angka, titik, garis bawah"); return; } if(K.st.accounts.some(function(o){ return o.id !== a.id && o.un.toLowerCase() === un.toLowerCase(); })){ toast("Username sudah dipakai"); return; }
         a.un = un; a.name = $id("aName").value.trim(); a.bio = $id("aBio").value; a.link = $id("aLink").value.trim(); a.badge = $id("aBadge").checked ? 1 : 0; a.priv = $id("aPriv").checked ? 1 : 0; a.following = Math.max(0, parseInt($id("aFing").value, 10) || 0); a.followers = Math.max(0, parseInt($id("aFol").value, 10) || 0); a.likes = Math.max(0, parseInt($id("aLk").value, 10) || 0); a.pfp = tmp.pfp; K.st.fol[a.id] = vals(b, "aFl");
         if(isNew) K.st.accounts.push(a); K.save(); closeSheet(); render(); toast(isNew ? "Akun dibuat" : "Profil disimpan"); };
+      if($id("aLive")) $id("aLive").onclick = function(){ closeSheet(); K.editLive(a.id); };
       if($id("aDel")) $id("aDel").onclick = function(){ if(!confirm("Hapus akun @" + a.un + " beserta videonya?")) return; K.st.accounts = K.st.accounts.filter(function(o){ return o !== a; }); K.st.videos = K.st.videos.filter(function(v){ return v.by !== a.id; }); K.st.dms = K.st.dms.filter(function(d){ return d.a !== a.id && d.b !== a.id; }); delete K.st.fol[a.id]; if(K.st.me === a.id) K.st.me = K.st.accounts[0].id; K.save(); closeSheet(); root("feed"); };
     });
   };
@@ -12949,6 +13116,11 @@ render();
       case "prof": CMV = null; if(!(top().v === "prof" && (top().id || K.st.me) === v)) go("prof", v); break;
       case "un": var ac = K.byUn(v); if(ac){ CMV = null; go("prof", ac.id); } break;
       case "watch": go("watch", v); break;
+      case "livestart": var me2 = K.me(); me2.live = me2.live || { on: 0, cover: null, title: "", viewers: 0, msgs: [], likedBy: [] }; K.editLive(K.st.me); break;
+      case "livewatch": go("live", v); break;
+      case "liveedit": K.editLive(v); break;
+      case "livelike": var ld2 = K.acc(top().id); if(ld2){ ld2.live.likedBy = ld2.live.likedBy || []; tog(ld2.live.likedBy, K.st.me); render(); } break;
+      case "livesend": var li2 = $id("tkLiveIn"), lacc2 = K.acc(top().id); if(!li2 || !lacc2 || !li2.value.trim()) break; lacc2.live.msgs = lacc2.live.msgs || []; lacc2.live.msgs.push({ id: uid("lm"), by: K.st.me, text: li2.value.trim(), ts: now(), kind: "msg" }); li2.value = ""; K.save(); render(); break;
       case "like": case "save": var vd = K.vid(v); if(!vd) break; var l = a === "like" ? "likedBy" : "savedBy"; vd[l] = vd[l] || []; tog(vd[l], K.st.me); render(); break;
       case "cmts": CMV = v; RT = null; render(); break;
       case "cmclose": if(e.target.closest(".tk-cm") && !e.target.closest(".tk-ib")) break; CMV = null; render(); break;
@@ -12981,10 +13153,11 @@ render();
       case "photo": $id("tkApp").classList.toggle("photo"); if($id("tkApp").classList.contains("photo")) toast("Mode Foto: ketuk jam untuk keluar"); break;
       case "stap": $id("tkApp").classList.remove("photo"); break;
       case "snap": snap(); break;
+      case "theme": K.st.theme = K.st.theme === "dark" ? "light" : "dark"; K.save(); render(); toast(K.st.theme === "dark" ? "Tema gelap aktif" : "Tema terang aktif"); break;
     }
   }
   document.addEventListener("keydown", function(e){ if(!e.target) return; var app = $id("tkApp"); if(!app || !app.classList.contains("open")) return;
-    if(e.key === "Enter"){ if(e.target.id === "tkDmIn"){ var b = app.querySelector('[data-a="dmsend"]'); if(b) b.click(); } if(e.target.id === "tkCmIn"){ var c = app.querySelector('[data-a="cpost"]'); if(c) c.click(); } }
+    if(e.key === "Enter"){ if(e.target.id === "tkDmIn"){ var b = app.querySelector('[data-a="dmsend"]'); if(b) b.click(); } if(e.target.id === "tkCmIn"){ var c = app.querySelector('[data-a="cpost"]'); if(c) c.click(); } if(e.target.id === "tkLiveIn"){ var lv2 = app.querySelector('[data-a="livesend"]'); if(lv2) lv2.click(); } }
     if(e.key === "Escape"){ if($id("tkSheet").classList.contains("open")) closeSheet(); else if(CMV){ CMV = null; render(); } else back(); } });
   document.addEventListener("input", function(e){ if(e.target && e.target.id === "tkQ"){ top().q = e.target.value; var pos = e.target.selectionStart; render(); var q = $id("tkQ"); if(q){ q.focus(); try{ q.setSelectionRange(pos, pos); }catch(_){} } } });
   K.open = function(){ build(); K.load(); $id("tkApp").classList.add("open"); document.body.style.overflow = "hidden"; render(); LN.loadAssets(refs()).then(function(){ render(); }); try{ localStorage.setItem("mocksy.svc", "tk"); }catch(e){} };
