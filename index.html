@@ -1761,6 +1761,14 @@ body.pl-line #screenChatView .composer-input-pill { background-color: var(--ln-i
 @media (min-width: 700px){
   .x-phone, .ig { width: 393px !important; max-width: none !important; height: 852px !important; flex: none !important; }
 }
+/* ===== Quote Post (QRT) ===== */
+.x-quote { margin-top: 10px; border: 1px solid var(--bd); border-radius: 14px; padding: 10px 12px; cursor: pointer; font-size: 14px; }
+.x-quote .x-av { width: 18px !important; height: 18px !important; vertical-align: -4px; margin-right: 6px; }
+.x-quote b { font-size: 14px; }
+.x-quote .h { color: var(--tx2); margin-left: 4px; }
+.x-quote .t { margin-top: 4px; color: var(--tx); white-space: pre-wrap; word-break: break-word; line-height: 19px; }
+.x-quote .x-media { margin-top: 8px; max-height: 220px; }
+.x-quote.deleted { color: var(--tx2); font-style: italic; cursor: default; }
 
 /* ===== MOCKSY LOCKSCREEN ===== */
 #lkApp { position: fixed; inset: 0; z-index: 600; display: none; flex-direction: column; background-color: var(--bg-app, #F4F5F7); color: var(--text-main, #111); font-family: -apple-system, system-ui, sans-serif; }
@@ -10870,6 +10878,7 @@ render();
     if(k === "rt") return b + (p.rtBy || []).length;
     if(k === "bm") return b + (p.bmBy || []).length;
     if(k === "rep") return b + X.st.posts.filter(function(q){ return q.replyTo === p.id; }).length;
+    if(k === "q") return b + X.st.posts.filter(function(q){ return q.quoteOf === p.id; }).length;
     return b;
   };
   X.has = function(p, list){ return (p[list] || []).indexOf(X.st.me) >= 0; };
@@ -10889,8 +10898,8 @@ render();
   X.actsHtml = function(p, big){
     var s = big ? 23 : 18.5, like = X.has(p, "likedBy"), rt = X.has(p, "rtBy"), bm = X.has(p, "bmBy");
     function a(act, ic, cls, n, fill){ return '<button type="button" class="x-act ' + cls + '" data-a="' + act + '" data-v="' + p.id + '"><i>' + X.ic(ic, s, fill ? { fill: 1 } : null) + "</i>" + (big || n == null ? "" : '<span>' + (n ? X.num(n) : "") + "</span>") + "</button>"; }
-    if(big) return '<div class="x-dacts">' + a("reply", "reply", "") + a("rt", "rt", rt ? "rted" : "") + a("like", "heart", like ? "liked" : "", null, like) + a("bm", "bm", bm ? "bmed" : "", null, bm) + a("share", "share", "") + "</div>";
-    return '<div class="x-acts"><div class="g">' + a("reply", "reply", "", X.cnt(p, "rep")) + '</div><div class="g">' + a("rt", "rt", rt ? "rted" : "", X.cnt(p, "rt")) + '</div><div class="g">' + a("like", "heart", like ? "liked" : "", X.cnt(p, "like"), like) + '</div><div class="g">' + a("views", "views", "", X.cnt(p, "view")) +
+    if(big) return '<div class="x-dacts">' + a("reply", "reply", "") + a("rtmenu", "rt", rt ? "rted" : "") + a("like", "heart", like ? "liked" : "", null, like) + a("bm", "bm", bm ? "bmed" : "", null, bm) + a("share", "share", "") + "</div>";
+    return '<div class="x-acts"><div class="g">' + a("reply", "reply", "", X.cnt(p, "rep")) + '</div><div class="g">' + a("rtmenu", "rt", rt ? "rted" : "", X.cnt(p, "rt") + X.cnt(p, "q")) + '</div><div class="g">' + a("like", "heart", like ? "liked" : "", X.cnt(p, "like"), like) + '</div><div class="g">' + a("views", "views", "", X.cnt(p, "view")) +
       '</div><div class="g">' + a("bm", "bm", bm ? "bmed" : "", null, bm).replace("<span></span>", "") + a("share", "share", "") + "</div></div>";
   };
   X.postHtml = function(p, o){
@@ -10900,9 +10909,16 @@ render();
     if(o.pinned) ctx = '<div class="x-ctx">' + X.ic("pin", 14, { sw: 2.2 }) + "<span>" + X.t("pinned") + "</span></div>";
     var rp = "";
     if(p.replyTo && !o.noReplying){ var par = X.post(p.replyTo), pa = par ? X.acc(par.by) : null; if(pa) rp = '<div class="x-replying">' + X.t("replyingTo") + ' <a class="x-link" data-a="prof" data-v="' + pa.id + '">@' + esc(pa.un) + "</a></div>"; }
+    var qh = "";
+    if(p.quoteOf){
+      var qp = X.post(p.quoteOf);
+      qh = qp ? ('<div class="x-quote" data-a="post" data-v="' + qp.id + '">' + X.avatar(X.acc(qp.by), 18) + X.nameRow(X.acc(qp.by) || { dn: "?", un: "unknown" }) + '<span class="h">@' + esc((X.acc(qp.by) || {}).un || "unknown") + " \u00b7 " + X.rel(qp.ts) + "</span>" +
+        (qp.text ? '<div class="t">' + X.rich(qp.text) + "</div>" : "") + X.mediaHtml(qp.media) + "</div>")
+        : ('<div class="x-quote deleted">' + (X.st.lang === "id" ? "Postingan yang dikutip telah dihapus." : "This post was deleted.") + "</div>");
+    }
     return ctx + '<article class="x-post' + (o.thread ? " thread" : "") + '" data-a="post" data-v="' + p.id + '"><div class="lcol">' + X.avatar(acc, 40) + (o.thread ? '<div class="tline"></div>' : "") + '</div><div class="body">' +
       '<div class="x-ph">' + X.nameRow(acc) + '<span class="h">@' + esc(acc.un) + " \u00b7 " + X.rel(p.ts) + '</span><button type="button" class="more" data-a="pmore" data-v="' + p.id + '" aria-label="Opsi">' + X.ic("more", 18) + "</button></div>" +
-      rp + (p.text ? '<div class="x-txt">' + X.rich(p.text) + "</div>" : "") + X.mediaHtml(p.media) + X.actsHtml(p) + "</div></article>";
+      rp + (p.text ? '<div class="x-txt">' + X.rich(p.text) + "</div>" : "") + X.mediaHtml(p.media) + qh + X.actsHtml(p) + "</div></article>";
   };
 
   /* ---------- feed ---------- */
@@ -11054,7 +11070,7 @@ render();
     if(p.replyTo){ var par = X.post(p.replyTo), pa = par ? X.acc(par.by) : null; if(pa) h += '<div class="x-replying" style="padding:6px 16px 0">' + t("replyingTo") + ' <a class="x-link" data-a="prof" data-v="' + pa.id + '">@' + esc(pa.un) + "</a></div>"; }
     h += (p.text ? '<div class="x-dtxt">' + X.rich(p.text) + "</div>" : "") + '<div style="padding:0 16px">' + X.mediaHtml(p.media) + "</div>";
     h += '<div class="x-dmeta">' + X.abs(p.ts) + " \u00b7 <b>" + X.num(X.cnt(p, "view")) + "</b> " + t("views") + "</div>";
-    var st = [[X.cnt(p, "rt"), t("reposts")], [+(p.c && p.c.q) || 0, t("quotes")], [X.cnt(p, "like"), t("likes")], [X.cnt(p, "bm"), t("bookmarks")]].filter(function(s){ return s[0] > 0; });
+    var st = [[X.cnt(p, "rt"), t("reposts")], [X.cnt(p, "q"), t("quotes")], [X.cnt(p, "like"), t("likes")], [X.cnt(p, "bm"), t("bookmarks")]].filter(function(s){ return s[0] > 0; });
     if(st.length) h += '<div class="x-dstats">' + st.map(function(s){ return "<span><b>" + X.full(s[0]) + "</b> " + s[1] + "</span>"; }).join("") + "</div>";
     h += X.actsHtml(p, true);
     /* thread: lanjutan tweet pemilik (tweet 2, 3, ...) langsung tampil */
@@ -11314,10 +11330,16 @@ render();
   }
   var CNT = [["rep", "Balasan"], ["rt", "Repost"], ["q", "Kutipan"], ["like", "Suka"], ["bm", "Markah"], ["view", "Tayangan"]];
   /* compose & edit memakai form yang sama */
+  function quotedPreviewHtml(id){
+    var qp = X.post(id); if(!qp) return "";
+    var qa = X.acc(qp.by) || { dn: "?", un: "unknown" };
+    return '<div class="x-f"><label>' + (X.st.lang === "id" ? "Mengutip" : "Quoting") + '</label><div class="x-quote">' + X.avatar(qa, 18) + X.nameRow(qa) + '<span class="h">@' + esc(qa.un) + "</span>" + (qp.text ? '<div class="t">' + X.rich(qp.text) + "</div>" : "") + X.mediaHtml(qp.media) + "</div></div>";
+  }
   function postForm(p, isNew){
     var c = p.c || {};
     return '<div class="x-f"><label>Diposting oleh</label>' + accChips("pfBy", p.by, false) + "</div>" +
       (p.replyTo ? '<div class="x-note">' + t("replyingTo") + " @" + esc((X.acc((X.post(p.replyTo) || {}).by) || {}).un || "") + "</div>" : "") +
+      (p.quoteOf ? quotedPreviewHtml(p.quoteOf) : "") +
       '<div class="x-f"><label>Isi postingan <span id="pfCnt" style="float:right"></span></label><textarea class="x-ta" id="pfTx" placeholder="' + t("newPost") + '"></textarea></div>' +
       '<div class="x-f"><label>Foto (maks. 4)</label><div class="x-media-ed"></div></div>' +
       '<div class="x-f"><label>Waktu posting</label><input class="x-in" type="datetime-local" id="pfTs"></div>' +
@@ -11339,12 +11361,14 @@ render();
     b.querySelector("#pfTs").value = dtIn(p.ts || X.now());
     mediaEd(b, media);
   }
-  X.compose = function(replyTo, by){
-    var p = { id: X.uid("p"), by: by || X.st.me, text: "", media: [], ts: X.now(), replyTo: replyTo || null, c: { rep: 0, rt: 0, q: 0, like: 0, view: 0, bm: 0 }, likedBy: [], rtBy: [], bmBy: [] };
-    sheet(replyTo ? "Balas" : "Postingan baru", postForm(p, true) + '<button type="button" class="x-btn pri" id="pfGo">' + (replyTo ? (X.st.lang === "id" ? "Balas" : "Reply") : t("post")) + "</button>", function(b){
+  X.compose = function(replyTo, by, quoteOf){
+    var p = { id: X.uid("p"), by: by || X.st.me, text: "", media: [], ts: X.now(), replyTo: replyTo || null, quoteOf: quoteOf || null, c: { rep: 0, rt: 0, q: 0, like: 0, view: 0, bm: 0 }, likedBy: [], rtBy: [], bmBy: [] };
+    var title = quoteOf ? (X.st.lang === "id" ? "Kutip postingan" : "Quote post") : replyTo ? "Balas" : "Postingan baru";
+    var btnLabel = quoteOf ? (X.st.lang === "id" ? "Kutip" : "Quote") : replyTo ? (X.st.lang === "id" ? "Balas" : "Reply") : t("post");
+    sheet(title, postForm(p, true) + '<button type="button" class="x-btn pri" id="pfGo">' + btnLabel + "</button>", function(b){
       bindPostForm(b, p, p.media);
       setTimeout(function(){ b.querySelector("#pfTx").focus(); }, 60);
-      $id("pfGo").onclick = function(){ readPost(b, p); if(!p.text.trim() && !p.media.length){ X.toast("Postingan masih kosong"); return; } X.st.posts.push(p); X.save(); closeSheet(); render(); X.toast(replyTo ? "Balasan terkirim" : "Postingan terkirim"); };
+      $id("pfGo").onclick = function(){ readPost(b, p); if(!p.text.trim() && !p.media.length && !quoteOf){ X.toast("Postingan masih kosong"); return; } X.st.posts.push(p); X.save(); closeSheet(); render(); X.toast(quoteOf ? "Postingan dikutip" : replyTo ? "Balasan terkirim" : "Postingan terkirim"); };
     });
   };
   X.editPost = function(id){
@@ -11548,6 +11572,14 @@ render();
     function fail(){ X.toast("Browser ini tidak mendukung unduh langsung. Pakai Mode Foto lalu screenshot."); }
   };
 
+  function repostMenu(id){
+    var p = X.post(id); if(!p) return;
+    var rt = X.has(p, "rtBy");
+    sheet((X.st.lang === "id" ? "Repost" : "Repost"), '<button type="button" class="x-btn block" id="rtDo" style="justify-content:flex-start;gap:12px">' + ic("rt", 20) + (rt ? (X.st.lang === "id" ? "Batalkan repost" : "Undo repost") : (X.st.lang === "id" ? "Repost" : "Repost")) + '</button><button type="button" class="x-btn block" id="rtQt" style="justify-content:flex-start;gap:12px;margin-top:8px">' + ic("edit", 20) + (X.st.lang === "id" ? "Kutip" : "Quote") + "</button>", function(){
+      $id("rtDo").onclick = function(){ X.toggle(p, "rtBy"); closeSheet(); X.render(); };
+      $id("rtQt").onclick = function(){ closeSheet(); X.compose(null, null, p.id); };
+    });
+  }
   /* ---------- event ---------- */
   function onClick(e){
     var el = e.target.closest("[data-a]"); if(!el || !$id("xApp").contains(el)) return;
@@ -11563,9 +11595,10 @@ render();
       case "prof": closeDrawer(); if(!(top().v === "prof" && top().id === v)) go("prof", v); break;
       case "handle": var acc = X.byHandle(v); if(acc) go("prof", acc.id); else X.toast("@" + v + " belum ada di Mocksy X"); break;
       case "tag": go("explore", null, { q: v ? "#" + v : "" }); setTimeout(function(){ var q = $id("xQ"); if(q && !v) q.focus(); }, 50); break;
-      case "like": case "rt": case "bm":
-        var p = X.post(v); if(!p) break; var key = a === "like" ? "likedBy" : a === "rt" ? "rtBy" : "bmBy", on = X.toggle(p, key);
+      case "like": case "bm":
+        var p = X.post(v); if(!p) break; var key = a === "like" ? "likedBy" : "bmBy", on = X.toggle(p, key);
         if(a === "bm") X.toast(on ? "Ditambahkan ke Markah" : "Dihapus dari Markah"); X.render(); break;
+      case "rtmenu": repostMenu(v); break;
       case "reply": X.compose(v); break;
       case "share": X.toast("Tautan disalin ke papan klip"); break;
       case "views": break;
