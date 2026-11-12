@@ -2318,6 +2318,16 @@ body.pl-im #screenChatView .bubble-meta-row.out { color: rgba(255,255,255,.8); }
 body.pl-im #screenChatView .bubble-meta-row.in { color: #8A8A8E; }
 body.pl-im.pl-dk #screenChatView .chat-stream-container, body.pl-im.pl-dk #chatStreamScroll { background-color: #000000; }
 body.pl-im.pl-dk #screenChatView .chat-bubble.them { background-color: #26262A; color: #FFFFFF; }
+/* ===== format teks, mention, emoji impor ===== */
+.mrt-at { color: #027EB5; }
+body.pl-dk .mrt-at { color: #53BDEB; }
+body.pl-im .mrt-at { color: inherit; font-weight: 700; }
+.chat-bubble.me .mrt-at { color: inherit; font-weight: 700; }
+.mrt-emo { width: 1.2em; height: 1.2em; vertical-align: -0.25em; display: inline-block; }
+.mrt-tools { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }
+.mrt-tools button { min-width: 44px; height: 36px; border-radius: 9px; border: 1px solid var(--border, #E5E7EB); background-color: var(--bg-surface, #fff); color: inherit; cursor: pointer; font-size: 14px; padding: 0 10px; }
+.mrt-pv { min-height: 40px; padding: 10px 12px; border-radius: 10px; background-color: var(--bg-subtle, #F3F4F6); font-size: 15px; line-height: 1.4; word-break: break-word; }
+.mrt-atbtn { width: 32px; height: 32px; border-radius: 50%; border: none; background: transparent; color: var(--text-muted, #6B7280); font-weight: 700; font-size: 17px; cursor: pointer; flex-shrink: 0; }
 
 </style>
 </head>
@@ -3846,7 +3856,7 @@ function renderWA(c,o){
   c.restore();
   rrp(c,x+.5,y+.5,w-1,h-1,r-.5);var q=c.createLinearGradient(x,y,x+w,y+h);q.addColorStop(0,"rgba(255,255,255,"+(W?.5:.85)+")");q.addColorStop(.4,"rgba(255,255,255,"+(W?.1:.22)+")");q.addColorStop(.7,"rgba(255,255,255,"+(W?.08:.18)+")");q.addColorStop(1,"rgba(255,255,255,"+(W?.36:.7)+")");c.lineWidth=.8;c.strokeStyle=q;c.stroke()}
  /* WhatsApp iOS voice message: avatar + ikon mic, tombol play, waveform dengan knob, durasi di bawah */
- function audWA(it,X0,y,me,bg){var m=it.m,w=it.w,h=it.h,pl=!!m.pl,cy=y+26,mem=me?{n:"You",av:S.myav}:{n:S.name||"?",av:S.av},
+ function audWA(it,X0,y,me,bg){var m=it.m,w=it.w,h=it.h,pl=!!m.pl,cy=y+26,mem=me?{n:"You",av:S.myav}:(S.grp&&S.mem&&S.mem[m.who||0]?{n:S.mem[m.who||0].n||"?",av:S.mem[m.who||0].av}:{n:S.name||"?",av:S.av}),
   ax=me?X0+w-12-20:X0+12+20,px=me?X0+13:X0+12+40+9,
   gray=P?rgbaOf(P.tx,.55):(d?"rgba(233,237,239,.7)":"rgba(17,27,33,.55)"),
   barc=P?rgbaOf(P.tx,.36):(d?"rgba(233,237,239,.4)":"rgba(17,27,33,.32)"),
@@ -13403,6 +13413,310 @@ render();
     setTimeout(function(){ if(app) app.classList.remove("snapping"); fit(); }, 2500);
   }, true);
   fit();
+})();
+
+/* ==========================================================================
+   MOCKSY RICH TEXT — format teks (*tebal* _miring_ ~coret~ `mono` @mention)
+   untuk semua mockup canvas, pemformat Chat View (DOM), paket emoji impor,
+   dan penyusun pesan sistem berformat.
+   ========================================================================== */
+(function(){
+  "use strict";
+  var LN = window.LINE, U = LN.ui;
+  function $id(i){ return document.getElementById(i); }
+  var RT = window.MRT = { on: true };
+  try{ if(localStorage.getItem("mocksy.rich") === "0") RT.on = false; }catch(e){}
+
+  /* ---------- parser (aturan WhatsApp: penanda menempel ke kata) ---------- */
+  var MARK = { "*": "b", "_": "i", "~": "s", "`": "m" };
+  var QUICK = /[*_~`@]/;
+  function isB(ch){ return ch === undefined || /[\s.,!?;:()"'\[\]{}<>\/-]/.test(ch); }
+  function parse(t, st, out){
+    out = out || []; st = st || {};
+    var buf = "", i = 0, n = t.length;
+    function flush(){ if(buf){ out.push({ t: buf, b: st.b, i: st.i, s: st.s, m: st.m, at: st.at }); buf = ""; } }
+    while(i < n){
+      var ch = t[i], k = MARK[ch];
+      if(k && !st[k] && isB(t[i - 1]) && t[i + 1] && !/\s/.test(t[i + 1])){
+        var j = t.indexOf(ch, i + 1);
+        while(j > 0 && !(isB(t[j + 1]) && !/\s/.test(t[j - 1]))) j = t.indexOf(ch, j + 1);
+        if(j > i + 1){ flush(); var ns = { b: st.b, i: st.i, s: st.s, m: st.m }; ns[k] = true; if(k === "m") out.push({ t: t.slice(i + 1, j), b: st.b, i: st.i, s: st.s, m: true }); else parse(t.slice(i + 1, j), ns, out); i = j + 1; continue; }
+      }
+      if(ch === "@" && !st.m && isB(t[i - 1])){
+        var mm = /^@[\p{L}\p{N}_.]+/u.exec(t.slice(i));
+        if(mm){ flush(); out.push({ t: mm[0], b: st.b, i: st.i, s: st.s, at: true }); i += mm[0].length; continue; }
+      }
+      buf += ch; i++;
+    }
+    flush(); return out;
+  }
+  RT.parse = parse;
+  function rich(t){ return RT.on && typeof t === "string" && QUICK.test(t) && parse(t).some(function(s){ return s.b || s.i || s.s || s.m || s.at; }); }
+  RT.isRich = rich;
+
+  /* ---------- varian font ---------- */
+  function fontVar(base, sg){
+    var m = /^\s*(italic\s+|oblique\s+)?(?:(normal|small-caps)\s+)?(\d{3}|bold|normal)?\s*([\d.]+px)(?:\/[\d.]+\w*)?\s+(.*)$/.exec(base);
+    if(!m) return base;
+    var w = m[3] || "400"; if(w === "bold") w = "700"; if(w === "normal") w = "400";
+    if(sg.b) w = String(Math.max(+w || 400, 700) === 700 && +w >= 600 ? 800 : 700);
+    var fam = sg.m ? 'ui-monospace,"SF Mono",Menlo,Consolas,monospace' : m[5];
+    return ((sg.i || m[1]) ? "italic " : "") + w + " " + m[4] + " " + fam;
+  }
+  function px(font){ var m = /([\d.]+)px/.exec(font); return m ? +m[1] : 16; }
+  function mentionCol(ctxCol){
+    var S = window.S;
+    if(S && S.wa && !S.ln) return S.dk ? "#53BDEB" : "#027EB5";
+    if(S && S.ln) return "#1E7FD8";
+    return ctxCol;
+  }
+
+  /* ---------- emoji: deteksi & paket gambar ---------- */
+  var EXT = /\p{Extended_Pictographic}/u, SEG = window.Intl && Intl.Segmenter ? new Intl.Segmenter(undefined, { granularity: "grapheme" }) : null;
+  var EM = { keys: null, img: {}, count: 0 };
+  function emoKey(g){ var a = []; for(var ch of g){ a.push(ch.codePointAt(0).toString(16)); } return a.join("-"); }
+  function emoImg(g){
+    if(!EM.keys || !EM.count) return null;
+    var k = emoKey(g), k2 = k.replace(/-fe0f/g, ""), key = EM.keys[k] ? k : EM.keys[k2] ? k2 : null;
+    if(!key) return null;
+    var e = EM.img[key];
+    if(e) return e.ok ? e.el : null;
+    EM.img[key] = e = { ok: false, el: new Image() };
+    idb().then(function(db){ var q = db.transaction("e").objectStore("e").get(key); q.onsuccess = function(){ if(!q.result) return; e.el.onload = function(){ e.ok = true; schedule(); }; e.el.src = URL.createObjectURL(q.result); }; });
+    return null;
+  }
+  var rq = 0; function schedule(){ if(rq) return; rq = setTimeout(function(){ rq = 0; try{ if(typeof render === "function") render(); if(window.MLock && $id("lkApp") && $id("lkApp").classList.contains("open")) MLock.redraw(); }catch(e){} }, 120); }
+  function hasEmo(t){ return EM.count && EXT.test(t); }
+
+  /* ---------- patch canvas: fillText & measureText ---------- */
+  var P = CanvasRenderingContext2D.prototype, oFill = P.fillText, oMeas = P.measureText;
+  function pieces(ctx, text){
+    var base = ctx.font, segs = rich(text) ? parse(text) : [{ t: text }], out = [], total = 0;
+    segs.forEach(function(sg){
+      var imAt = sg.at && !(window.S && (S.wa || S.ln)), f = (sg.b || sg.i || sg.m || imAt) ? fontVar(base, imAt ? { b: true, i: sg.i, m: sg.m } : sg) : base;
+      ctx.font = f;
+      var parts = hasEmo(sg.t) && SEG ? Array.from(SEG.segment(sg.t), function(x){ return x.segment; }) : [sg.t], run = "";
+      function pushRun(){ if(run){ var w = oMeas.call(ctx, run).width; out.push({ t: run, f: f, w: w, sg: sg }); total += w; run = ""; } }
+      parts.forEach(function(p){
+        if(parts.length > 1 && EXT.test(p)){ var im = emoImg(p); if(im){ pushRun(); var w2 = oMeas.call(ctx, p).width; out.push({ img: im, f: f, w: w2, sg: sg }); total += w2; return; } }
+        run += p;
+      });
+      pushRun();
+    });
+    ctx.font = base;
+    return { list: out, w: total };
+  }
+  P.fillText = function(text, x, y, mw){
+    if(typeof text !== "string" || !(rich(text) || hasEmo(text))) return oFill.apply(this, arguments);
+    var pc = pieces(this, text), base = this.font, al = this.textAlign, col = this.fillStyle, sx;
+    var dir = al === "center" ? .5 : (al === "right" || al === "end") ? 1 : 0;
+    sx = x - pc.w * dir;
+    this.save(); this.textAlign = "left";
+    var self = this;
+    pc.list.forEach(function(p){
+      self.font = p.f;
+      if(p.img){ var fs = px(p.f), sz = Math.min(p.w * 1.05, fs * 1.18); self.drawImage(p.img, sx + (p.w - sz) / 2, y - fs * .86, sz, sz); }
+      else {
+        self.fillStyle = p.sg.at ? mentionCol(col) : col;
+        oFill.call(self, p.t, sx, y);
+        if(p.sg.s){ var fs2 = px(p.f); self.fillRect(sx, y - fs2 * .3, p.w, Math.max(1, fs2 * .07)); }
+      }
+      sx += p.w;
+    });
+    this.restore(); this.font = base;
+  };
+  P.measureText = function(text){
+    var mt = oMeas.apply(this, arguments);
+    if(typeof text !== "string" || !rich(text)) return mt;
+    var w = pieces(this, text).w, o = {};
+    ["actualBoundingBoxAscent", "actualBoundingBoxDescent", "actualBoundingBoxLeft", "fontBoundingBoxAscent", "fontBoundingBoxDescent"].forEach(function(k){ o[k] = mt[k]; });
+    o.width = w; o.actualBoundingBoxRight = w; return o;
+  };
+
+  /* ---------- pemformat DOM (Chat View, X, IG) ---------- */
+  function esc(s){ return LN.esc(s); }
+  RT.html = function(t){
+    return parse(t).map(function(s){
+      var h = esc(s.t);
+      if(s.m) h = '<code style="font-family:ui-monospace,Menlo,monospace;font-size:.92em">' + h + "</code>";
+      if(s.s) h = "<s>" + h + "</s>"; if(s.i) h = "<i>" + h + "</i>"; if(s.b) h = "<b>" + h + "</b>";
+      if(s.at) h = '<span class="mrt-at">' + h + "</span>";
+      return h;
+    }).join("");
+  };
+  function emoHtml(h){
+    if(!EM.count || !SEG) return h;
+    return h.replace(/(\p{Extended_Pictographic}(?:\uFE0F|\u200D\p{Extended_Pictographic}|[\u{1F3FB}-\u{1F3FF}])*)/gu, function(g){
+      var k = emoKey(g), k2 = k.replace(/-fe0f/g, ""), key = EM.keys[k] ? k : EM.keys[k2] ? k2 : null;
+      if(!key) return g;
+      var e = EM.img[key]; if(!e || !e.ok){ emoImg(g); return g; }
+      return '<img class="mrt-emo" alt="' + g + '" src="' + e.el.src + '">';
+    });
+  }
+  var busy = false;
+  function fmtTree(root){
+    if(!root || busy) return; busy = true;
+    try{
+      var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null), nodes = [], n;
+      while((n = w.nextNode())){ var p = n.parentNode; if(!p || p.closest("input,textarea,script,style,.mrt-done,[contenteditable]")) continue; var v = n.nodeValue; if(v && (rich(v) || hasEmo(v))) nodes.push(n); }
+      nodes.forEach(function(nd){ var sp = document.createElement("span"); sp.className = "mrt-done"; var v = nd.nodeValue; sp.innerHTML = emoHtml(rich(v) ? RT.html(v) : esc(v)); nd.parentNode.replaceChild(sp, nd); });
+    }catch(e){ console.error(e); }
+    busy = false;
+  }
+  RT.fmtTree = fmtTree;
+  function observe(id){
+    var el = $id(id); if(!el || el.__mrt) return; el.__mrt = 1;
+    new MutationObserver(function(){ if(!busy) requestAnimationFrame(function(){ fmtTree(el); }); }).observe(el, { childList: true, subtree: true });
+    fmtTree(el);
+  }
+  RT.observe = observe;
+
+  /* ---------- penyimpanan paket emoji (IndexedDB) ---------- */
+  var DB = null;
+  function idb(){ return new Promise(function(res, rej){ if(DB) return res(DB); var r = indexedDB.open("mocksy-emoji", 1); r.onupgradeneeded = function(){ r.result.createObjectStore("e"); }; r.onsuccess = function(){ DB = r.result; res(DB); }; r.onerror = function(){ rej(r.error); }; }); }
+  function loadKeys(){ return idb().then(function(db){ return new Promise(function(res){ var q = db.transaction("e").objectStore("e").getAllKeys(); q.onsuccess = function(){ EM.keys = {}; (q.result || []).forEach(function(k){ EM.keys[k] = 1; }); EM.count = (q.result || []).length; res(EM.count); }; q.onerror = function(){ res(0); }; }); }).catch(function(){ return 0; }); }
+  RT.emojiCount = function(){ return EM.count; };
+  /* nama file -> kunci kode Unicode: "1f602.png", "emoji_u1f602.png", "1F469-200D-1F4BB.png", "u1f602.png" */
+  function keyFromName(name){
+    var base = String(name).split("/").pop().replace(/\.(png|webp)$/i, "").toLowerCase().replace(/^(emoji_u|u\+?|emoji_)/, "");
+    var parts = base.split(/[-_ ]+/).filter(function(x){ return /^[0-9a-f]{4,6}$/.test(x); });
+    if(!parts.length) return null;
+    if(!parts.some(function(x){ return parseInt(x, 16) >= 0x2000; })) return null;
+    return parts.map(function(x){ return parseInt(x, 16).toString(16); }).join("-");
+  }
+  RT.keyFromName = keyFromName;
+  /* pembaca ZIP minimal (stored & deflate) memakai DecompressionStream */
+  function readZip(buf){
+    var dv = new DataView(buf), u8 = new Uint8Array(buf), eocd = -1;
+    for(var i = buf.byteLength - 22; i >= Math.max(0, buf.byteLength - 70000); i--){ if(dv.getUint32(i, true) === 0x06054b50){ eocd = i; break; } }
+    if(eocd < 0) return Promise.reject(new Error("File ZIP tidak valid"));
+    var cnt = dv.getUint16(eocd + 10, true), off = dv.getUint32(eocd + 16, true), files = [], td = new TextDecoder();
+    for(var k = 0; k < cnt; k++){
+      if(dv.getUint32(off, true) !== 0x02014b50) break;
+      var meth = dv.getUint16(off + 10, true), csz = dv.getUint32(off + 20, true), nl = dv.getUint16(off + 28, true), xl = dv.getUint16(off + 30, true), cl = dv.getUint16(off + 32, true), lo = dv.getUint32(off + 42, true);
+      var name = td.decode(u8.subarray(off + 46, off + 46 + nl));
+      var lnl = dv.getUint16(lo + 26, true), lxl = dv.getUint16(lo + 28, true), ds = lo + 30 + lnl + lxl;
+      files.push({ name: name, meth: meth, data: u8.subarray(ds, ds + csz) });
+      off += 46 + nl + xl + cl;
+    }
+    return Promise.resolve(files);
+  }
+  function inflate(f){
+    if(f.meth === 0) return Promise.resolve(new Blob([f.data], { type: "image/png" }));
+    if(f.meth === 8 && window.DecompressionStream){ var ds = new Blob([f.data]).stream().pipeThrough(new DecompressionStream("deflate-raw")); return new Response(ds).blob().then(function(b){ return b.slice(0, b.size, "image/png"); }); }
+    return Promise.reject(new Error("Kompresi ZIP tidak didukung"));
+  }
+  RT.importFiles = function(fileList, onProgress){
+    var items = [];
+    var tasks = Array.prototype.map.call(fileList, function(f){
+      if(/\.zip$/i.test(f.name)) return f.arrayBuffer().then(readZip).then(function(fs){ fs.forEach(function(z){ var k = keyFromName(z.name); if(k && /\.(png|webp)$/i.test(z.name)) items.push({ k: k, z: z }); }); });
+      var k = keyFromName(f.name); if(k) items.push({ k: k, blob: f }); return Promise.resolve();
+    });
+    return Promise.all(tasks).then(function(){
+      if(!items.length) throw new Error("Tidak ada file emoji bernama kode Unicode (mis. 1f602.png).");
+      return idb().then(function(db){
+        var done = 0, chunk = 200;
+        function step(i){
+          if(i >= items.length) return Promise.resolve();
+          return Promise.all(items.slice(i, i + chunk).map(function(it){ return it.blob ? Promise.resolve(it.blob) : inflate(it.z).catch(function(){ return null; }); })).then(function(blobs){
+            return new Promise(function(res){ var tx = db.transaction("e", "readwrite"), st = tx.objectStore("e"); blobs.forEach(function(b, j){ if(b) st.put(b, items[i + j].k); }); tx.oncomplete = res; tx.onerror = res; });
+          }).then(function(){ done = Math.min(items.length, i + chunk); if(onProgress) onProgress(done, items.length); return step(i + chunk); });
+        }
+        return step(0);
+      });
+    }).then(function(){ EM.img = {}; return loadKeys(); }).then(function(n){ schedule(); return n; });
+  };
+  RT.clearEmoji = function(){ return idb().then(function(db){ return new Promise(function(res){ var tx = db.transaction("e", "readwrite"); tx.objectStore("e").clear(); tx.oncomplete = res; }); }).then(function(){ EM.keys = {}; EM.count = 0; EM.img = {}; schedule(); }); };
+
+  /* ---------- penyusun pesan sistem berformat ---------- */
+  function members(){ var S = window.S, out = []; if(S && S.grp && S.mem) S.mem.forEach(function(m){ out.push(m.n); }); else if(S && S.name) out.push(S.name); out.push(S && S.wa ? "Anda" : "You"); return out; }
+  RT.sysComposer = function(){
+    var S = window.S, plat = S.ln ? "LINE" : S.wa ? "WhatsApp" : "iMessage";
+    U.sheet("Pesan sistem berformat (" + plat + ")", function(b){
+      b.innerHTML = '<div class="ln-field"><label>Teks</label><div class="mrt-tools"><button type="button" data-w="*" title="Tebal"><b>B</b></button><button type="button" data-w="_" title="Miring"><i>I</i></button><button type="button" data-w="~" title="Coret"><s>S</s></button><button type="button" data-w="`" title="Monospace" style="font-family:ui-monospace,monospace">{ }</button><button type="button" data-all="1" title="Mention semua">@semua</button></div>' +
+        '<textarea class="ln-ta" id="lnSTx" placeholder="mis. *Rani* menambahkan @Dimas ke grup"></textarea></div>' +
+        '<div class="ln-field"><label>Mention anggota</label><div class="ln-chips" id="mrtMem"></div></div>' +
+        '<div class="ln-field"><label>Pratinjau</label><div class="mrt-pv" id="mrtPv"></div></div>' +
+        (S.wa && !S.ln ? '<div class="ln-field"><label>Gaya</label><div class="ln-seg" id="mrtSk"><button type="button" data-v="sys" class="active">Kotak info</button><button type="button" data-v="date">Label kecil</button></div></div>' : "") +
+        '<div class="settings-desc">Format: *tebal* \u2022 _miring_ \u2022 ~coret~ \u2022 `mono` \u2022 @Nama \u2022 @semua. Pilih teks lalu ketuk tombol format.</div>' +
+        '<button type="button" class="ln-btn pri block" id="lnSOk">' + LN.svg("plus", 17) + "<span>Tambahkan ke chat</span></button>";
+      var ta = $id("lnSTx"), sk = "sys";
+      function pv(){ $id("mrtPv").innerHTML = ta.value.trim() ? RT.html(ta.value) : '<span style="opacity:.5">Pratinjau muncul di sini</span>'; }
+      ta.oninput = pv; pv();
+      function insert(s){ var a = ta.selectionStart, e = ta.selectionEnd; ta.value = ta.value.slice(0, a) + s + ta.value.slice(e); ta.focus(); ta.selectionStart = ta.selectionEnd = a + s.length; pv(); }
+      b.querySelectorAll("[data-w]").forEach(function(x){ x.onclick = function(){ var m = x.dataset.w, a = ta.selectionStart, e = ta.selectionEnd, sel = ta.value.slice(a, e) || "teks"; ta.value = ta.value.slice(0, a) + m + sel + m + ta.value.slice(e); ta.focus(); ta.selectionStart = a + 1; ta.selectionEnd = a + 1 + sel.length; pv(); }; });
+      b.querySelector("[data-all]").onclick = function(){ insert((ta.value && !/\s$/.test(ta.value) ? " " : "") + "@semua "); };
+      members().forEach(function(n){ var c = document.createElement("button"); c.type = "button"; c.className = "ln-chip"; c.textContent = "@" + n.split(" ")[0]; c.onclick = function(){ insert((ta.value && !/\s$/.test(ta.value) ? " " : "") + "@" + n.split(" ")[0] + " "); }; $id("mrtMem").appendChild(c); });
+      b.querySelectorAll("#mrtSk button").forEach(function(x){ x.onclick = function(){ sk = x.dataset.v; b.querySelectorAll("#mrtSk button").forEach(function(y){ y.classList.toggle("active", y === x); }); }; });
+      $id("lnSOk").onclick = function(){
+        var t = ta.value.trim(); if(!t){ U.toast("Teks masih kosong"); return; }
+        var m = { id: "m_" + Date.now(), k: "s", t: t, me: false, ts: "" };
+        if(S.wa && !S.ln) m.sk = sk;
+        if(U.MK().pushMsg) U.MK().pushMsg(m); else S.m.push(m);
+        U.closeSheet(); U.refreshAll(); U.toast("Pesan sistem ditambahkan");
+      };
+    });
+  };
+  /* LINE: tile "Sistem" memakai penyusun berformat */
+  U.sysSheet = RT.sysComposer;
+  /* WA & iMessage: tile di menu + Chat View */
+  (function(){
+    var grid = $id("tileAddPhoto") && $id("tileAddPhoto").parentNode; if(!grid || $id("tileRichSys")) return;
+    var b = document.createElement("button"); b.className = "settings-btn-secondary"; b.id = "tileRichSys"; b.type = "button";
+    b.style.cssText = "height:70px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;";
+    b.innerHTML = '<span style="font-weight:800;font-size:15px;letter-spacing:.5px"><b>B</b> <i>I</i> <s>S</s></span><span>Pesan Sistem Berformat</span>';
+    b.onclick = function(){ var md = $id("modalSpecialMessage"); if(md) md.classList.remove("active"); RT.sysComposer(); };
+    grid.appendChild(b);
+  })();
+
+  /* ---------- kartu Emoji & Format di Pengaturan ---------- */
+  (function(){
+    var scroll = document.querySelector("#screenSettings .settings-scroll"); if(!scroll || $id("cardEmoji")) return;
+    var card = document.createElement("div"); card.className = "settings-group-card"; card.id = "cardEmoji"; card.style.flexDirection = "column";
+    card.innerHTML = '<div class="settings-card-header">' + LN.svg("smile", 20) + '<span>Emoji & Format Teks</span></div>' +
+      '<div class="settings-row"><div class="settings-label-box"><div class="settings-title">Format teks</div><div class="settings-desc">*tebal* _miring_ ~coret~ `mono` @mention di semua mockup</div></div><label class="switch-toggle" style="flex-shrink:0"><input type="checkbox" id="mrtOn" aria-label="Format teks"><span class="switch-slider"></span></label></div>' +
+      '<div class="settings-row" style="flex-direction:column;align-items:stretch;gap:10px"><div class="settings-label-box"><div class="settings-title">Paket emoji (PNG)</div><div class="settings-desc" id="mrtCnt"></div></div>' +
+      '<div class="ln-btnrow"><button type="button" class="ln-btn sm" id="mrtImp">' + LN.svg("upload", 15) + '<span>Impor paket (.zip / PNG)</span></button><button type="button" class="ln-btn sm danger" id="mrtClr">' + LN.svg("trash", 15) + '<span>Hapus paket</span></button></div>' +
+      '<div class="settings-desc">Nama file harus kode Unicode emoji, mis. <code>1f602.png</code> atau <code>1f469-200d-1f4bb.png</code>. Tanpa paket, Mocksy memakai emoji bawaan perangkat (di iPhone/iPad/Mac otomatis emoji Apple).</div></div>';
+    var first = scroll.querySelector(".settings-group-card"); scroll.insertBefore(card, first ? first.nextSibling : null);
+    function cnt(){ $id("mrtCnt").textContent = EM.count ? EM.count + " emoji terpasang \u2014 dipakai di semua mockup" : "Belum ada paket \u2014 memakai emoji perangkat"; $id("mrtClr").disabled = !EM.count; }
+    $id("mrtOn").checked = RT.on; $id("mrtOn").onchange = function(){ RT.on = this.checked; try{ localStorage.setItem("mocksy.rich", RT.on ? "1" : "0"); }catch(e){} schedule(); U.refreshAll(); };
+    $id("mrtImp").onclick = function(){
+      var i = document.createElement("input"); i.type = "file"; i.multiple = true; i.accept = ".zip,image/png,image/webp"; i.style.display = "none"; document.body.appendChild(i);
+      i.onchange = function(){ var fs = i.files; i.remove(); if(!fs || !fs.length) return; $id("mrtCnt").textContent = "Mengimpor\u2026";
+        RT.importFiles(fs, function(d, t){ $id("mrtCnt").textContent = "Mengimpor " + d + "/" + t + "\u2026"; }).then(function(n){ cnt(); U.toast(n + " emoji siap dipakai"); }, function(e){ cnt(); U.toast(e.message); }); };
+      i.click();
+    };
+    $id("mrtClr").onclick = function(){ if(confirm("Hapus semua emoji impor? Mocksy kembali memakai emoji perangkat.")) RT.clearEmoji().then(function(){ cnt(); U.toast("Paket emoji dihapus"); }); };
+    RT.syncCard = cnt;
+  })();
+
+  /* ---------- tombol @ (tag anggota / semua) di kolom ketik Chat View ---------- */
+  (function(){
+    var inp = $id("composerTextInput"), pill = inp && inp.closest(".composer-input-pill"); if(!pill || $id("mrtAtBtn")) return;
+    var b = document.createElement("button"); b.type = "button"; b.id = "mrtAtBtn"; b.className = "mrt-atbtn"; b.textContent = "@"; b.title = "Tag anggota"; b.setAttribute("aria-label", "Tag anggota");
+    pill.insertBefore(b, inp.nextSibling);
+    function sync(){ var S = window.S; b.style.display = S && S.grp ? "" : "none"; }
+    b.onclick = function(){
+      var S = window.S; if(!S) return;
+      var names = (S.mem || []).map(function(m){ return m.n; }).filter(Boolean);
+      U.sheet("Tag anggota", function(bd){
+        bd.innerHTML = '<div class="ln-chips" id="mrtAtList"></div><div class="settings-desc" style="margin-top:10px">Tag tampil berwarna di mockup, seperti di aplikasi aslinya.</div>';
+        var box = $id("mrtAtList");
+        [[S.ln ? "all" : S.wa ? "semua" : "everyone", S.ln ? "@all (semua anggota)" : "@semua (semua anggota)"]].concat(names.map(function(n){ return [n.split(" ")[0], "@" + n]; })).forEach(function(q){
+          var c = document.createElement("button"); c.type = "button"; c.className = "ln-chip"; c.textContent = q[1];
+          c.onclick = function(){ var v = inp.value, pos = inp.selectionStart != null ? inp.selectionStart : v.length, pre = v.slice(0, pos), ins = (pre && !/\s$/.test(pre) ? " " : "") + "@" + q[0] + " ";
+            inp.value = pre + ins + v.slice(pos); U.closeSheet(); inp.focus(); try{ inp.setSelectionRange(pos + ins.length, pos + ins.length); }catch(e){} inp.dispatchEvent(new Event("input", { bubbles: true })); };
+          box.appendChild(c);
+        });
+      });
+    };
+    var R0 = render; render = function(){ var r = R0.apply(this, arguments); sync(); return r; }; sync();
+  })();
+  loadKeys().then(function(){ if(RT.syncCard) RT.syncCard(); if(EM.count) schedule(); });
+  observe("chatStreamScroll");
+  /* X & Instagram (DOM) ikut diformat saat dibuka */
+  setInterval(function(){ ["xView", "igView"].forEach(function(id){ var el = $id(id); if(el && !el.__mrt) observe(id); }); }, 1500);
 })();
 
 </script>
