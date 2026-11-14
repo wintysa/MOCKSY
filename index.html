@@ -1774,6 +1774,17 @@ body.pl-line #screenChatView .composer-input-pill { background-color: var(--ln-i
 .x-quote .t { margin-top: 4px; color: var(--tx); white-space: pre-wrap; word-break: break-word; line-height: 19px; }
 .x-quote .x-media { margin-top: 8px; max-height: 220px; }
 .x-quote.deleted { color: var(--tx2); font-style: italic; cursor: default; }
+/* ===== Polling ===== */
+.x-poll { margin-top: 10px; display: flex; flex-direction: column; gap: 8px; }
+.x-poll .opt { position: relative; min-height: 34px; border-radius: 17px; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; font-size: 14px; overflow: hidden; }
+.x-poll button.opt { justify-content: center; border: 1px solid var(--blue); background: transparent; color: var(--blue); font-weight: 700; cursor: pointer; font-family: inherit; }
+.x-poll .opt.res { border-radius: 6px; padding: 0 10px; }
+.x-poll .opt.res i { position: absolute; left: 0; top: 0; bottom: 0; background-color: var(--card, rgba(127,127,127,.18)); border-radius: 6px; }
+.x-poll .opt.res.win i { background-color: rgba(29,155,240,.32); }
+.x-poll .opt.res span, .x-poll .opt.res em { position: relative; font-style: normal; display: flex; align-items: center; gap: 6px; }
+.x-poll .opt.res.win span, .x-poll .opt.res.win em { font-weight: 700; }
+.x-poll .opt .ck { display: inline-flex; color: var(--tx); }
+.x-poll .meta { color: var(--tx2); font-size: 13px; }
 
 /* ===== MOCKSY LOCKSCREEN ===== */
 #lkApp { position: fixed; inset: 0; z-index: 600; display: none; flex-direction: column; background-color: var(--bg-app, #F4F5F7); color: var(--text-main, #111); font-family: -apple-system, system-ui, sans-serif; }
@@ -2107,6 +2118,11 @@ body.pl-line #screenChatView .composer-input-pill { background-color: var(--ln-i
 .ig-live .ft .ig-ib { color: #fff; }
 .ig-live .ft .ig-ib.liked { color: var(--like); }
 
+/* tab bar datar (gaya klasik IG) */
+.ig.tab-flat .ig-tabbar { left: 0; right: 0; bottom: 0; height: calc(50px + env(safe-area-inset-bottom, 0px)); padding: 0 6px env(safe-area-inset-bottom, 0px); border-radius: 0; background-color: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; border: none; border-top: 1px solid var(--bd); }
+.ig.tab-flat .ig-tabbar button { height: 48px; border-radius: 0; }
+.ig.tab-flat .ig-tabbar button.on { background-color: transparent; box-shadow: none; }
+
 /* ===== MOCKSY TIKTOK (iOS) ===== */
 #tkApp { position: fixed; inset: 0; z-index: 600; display: none; flex-direction: column; align-items: center; background-color: #0B0D10; font-family: -apple-system, "SF Pro Text", system-ui, "Helvetica Neue", sans-serif; }
 #tkApp.open { display: flex; }
@@ -2328,6 +2344,32 @@ body.pl-im .mrt-at { color: inherit; font-weight: 700; }
 .mrt-tools button { min-width: 44px; height: 36px; border-radius: 9px; border: 1px solid var(--border, #E5E7EB); background-color: var(--bg-surface, #fff); color: inherit; cursor: pointer; font-size: 14px; padding: 0 10px; }
 .mrt-pv { min-height: 40px; padding: 10px 12px; border-radius: 10px; background-color: var(--bg-subtle, #F3F4F6); font-size: 15px; line-height: 1.4; word-break: break-word; }
 .mrt-atbtn { width: 32px; height: 32px; border-radius: 50%; border: none; background: transparent; color: var(--text-muted, #6B7280); font-weight: 700; font-size: 17px; cursor: pointer; flex-shrink: 0; }
+/* ===== Alat Mocksy: Tumpuk Referensi & status bar ===== */
+#mkToolBtn { position: fixed; right: 10px; bottom: calc(96px + env(safe-area-inset-bottom, 0px)); z-index: 900; height: 40px; padding: 0 12px; border-radius: 20px; border: 1px solid rgba(0,0,0,.12); background-color: rgba(20,20,24,.86); color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; gap: 6px; cursor: pointer; box-shadow: 0 6px 18px rgba(0,0,0,.25); }
+#mkToolPanel { position: fixed; right: 10px; bottom: calc(144px + env(safe-area-inset-bottom, 0px)); z-index: 901; width: min(340px, calc(100vw - 20px)); max-height: 70vh; overflow-y: auto; background-color: var(--bg-surface, #fff); color: var(--text-main, #111); border-radius: 16px; box-shadow: 0 16px 40px rgba(0,0,0,.3); padding: 12px 14px 14px; display: none; }
+#mkToolPanel.open { display: block; }
+#mkToolPanel .hd { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+#mkToolPanel .hd button { width: 36px; height: 36px; border: none; background: transparent; color: inherit; cursor: pointer; }
+#mkToolPanel .sec { border-top: 1px solid var(--border, #E5E7EB); padding-top: 10px; margin-top: 8px; }
+#mkToolPanel .sec p { font-size: 12.5px; color: var(--text-muted, #6B7280); margin: 4px 0 8px; line-height: 1.4; }
+#mkToolPanel .row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+#mkToolPanel .rg { display: flex; align-items: center; gap: 8px; font-size: 13px; margin-top: 8px; }
+#mkToolPanel .rg input { flex: 1; }
+#mkRefImg { position: fixed; z-index: 800; pointer-events: none; object-fit: fill; display: none; }
+#mkToolPanel input:not([type=range]) { height: 40px; border-radius: 10px; border: 1px solid var(--border, #E5E7EB); background-color: var(--bg-subtle, #F3F4F6); color: inherit; padding: 0 10px; font-size: 15px; outline: none; }
+#mkToolPanel input:not([type=range]):focus { border-color: #3B82F6; }
+/* Mode Foto: sembunyikan tombol Alat agar tidak ikut terfoto */
+body:has(#xApp.photo) #mkToolBtn, body:has(#igApp.photo) #mkToolBtn, body:has(#tkApp.photo) #mkToolBtn,
+body:has(#xApp.photo) #mkToolPanel, body:has(#igApp.photo) #mkToolPanel, body:has(#tkApp.photo) #mkToolPanel { display: none !important; }
+#mkToolBtn { opacity: .82; }
+#mkToolBtn:hover, #mkToolBtn:focus-visible { opacity: 1; }
+/* editor ekstra & proyek */
+.mk-extra { display: flex; flex-direction: column; gap: 8px; border-top: 1px solid var(--border, #E5E7EB); padding-top: 10px; }
+.mk-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 40px; font-size: 14px; }
+.mk-num { width: 70px; height: 36px; border-radius: 9px; border: 1px solid var(--border, #E5E7EB); background-color: var(--bg-subtle, #F3F4F6); color: inherit; padding: 0 8px; }
+.mk-prow { display: flex; align-items: center; gap: 6px; padding: 10px 0; border-bottom: 1px solid var(--border, #E5E7EB); flex-wrap: wrap; }
+.mk-prow b { font-size: 15px; } .mk-prow em { color: #16A34A; font-style: normal; font-size: 12px; }
+.mk-prow .sp { flex: 1; }
 
 </style>
 </head>
@@ -3428,11 +3470,11 @@ function render(){
  var bw=bl(110,Math.round(110*FH/FW));RA=.35;Q.font="17px "+FN;
  var L=[],tot=0,pv=null;
  S.m.forEach(function(m,i){var o={m:m,i:i};
-  if(m.k=="t"){o.ln=wrap(m.t||"",240/CS);o.w=Math.max.apply(0,o.ln.map(function(s){return Q.measureText(s).width}))+29;o.h=o.ln.length*20+20}
+  if(m.k=="t"){o.ln=wrap(m.t||"",240/CS);o.w=Math.max.apply(0,o.ln.map(function(s){return Q.measureText(s).width}))+29;o.h=o.ln.length*20+20+(m.tb?14:0)+(+m.reps?22:0)}
   else if(m.k=="p"){var im=gi(m.src);var ar=im?im.naturalHeight/im.naturalWidth:1,pw=Math.min(200,250/ar);o.w=pw;o.h=pw*ar;o.im=im;o.run=(pv&&pv.m.k=="p"&&pv.m.me==m.me&&!pv.cap)?pv.run+1:0;if(m.t&&String(m.t).trim()){o.run=0;o.pw=pw;o.ih=o.h;o.cap=wrap(String(m.t),240/CS);o.cw=Math.max.apply(0,o.cap.map(function(s){return Q.measureText(s).width}))+29;o.ch=o.cap.length*20+20;o.w=Math.max(pw,o.cw);o.h=o.ih+4+o.ch}}
   else if(m.k=="c"){o.w=200;o.h=m.s?38:20}
   else if(m.k=="a"){o.w=236;o.h=54}
-  else{o.h=m.s?38:18}
+  else if(m.k=="typ"){o.w=62;o.h=38}else{o.h=m.s?38:18}
   o.bub=m.k=="t"||m.k=="p"||m.k=="a";var g=pv?((m.k=="p"&&pv.m.k=="p"&&pv.m.me==m.me&&!o.cap&&!pv.cap)?-28:(o.bub&&pv.bub&&sg(pv.m,m))?4:12):0;o.lab=S.grp&&!m.me&&o.bub&&(!pv||!pv.bub||!sg(pv.m,m));if(o.lab)g+=15;o.y=tot+g;tot=o.y+o.h;if(m.rp)tot+=24;pv=o;L.push(o)});
  var lm=S.m[S.m.length-1],st=S.status&&lm&&lm.me&&(lm.k=="t"||lm.k=="p"||lm.k=="a");
  if(st)tot+=22;if(S.typing)tot+=48;
@@ -3440,7 +3482,8 @@ function render(){
  var PWi=PW/CS,H0i=HR.length;Q.save();Q.translate(0,ABi);Q.scale(CS,CS);Q.translate(0,-ABi);GS=CS;GAB=ABi;
  L.forEach(function(o){if(oy+o.y-(o.lab?15:0)<ATi-1)return;var m=o.m,y=oy+o.y,w=o.w,h=o.h,x=m.me?PWi-15-w:(S.grp?48:15);if(m.k=="p"){var nn=0,kk=o.i;while(!o.cap&&L[kk+1]&&L[kk+1].m.k=="p"&&L[kk+1].m.me==m.me&&!L[kk+1].cap){kk++;nn++}x=m.me?PWi-15-w-44*nn:(S.grp?48:15)+44*o.run}
   if(m.k=="t"||m.k=="p"||m.k=="a"){
-   if(m.k=="t"){var nx=L[o.i+1],tl=!nx||!sg(nx.m,m)||!nx.bub;bp(x,y,w,h,20,tl,m.me);gl(bw,m.me?ME:RX,[x,y,w,h]);
+   if(m.k=="typ"){bp(x,y,w,h,19,true,m.me);gl(bw,m.me?ME:RX,[x,y,w,h]);for(var td=0;td<3;td++){Q.fillStyle=(m.me||dk())?"rgba(255,255,255,"+[.4,.65,.95][td]+")":"rgba(0,0,0,"+[.22,.4,.62][td]+")";Q.beginPath();Q.arc(x+18+td*13,y+h/2,4.4,0,7);Q.fill()}}
+   else if(m.k=="t"){var _tb=m.tb?14:0,_rp=+m.reps?22:0;y+=_tb;h-=_tb+_rp;var nx=L[o.i+1],tl=!nx||!sg(nx.m,m)||!nx.bub;bp(x,y,w,h,20,tl,m.me);gl(bw,m.me?ME:RX,[x,y,w,h]);if(window.IMX)IMX(Q,m,x,y,w,h,dk());
     Q.fillStyle=m.me?"#fff":tx;Q.font="17px "+FN;Q.textAlign="left";o.ln.forEach(function(s,j){Q.fillText(s,x+14.5,y+26+j*20)})}
    else if(m.k=="a"){var nxa=L[o.i+1],tla=!nxa||!sg(nxa.m,m)||!nxa.bub;bp(x,y,w,h,20,tla,m.me);gl(bw,m.me?ME:RX,[x,y,w,h]);audIM(x,y,w,h,m,d)}
    else if(o.cap){var ix=m.me?x+w-o.pw:x;if(o.im&&o.im.naturalWidth){Q.save();rr(ix,y,o.pw,o.ih,20);Q.clip();Q.drawImage(o.im,ix,y,o.pw,o.ih);Q.restore()}else{rr(ix,y,o.pw,o.ih,20);Q.fillStyle="rgba(128,128,128,.3)";Q.fill()}var cx3=m.me?x+w-o.cw:x,cy3=y+o.ih+4;bp(cx3,cy3,o.cw,o.ch,20,true,m.me);gl(bw,m.me?ME:RX,[cx3,cy3,o.cw,o.ch]);Q.fillStyle=m.me?"#fff":tx;Q.font="17px "+FN;Q.textAlign="left";o.cap.forEach(function(s,j){Q.fillText(s,cx3+14.5,cy3+26+j*20)})}
@@ -3572,8 +3615,8 @@ $("cd").onclick=function(){UND={c:S,m:S.m};S.m=[];S.typing=false;sel=-1;$("cc").
 $("cu").onclick=function(){if(UND){UND.c.m=UND.m;UND=null}$("cuu").classList.add("hide");render();fill()};
 var G0=go;go=function(c){$("cc").classList.add("hide");$("cuu").classList.add("hide");UND=null;G0(c)};
 function pvs(){var W=1080;K=W/FW;cv.width=W;cv.height=Math.round(W*FH/FW);render()}
-function setFrame(){var a=$("ar").value,r=a=="o"?PW/PH:a=="45"?.8:a=="11"?1:a=="916"?9/16:a=="219"?9/21:a=="13"?1/3:((+$("cw").value||4)/(+$("ch").value||5));
- r=Math.min(1.5,Math.max(.25,r));FW=PW;FH=PW/r;OX=0;OY=0;FX=[-OX,-OY,FW,FH];
+function setFrame(){var a=$("ar").value,r=a=="o"?PW/PH:a=="45"?.8:a=="11"?1:a=="916"?9/16:a=="219"?9/21:a=="13"?1/3:a=="14"?1/4:a=="16"?1/6:a=="110"?1/10:((+$("cw").value||4)/(+$("ch").value||5));
+ r=Math.min(1.5,Math.max(.1,r));FW=PW;FH=PW/r;OX=0;OY=0;FX=[-OX,-OY,FW,FH];
  var W=+$("res").value,H=Math.round(W/r);if(W*H>16.7e6){W=Math.floor(Math.sqrt(16.7e6*r));H=Math.round(W/r)}
  TG=[W,H];$("dim").textContent="Hasil: "+W+" \u00d7 "+H+" px";$("cuw").classList.toggle("hide",a!="c");pvs()}
 ["ar","res","cw","ch"].forEach(function(i){$(i).onchange=setFrame;$(i).oninput=setFrame});
@@ -3800,6 +3843,7 @@ function renderWA(c,o){
    var inl=lw+12+tw<=MW,cw=Math.max(wd,inl?lw+12+tw:tw);it.ln=ln;it.inl=inl;it.w=Math.ceil(cw)+26;it.h=ln.length*22+(inl?0:16)+16;it.tw=tw}
   else if(m.k=="p"){var im=gi(m.src),ar=im?im.naturalHeight/im.naturalWidth:1,pw=Math.min(236,236/Math.max(1,ar)*1.1);it.im=im;it.w=pw;it.h=Math.min(300,pw*ar);if(!im)it.h=pw*.75;it.tw=tw;if(m.t&&String(m.t).trim()){c.font="17px "+FNT;it.cap=wrapT(c,String(m.t),it.w-24);it.ih=it.h;it.h=it.ih+6+it.cap.length*22+24}}
   else if(m.k=="stk"){var si=gi(m.src||(window.LINE&&LINE.stickerURL?LINE.stickerURL(m.sid||"mochi-hi",320):""));it.im=si;it.w=150;it.h=150;it.tw=tw}
+  else if(m.k=="typ"){it.w=70;it.h=38;it.tw=0}
   else if(m.k=="vo"){c.font="16px "+FNT;it.w=Math.ceil(c.measureText(m.vo?"Opened":"Photo").width)+14+24+9+14+tw+12;it.h=38;it.tw=tw}
   else if(m.k=="c"){var sp=wcFor(m);it.sp=sp;c.font="500 14.5px "+FNT;var tW=c.measureText(sp.title).width;c.font="12.5px "+FNT;var sW=c.measureText(sp.sub).width;
    it.tw=tw;it.w=Math.max(172,Math.ceil(52+Math.max(tW,sW+(sp.note?0:tw+12))+12));it.h=52+(sp.note?(sp.note.t=="video"?100:54):0)}
@@ -3818,6 +3862,7 @@ function renderWA(c,o){
    else if(m.k=="a")audWA(it,X0,y,me,bg)
    else drawCall(c,it,X0,y,fg,tm,me,{red:red,grn:grn,sec:sec,d:d,P:P})
    if(m.k=="t"||m.k=="a"){c.font="11.5px "+FNT;c.textAlign="right";c.fillStyle=tm;var xr=X0+w-11,yb=it.inl?y+h-9.5:y+h-8;if(me){ticks(c,xr,yb,m.st||"r",tm);c.fillText(m.ts||"",xr-17,yb)}else c.fillText(m.ts||"",xr,yb)}}
+  else if(m.k=="typ"){bpath(c,X0,y,w,h,19,false,me);c.save();c.shadowColor="rgba(0,0,0,"+(d?.25:.1)+")";c.shadowOffsetY=1*k;c.fillStyle=me?OC:IC;c.fill();c.restore();for(var td=0;td<3;td++){c.globalAlpha=[.35,.6,.9][td];c.fillStyle=me?OT:IT;c.beginPath();c.arc(X0+22+td*13,y+h/2,4.3,0,7);c.fill()}c.globalAlpha=1}
   else if(m.k=="vo"){var bgv=me?OC:IC,fgv=me?OT:IT;bpath(c,X0,y,w,h,20,tail,me);c.save();c.shadowColor="rgba(0,0,0,"+(d?.25:.1)+")";c.shadowBlur=0;c.shadowOffsetY=1*k;c.fillStyle=bgv;c.fill();c.restore();
    var cxv=X0+14+12,cyv=y+h/2,opv=!!m.vo,acc=opv?tm:grn;c.save();c.strokeStyle=acc;c.lineWidth=1.9;c.lineCap="round";for(var sg2=0;sg2<10;sg2++){var a0=sg2/10*Math.PI*2-Math.PI/2+.12;c.beginPath();c.arc(cxv,cyv,10,a0,a0+Math.PI*2/10-.3);c.stroke()}c.restore();
    c.fillStyle=acc;c.font="600 11.5px "+FNT;c.textAlign="center";c.fillText("1",cxv,cyv+4);
@@ -5295,7 +5340,7 @@ render();
     if(msg && msg.k === "c"){ openCallBuilder(msg); return; }
     if(msg && (msg.k === "vo" || msg.k === "stk") && !(S && S.ln) && window.LINE && LINE.waMediaEdit){ LINE.waMediaEdit(msg); return; }
     if(msg && window.LINE && S && S.ln && LINE.editMsg){ LINE.editMsg(msg); return; }
-    activeEditingMsg = msg;
+    activeEditingMsg = msg; window.__mkEditMsg = msg;
     modalBubbleText.value = msg.t || "";
     modalBubbleTime.value = msg.tm || msg.ts || "23:46";
     modalBubbleStatus.value = msg.st || "read";
@@ -5463,7 +5508,7 @@ render();
     };
     var savedFrame = null;
     try{ savedFrame = localStorage.getItem("mkFrame"); }catch(e){}
-    previewFrameSelect.value = (["45","11","916","o","219","13"].indexOf(savedFrame) !== -1) ? savedFrame : "916";
+    previewFrameSelect.value = (["45","11","916","o","219","13","14","16","110"].indexOf(savedFrame) !== -1) ? savedFrame : "916";
     previewFrameSelect.onchange();
   }
 
@@ -10252,7 +10297,7 @@ render();
   LN.openScreenSheet = function(){
     var Sx = window.S, plt = plat(Sx);
     U.sheet("Layar & Panggilan", function(b){
-      var cur = curScr(Sx), opts = [["chat", "Chat"]].concat([["list", "Daftar"]]).concat([["vcall", "Panggilan"], ["video", "Video"], ["profile", "Profil"]]);
+      var cur = curScr(Sx), opts = [["chat", "Chat"]].concat([["list", "Daftar"]]).concat(Sx.wa && !Sx.ln ? [["wupd", "Pembaruan"], ["wcall", "Riwayat"]] : []).concat([["vcall", "Panggilan"], ["video", "Video"], ["profile", "Profil"]]);
       var h = '<div class="ln-seg" id="scSeg">' + opts.map(function(o){ return '<button type="button" data-v="' + o[0] + '" class="' + (o[0] === cur ? "active" : "") + '">' + o[1] + '</button>'; }).join("") + '</div>';
       if(cur === "vcall" || cur === "video"){
         var k = LN.callData(Sx);
@@ -10262,6 +10307,11 @@ render();
           '<div class="ln-field" id="scCapW"><label>Percakapan subtitle</label><div id="scCaps" style="display:flex;flex-direction:column;gap:8px"></div><button type="button" class="ln-btn sm" id="scAdd">' + LN.svg("plus", 16) + '<span>Tambah baris</span></button></div>' +
           '<div class="ln-field"><label>Foto</label><div class="ln-btnrow">' + (cur === "video" ? '<button type="button" class="ln-btn sm" data-img="remote">' + LN.svg("video", 15) + '<span>Video lawan</span></button><button type="button" class="ln-btn sm" data-img="self">' + LN.svg("camera", 15) + '<span>Kamera saya</span></button>' : '<button type="button" class="ln-btn sm" data-img="bg">' + LN.svg("image", 15) + '<span>Latar panggilan</span></button>') + '<button type="button" class="ln-btn sm danger" id="scClr">' + LN.svg("trash", 15) + '<span>Hapus foto</span></button></div><div class="settings-desc">Tanpa foto, latar memakai foto profil kontak.</div></div>';
       }
+      if(cur === "wupd"){
+        h += '<div class="ln-field"><label>Status kontak ini</label><div class="ln-chips" id="scStTog"><button type="button" class="ln-chip" data-k="on">Punya status</button><button type="button" class="ln-chip" data-k="seen">Sudah dilihat</button></div>' +
+          '<div class="ln-btnrow" style="margin-top:8px"><button type="button" class="ln-btn sm" id="scStImg">' + LN.svg("image", 15) + '<span>Foto status</span></button></div><div class="settings-desc">Buka chat lain lalu atur statusnya di sini. Hingga 3 status tampil di layar Pembaruan.</div></div>';
+      }
+      if(cur === "wcall"){ h += '<div class="settings-desc">Riwayat diisi otomatis dari pesan panggilan (suara/video, masuk/keluar/tak terjawab) di semua chat WhatsApp.</div>'; }
       if(cur === "list" && !Sx.ln){
         h += '<div class="ln-field"><label>Chat ini di daftar</label><div class="ln-chips" id="scListTog"><button type="button" class="ln-chip" data-k="lnPin">Sematkan</button><button type="button" class="ln-chip" data-k="lnMute">Bisukan</button><button type="button" class="ln-chip" data-k="lnHide">Sembunyikan dari daftar</button></div></div>' +
           '<div class="ln-field"><label>Jumlah belum dibaca</label><input class="ln-in" id="scUnread" type="number" min="0" max="999"></div>' +
@@ -10315,6 +10365,9 @@ render();
       if(cur === "list" && !Sx.ln){
         b.querySelectorAll("#scListTog .ln-chip").forEach(function(x){ x.classList.toggle("active", !!Sx[x.dataset.k]); x.onclick = function(){ Sx[x.dataset.k] = Sx[x.dataset.k] ? 0 : 1; x.classList.toggle("active", !!Sx[x.dataset.k]); live(); }; });
         if($id("scManageList")) $id("scManageList").onclick = function(){ U.manageChatList(plt, Sx); };
+        if($id("scStTog")){ var stt = function(){ b.querySelectorAll("#scStTog .ln-chip").forEach(function(x){ x.classList.toggle("active", x.dataset.k === "on" ? !!Sx.waStory : !!(Sx.waStory && Sx.waStory.seen)); }); };
+          b.querySelectorAll("#scStTog .ln-chip").forEach(function(x){ x.onclick = function(){ if(x.dataset.k === "on") Sx.waStory = Sx.waStory ? null : { img: null, seen: 0 }; else { Sx.waStory = Sx.waStory || { img: null, seen: 0 }; Sx.waStory.seen = Sx.waStory.seen ? 0 : 1; } stt(); live(); }; }); stt();
+          $id("scStImg").onclick = function(){ U.pickFile("image/*", function(f){ LN.readImage(f, 900, "image/jpeg", .85).then(function(dat){ Sx.waStory = Sx.waStory || { seen: 0 }; Sx.waStory.img = dat; stt(); live(); }); }); }; }
         $id("scUnread").value = +Sx.lnUnread || 0; $id("scUnread").oninput = function(){ Sx.lnUnread = Math.max(0, parseInt(this.value, 10) || 0); live(); };
         b.querySelectorAll("#scWaF button").forEach(function(x){ x.classList.toggle("active", x.dataset.v === (Sx.waFilter || "all")); x.onclick = function(){ Sx.waFilter = x.dataset.v; b.querySelectorAll("#scWaF button").forEach(function(y){ y.classList.toggle("active", y === x); }); live(); }; });
       }
@@ -10633,19 +10686,27 @@ render();
       y += rh; c.fillStyle = P.sep; c.fillRect(82, y - .5, FW - 82, .5);
     });
     c.restore();
+    waTabs(c, S, FW, FH, P, d, 3);
+  }
+
+  function waTabs(c, S, FW, FH, P, d, act){
     var tw = FW - 28, tx = 14, th = 68, ty = FH - 34 - th + 12;
     LN.glass(c, tx, ty, tw, th, 34, { dark: d, refr: 1, shadowA: .18 });
-    var tabs = [["chat", "Pembaruan"], ["phone", "Panggilan"], ["friends", "Komunitas"], ["chat", "Chat"], ["gear", "Pengaturan"]], w5 = tw / 5;
+    var tabs = [["chat", "Pembaruan"], ["phone", "Panggilan"], ["friends", "Komunitas"], ["chat", "Chat"], ["me", "Anda"]], w5 = tw / 5;
     tabs.forEach(function(t, i){
-      var cxx = tx + w5 * i + w5 / 2, on = i === 3;
+      var cxx = tx + w5 * i + w5 / 2, on = i === act;
       if(on){ LN.rr(c, cxx - w5 / 2 + 4, ty + 6, w5 - 8, th - 12, 28); c.fillStyle = d ? "rgba(255,255,255,.12)" : "rgba(0,0,0,.06)"; c.fill(); }
       if(i === 0){ c.strokeStyle = on ? P.green : P.tx; c.lineWidth = 2; LN.circ(c, cxx, ty + 26, 9); c.stroke(); LN.circ(c, cxx, ty + 26, 4); c.fillStyle = on ? P.green : P.tx; c.fill(); }
+      else if(t[0] === "me"){ var mav = S.myav ? LN.img(S.myav) || (typeof gi === "function" ? gi(S.myav) : null) : null; c.save(); LN.circ(c, cxx, ty + 26, 13); c.clip();
+        if(mav && mav.naturalWidth){ var sc2 = Math.max(26 / mav.naturalWidth, 26 / mav.naturalHeight); c.drawImage(mav, cxx - mav.naturalWidth * sc2 / 2, ty + 26 - mav.naturalHeight * sc2 / 2, mav.naturalWidth * sc2, mav.naturalHeight * sc2); }
+        else { c.fillStyle = d ? "#3B4A54" : "#DFE5E7"; c.fillRect(cxx - 13, ty + 13, 26, 26); c.fillStyle = d ? "#8696A0" : "#FFFFFF"; LN.circ(c, cxx, ty + 22, 5.5); c.fill(); c.beginPath(); c.ellipse(cxx, ty + 38, 9.5, 7.5, 0, 0, Math.PI * 2); c.fill(); }
+        c.restore(); }
       else LN.icon(c, t[0], cxx, ty + 26, 23, on ? P.green : P.tx, { lw: 1.9, fill: on && t[0] === "chat" });
       txt(c, t[1], cxx, ty + 54, F(on ? 600 : 500, 10.5), on ? P.green : P.tx, "center");
     });
     var tot = convsFor(S).reduce(function(a, ch){ return a + (ch.lnMute ? 0 : (+ch.lnUnread || 0)); }, 0);
     if(tot){ var bx = tx + w5 * 3 + w5 / 2 + 8; c.font = F(700, 11.5); var bs = String(tot), bww = Math.max(18, c.measureText(bs).width + 10); LN.rr(c, bx, ty + 8, bww, 18, 9); c.fillStyle = P.green; c.fill(); txt(c, bs, bx + bww / 2, ty + 21, F(700, 11.5), "#FFF", "center"); }
-  }
+    }
 
   /* ---------- daftar Pesan iMessage iOS ---------- */
   function imList(c, S, FW, FH, TOP){
@@ -10692,17 +10753,78 @@ render();
     LN.icon(c, "mic", FW - 42, sy + sh2 / 2, 19, P.sub, { lw: 2 });
   }
 
+
+  /* ---------- WhatsApp: Pembaruan (Status) & Panggilan ---------- */
+  function waPal(S){ var d = dark(S); return [d, d ? { bg: "#0B0B0C", tx: "#FFFFFF", sub: "#8D9599", sep: "#262A2D", green: "#21C063", chip: "#1F2C25", chipTx: "#D5F5E0", fill: "#1C1E20", red: "#F15C6D" }
+                                         : { bg: "#FFFFFF", tx: "#0B141A", sub: "#667781", sep: "#E9EDEF", green: "#1DAA61", chip: "#D8FDD2", chipTx: "#15603E", fill: "#F0F2F5", red: "#EA0038" }]; }
+  function avc(c, src, cx, cy, r, d){ var im = src ? (LN.img(src) || (typeof gi === "function" ? gi(src) : null)) : null; c.save(); LN.circ(c, cx, cy, r); c.clip();
+    if(im && im.naturalWidth){ var sc = Math.max(2 * r / im.naturalWidth, 2 * r / im.naturalHeight); c.drawImage(im, cx - im.naturalWidth * sc / 2, cy - im.naturalHeight * sc / 2, im.naturalWidth * sc, im.naturalHeight * sc); }
+    else { c.fillStyle = d ? "#3B4A54" : "#DFE5E7"; c.fillRect(cx - r, cy - r, 2 * r, 2 * r); c.fillStyle = d ? "#8696A0" : "#FFFFFF"; LN.circ(c, cx, cy - r * .22, r * .38); c.fill(); c.beginPath(); c.ellipse(cx, cy + r * .72, r * .7, r * .55, 0, 0, Math.PI * 2); c.fill(); }
+    c.restore(); }
+  function waTop(c, S, FW, TOP, title, P, d){
+    sbar(c, S, P.tx, FW);
+    LN.glass(c, 16, TOP + 6, 44, 44, 22, { dark: d, refr: .9, shadowA: .08 }); LN.icon(c, "more", 38, TOP + 28, 24, P.tx, { lw: 3.4 });
+    LN.glass(c, FW - 112, TOP + 6, 96, 44, 22, { dark: d, refr: .9, shadowA: .08 }); LN.icon(c, "camera", FW - 88, TOP + 28, 21, P.tx, { lw: 1.9 });
+    LN.circ(c, FW - 40, TOP + 28, 15); c.fillStyle = P.green; c.fill(); LN.icon(c, "plus", FW - 40, TOP + 28, 17, "#FFFFFF", { lw: 2.6 });
+    txt(c, title, 16, TOP + 96, F(800, 34), P.tx);
+  }
+  function waUpdates(c, S, FW, FH, TOP){
+    var q = waPal(S), d = q[0], P = q[1]; c.fillStyle = P.bg; c.fillRect(0, 0, FW, FH);
+    waTop(c, S, FW, TOP, "Pembaruan", P, d);
+    var y = TOP + 130; txt(c, "Status", 16, y, F(700, 20), P.tx); y += 18;
+    var list = convsFor(S).filter(function(ch){ return ch.waStory; }), x = 16;
+    /* kartu "Tambah status" */
+    LN.rr(c, x, y, 92, 150, 14); c.fillStyle = P.fill; c.fill(); avc(c, S.myav, x + 46, y + 44, 26, d);
+    LN.circ(c, x + 64, y + 62, 10); c.fillStyle = P.green; c.fill(); LN.icon(c, "plus", x + 64, y + 62, 12, "#FFF", { lw: 2.6 });
+    txt(c, "Tambah status", x + 46, y + 132, F(600, 12), P.tx, "center"); x += 102;
+    list.slice(0, 3).forEach(function(ch){
+      var im = ch.waStory.img ? (LN.img(ch.waStory.img) || (typeof gi === "function" ? gi(ch.waStory.img) : null)) : null;
+      c.save(); LN.rr(c, x, y, 92, 150, 14); c.clip(); if(im && im.naturalWidth){ var sc = Math.max(92 / im.naturalWidth, 150 / im.naturalHeight); c.drawImage(im, x + 46 - im.naturalWidth * sc / 2, y + 75 - im.naturalHeight * sc / 2, im.naturalWidth * sc, im.naturalHeight * sc); } else { var g = c.createLinearGradient(x, y, x + 92, y + 150); g.addColorStop(0, "#7C4DFF"); g.addColorStop(1, "#18C964"); c.fillStyle = g; c.fillRect(x, y, 92, 150); }
+      var gr = c.createLinearGradient(0, y + 90, 0, y + 150); gr.addColorStop(0, "rgba(0,0,0,0)"); gr.addColorStop(1, "rgba(0,0,0,.55)"); c.fillStyle = gr; c.fillRect(x, y + 90, 92, 60); c.restore();
+      c.save(); LN.circ(c, x + 24, y + 24, 17); c.strokeStyle = ch.waStory.seen ? "rgba(255,255,255,.6)" : P.green; c.lineWidth = 3; c.stroke(); c.restore(); avc(c, ch.av, x + 24, y + 24, 14, d);
+      txt(c, LN.fitT ? LN.fitT(c, ch.name || "", 80) : (ch.name || ""), x + 8, y + 140, F(600, 12), "#FFFFFF"); x += 102;
+    });
+    y += 178; txt(c, "Saluran", 16, y, F(700, 20), P.tx); txt(c, "Jelajahi", FW - 16, y, F(600, 15), P.green, "right");
+    txt(c, "Ikuti saluran untuk mendapatkan kabar", 16, y + 26, F(400, 14), P.sub); txt(c, "terbaru tentang topik yang Anda minati.", 16, y + 44, F(400, 14), P.sub);
+    waTabs(c, S, FW, FH, P, d, 0);
+  }
+  function callIcon(c, x, y, out, missed, col){ c.save(); c.translate(x, y); c.rotate(out ? -Math.PI / 4 : Math.PI * .75); c.strokeStyle = col; c.lineWidth = 1.8; c.lineCap = "round"; c.lineJoin = "round";
+    c.beginPath(); c.moveTo(0, 5); c.lineTo(0, -5); c.moveTo(-4, -1); c.lineTo(0, -5); c.lineTo(4, -1); c.stroke(); c.restore(); }
+  function waCalls(c, S, FW, FH, TOP){
+    var q = waPal(S), d = q[0], P = q[1]; c.fillStyle = P.bg; c.fillRect(0, 0, FW, FH);
+    waTop(c, S, FW, TOP, "Panggilan", P, d);
+    var y = TOP + 120;
+    LN.rr(c, 16, y, FW - 32, 38, 19); c.fillStyle = P.fill; c.fill(); LN.icon(c, "search", 36, y + 19, 17, P.sub, { lw: 2.2 }); txt(c, "Cari", 54, y + 25, F(400, 16), P.sub);
+    y += 58;
+    [["phone", "Telepon"], ["calendar", "Jadwalkan"], ["grid", "Tombol"], ["heart", "Favorit"]].forEach(function(a, i){ var cx = 16 + (FW - 32) / 8 * (2 * i + 1); LN.circ(c, cx, y + 24, 24); c.fillStyle = P.fill; c.fill(); LN.icon(c, a[0], cx, y + 24, 20, P.tx, { lw: 1.9 }); txt(c, a[1], cx, y + 66, F(500, 12), P.tx, "center"); });
+    y += 96; txt(c, "Terbaru", 16, y, F(700, 18), P.tx); y += 12;
+    var calls = [];
+    convsFor(S).forEach(function(ch){ (ch.m || []).forEach(function(m){ if(m.k === "c") calls.push({ ch: ch, m: m }); }); });
+    calls = calls.reverse().slice(0, 9);
+    if(!calls.length){ txt(c, "Belum ada riwayat panggilan.", 16, y + 30, F(400, 15), P.sub); txt(c, "Tambahkan pesan panggilan di chat untuk mengisi daftar ini.", 16, y + 50, F(400, 13), P.sub); }
+    calls.forEach(function(it){
+      var m = it.m, ch = it.ch, missed = /miss|tak|no|dec|tolak|batal/i.test(String(m.cs || m.st2 || m.res || "")) || !!m.missed, vid = !!(m.vid || m.video || m.cv === "v");
+      avc(c, ch.av, 40, y + 34, 24, d);
+      txt(c, LN.fitT ? LN.fitT(c, ch.name || "", FW - 170) : (ch.name || ""), 76, y + 30, F(600, 16), missed ? P.red : P.tx);
+      callIcon(c, 82, y + 47, !!m.me, missed, P.sub); txt(c, (m.me ? "Keluar" : missed ? "Tak terjawab" : "Masuk"), 94, y + 52, F(400, 14), P.sub);
+      txt(c, m.ts || m.tm || "", FW - 52, y + 38, F(400, 14), P.sub, "right");
+      LN.icon(c, vid ? "video" : "phone", FW - 30, y + 34, 18, P.tx, { lw: 1.8 });
+      c.fillStyle = P.sep; c.fillRect(76, y + 66, FW - 76, 1); y += 68;
+    });
+    waTabs(c, S, FW, FH, P, d, 1);
+  }
   /* ---------- hook render ---------- */
   var R_PREV = render;
   render = function(){
     var Sx = window.S;
-    if(!(Sx && Sx.scr === "list" && !Sx.ln)) return R_PREV.apply(this, arguments);
+    var WS = Sx && Sx.wa && !Sx.ln && (Sx.scr === "wupd" || Sx.scr === "wcall");
+    if(!(Sx && (Sx.scr === "list" || WS) && !Sx.ln)) return R_PREV.apply(this, arguments);
     var FWl = 390, k = cv.width / FWl, TOP = Sx.nobar ? 12 : 47;
     TS = Math.max(.8, Math.min(1.3, Sx.cs || 1));
     try{
       Q.setTransform(k, 0, 0, k, 0, 0); Q.globalAlpha = 1; Q.setLineDash([]); Q.textBaseline = "alphabetic"; Q.shadowColor = "rgba(0,0,0,0)";
       Q.save(); Q.translate(OX || 0, OY || 0); Q.beginPath(); Q.rect(0, 0, FWl, FH); Q.clip();
-      (Sx.wa ? waList : imList)(Q, Sx, FWl, FH, TOP);
+      (Sx.scr === "wupd" ? waUpdates : Sx.scr === "wcall" ? waCalls : Sx.wa ? waList : imList)(Q, Sx, FWl, FH, TOP);
       Q.restore();
     }catch(e){ console.error("List render error", e); }
     HR = []; ["off", "wOff"].forEach(function(i){ var e = $id(i); if(e){ e.max = 0; e.value = 0; } });
@@ -10918,6 +11040,18 @@ render();
     return '<div class="x-acts"><div class="g">' + a("reply", "reply", "", X.cnt(p, "rep")) + '</div><div class="g">' + a("rtmenu", "rt", rt ? "rted" : "", X.cnt(p, "rt") + X.cnt(p, "q")) + '</div><div class="g">' + a("like", "heart", like ? "liked" : "", X.cnt(p, "like"), like) + '</div><div class="g">' + a("views", "views", "", X.cnt(p, "view")) +
       '</div><div class="g">' + a("bm", "bm", bm ? "bmed" : "", null, bm).replace("<span></span>", "") + a("share", "share", "") + "</div></div>";
   };
+  X.pollHtml = function(p){
+    var pl = p.poll; if(!pl || !pl.opts || pl.opts.length < 2) return "";
+    var id = X.st.lang === "id", tot = pl.opts.reduce(function(s, o){ return s + (+o.v || 0); }, 0), done = !!pl.closed, voted = pl.my != null && pl.my !== "", show = done || voted;
+    var mx = Math.max.apply(0, pl.opts.map(function(o){ return +o.v || 0; }));
+    var h = '<div class="x-poll">';
+    pl.opts.forEach(function(o, i){
+      var pc = tot ? Math.round((+o.v || 0) * 100 / tot) : 0, win = (+o.v || 0) === mx && mx > 0;
+      if(show) h += '<div class="opt res' + (win ? " win" : "") + '"><i style="width:' + Math.max(pc, 1) + '%"></i><span>' + X.rich(o.t || "") + (String(pl.my) === String(i) ? ' <b class="ck">' + X.ic("check", 15, { sw: 2.8 }) + "</b>" : "") + "</span><em>" + pc + "%</em></div>";
+      else h += '<button type="button" class="opt" data-a="vote" data-v="' + p.id + "|" + i + '">' + X.rich(o.t || "") + "</button>";
+    });
+    return h + '<div class="meta">' + X.num(tot) + (id ? " suara" : (tot === 1 ? " vote" : " votes")) + " \u00b7 " + (done ? (id ? "Hasil akhir" : "Final results") : esc(pl.left || (id ? "1 hari lagi" : "1 day left"))) + "</div></div>";
+  };
   X.postHtml = function(p, o){
     o = o || {};
     var acc = X.acc(p.by) || { dn: "?", un: "unknown" }, ctx = "";
@@ -10934,7 +11068,7 @@ render();
     }
     return ctx + '<article class="x-post' + (o.thread ? " thread" : "") + '" data-a="post" data-v="' + p.id + '"><div class="lcol">' + X.avatar(acc, 40) + (o.thread ? '<div class="tline"></div>' : "") + '</div><div class="body">' +
       '<div class="x-ph">' + X.nameRow(acc) + '<span class="h">@' + esc(acc.un) + " \u00b7 " + X.rel(p.ts) + '</span><button type="button" class="more" data-a="pmore" data-v="' + p.id + '" aria-label="Opsi">' + X.ic("more", 18) + "</button></div>" +
-      rp + (p.text ? '<div class="x-txt">' + X.rich(p.text) + "</div>" : "") + X.mediaHtml(p.media) + qh + X.actsHtml(p) + "</div></article>";
+      rp + (p.text ? '<div class="x-txt">' + X.rich(p.text) + "</div>" : "") + X.mediaHtml(p.media) + X.pollHtml(p) + qh + X.actsHtml(p) + "</div></article>";
   };
 
   /* ---------- feed ---------- */
@@ -11356,6 +11490,7 @@ render();
     return '<div class="x-f"><label>Diposting oleh</label>' + accChips("pfBy", p.by, false) + "</div>" +
       (p.replyTo ? '<div class="x-note">' + t("replyingTo") + " @" + esc((X.acc((X.post(p.replyTo) || {}).by) || {}).un || "") + "</div>" : "") +
       (p.quoteOf ? quotedPreviewHtml(p.quoteOf) : "") +
+      '<details class="x-f" id="pfPollW"' + (p.poll ? " open" : "") + '><summary style="cursor:pointer;font-weight:700">' + (X.st.lang === "id" ? "Polling" : "Poll") + '</summary><div style="display:flex;flex-direction:column;gap:8px;margin-top:8px"><label class="x-sw" style="display:flex;justify-content:space-between;align-items:center"><span>Aktifkan polling</span><input type="checkbox" id="pfPoll"></label><div id="pfPollOpts" style="display:flex;flex-direction:column;gap:6px"></div><button type="button" class="x-btn" id="pfPollAdd">+ Pilihan</button><div class="x-2"><div class="x-f"><label>Sisa waktu</label><input class="x-in" id="pfPollLeft" placeholder="mis. 2 days left"></div><div class="x-f"><label>Status</label><select class="x-in" id="pfPollSt"><option value="open">Berjalan</option><option value="voted">Saya sudah memilih</option><option value="closed">Selesai (hasil akhir)</option></select></div></div><div class="x-f"><label>Pilihan saya</label><select class="x-in" id="pfPollMy"></select></div></div></details>' +
       '<div class="x-f"><label>Isi postingan <span id="pfCnt" style="float:right"></span></label><textarea class="x-ta" id="pfTx" placeholder="' + t("newPost") + '"></textarea></div>' +
       '<div class="x-f"><label>Foto (maks. 4)</label><div class="x-media-ed"></div></div>' +
       '<div class="x-f"><label>Waktu posting</label><input class="x-in" type="datetime-local" id="pfTs"></div>' +
@@ -11363,6 +11498,30 @@ render();
         CNT.map(function(k){ return '<div class="x-f"><label>' + k[1] + '</label><input class="x-in" type="number" min="0" data-c="' + k[0] + '" value="' + (+c[k[0]] || 0) + '"></div>'; }).join("") +
       '</div><div class="x-note" style="margin-top:6px">Angka ini ditambah interaksi akun-akun di bawah. Contoh: Suka 5400 + 2 akun = 5.402.</div></details>' +
       (isNew ? "" : '<div class="x-f"><label>Disukai oleh</label>' + accChips("pfLk", p.likedBy || [], true) + '</div><div class="x-f"><label>Diposting ulang oleh</label>' + accChips("pfRt", p.rtBy || [], true) + '</div><div class="x-f"><label>Dimarkah oleh</label>' + accChips("pfBm", p.bmBy || [], true) + "</div>");
+  }
+  function bindPoll(root, p){
+    if(!root.querySelector("#pfPoll")) return;
+    var pl = p.poll ? JSON.parse(JSON.stringify(p.poll)) : { opts: [{ t: "", v: 0 }, { t: "", v: 0 }], left: "", closed: 0, my: null };
+    root.__poll = pl; root.querySelector("#pfPoll").checked = !!p.poll;
+    function draw(){
+      var box = root.querySelector("#pfPollOpts"); box.innerHTML = "";
+      pl.opts.forEach(function(o, i){ var d = document.createElement("div"); d.className = "x-2"; d.innerHTML = '<input class="x-in" maxlength="25" placeholder="Pilihan ' + (i + 1) + '"><div style="display:flex;gap:6px"><input class="x-in" type="number" min="0" placeholder="Suara"><button type="button" class="x-ib" aria-label="Hapus pilihan">' + ic("trash", 16) + "</button></div>";
+        var ins = d.querySelectorAll("input"); ins[0].value = o.t || ""; ins[0].oninput = function(){ o.t = ins[0].value; }; ins[1].value = +o.v || 0; ins[1].oninput = function(){ o.v = Math.max(0, parseInt(ins[1].value, 10) || 0); };
+        d.querySelector("button").onclick = function(){ if(pl.opts.length <= 2) return X.toast("Minimal 2 pilihan"); pl.opts.splice(i, 1); draw(); }; box.appendChild(d); });
+      var my = root.querySelector("#pfPollMy"); my.innerHTML = '<option value="">(belum memilih)</option>' + pl.opts.map(function(o, i){ return '<option value="' + i + '">' + esc(o.t || ("Pilihan " + (i + 1))) + "</option>"; }).join(""); my.value = pl.my == null ? "" : String(pl.my);
+      root.querySelector("#pfPollAdd").style.display = pl.opts.length >= 4 ? "none" : "";
+    }
+    draw();
+    root.querySelector("#pfPollAdd").onclick = function(){ if(pl.opts.length < 4){ pl.opts.push({ t: "", v: 0 }); draw(); } };
+    root.querySelector("#pfPollLeft").value = pl.left || ""; root.querySelector("#pfPollSt").value = pl.closed ? "closed" : (pl.my != null && pl.my !== "" ? "voted" : "open");
+  }
+  function readPoll(root, p){
+    if(!root.querySelector("#pfPoll")) return;
+    if(!root.querySelector("#pfPoll").checked){ delete p.poll; return; }
+    var pl = root.__poll, st = root.querySelector("#pfPollSt").value, my = root.querySelector("#pfPollMy").value;
+    pl.opts = pl.opts.filter(function(o){ return (o.t || "").trim(); }); if(pl.opts.length < 2){ delete p.poll; X.toast("Polling butuh minimal 2 pilihan"); return; }
+    pl.left = root.querySelector("#pfPollLeft").value.trim(); pl.closed = st === "closed" ? 1 : 0; pl.my = my === "" ? (st === "voted" ? 0 : null) : +my;
+    p.poll = pl;
   }
   function readPost(root, p){
     p.by = chipVals(root, "pfBy")[0] || p.by;
@@ -11383,8 +11542,9 @@ render();
     var btnLabel = quoteOf ? (X.st.lang === "id" ? "Kutip" : "Quote") : replyTo ? (X.st.lang === "id" ? "Balas" : "Reply") : t("post");
     sheet(title, postForm(p, true) + '<button type="button" class="x-btn pri" id="pfGo">' + btnLabel + "</button>", function(b){
       bindPostForm(b, p, p.media);
+      bindPoll(b, p);
       setTimeout(function(){ b.querySelector("#pfTx").focus(); }, 60);
-      $id("pfGo").onclick = function(){ readPost(b, p); if(!p.text.trim() && !p.media.length && !quoteOf){ X.toast("Postingan masih kosong"); return; } X.st.posts.push(p); X.save(); closeSheet(); render(); X.toast(quoteOf ? "Postingan dikutip" : replyTo ? "Balasan terkirim" : "Postingan terkirim"); };
+      $id("pfGo").onclick = function(){ readPost(b, p); readPoll(b, p); if(!p.text.trim() && !p.media.length && !quoteOf){ X.toast("Postingan masih kosong"); return; } X.st.posts.push(p); X.save(); closeSheet(); render(); X.toast(quoteOf ? "Postingan dikutip" : replyTo ? "Balasan terkirim" : "Postingan terkirim"); };
     });
   };
   X.editPost = function(id){
@@ -11393,8 +11553,8 @@ render();
     sheet("Edit postingan", postForm(p, false) +
       '<div class="x-switch"><span>Sematkan di profil @' + esc(acc.un) + '</span><input type="checkbox" id="pfPin"' + (acc.pin === p.id ? " checked" : "") + "></div>" +
       '<button type="button" class="x-btn pri" id="pfSave">Simpan</button><div class="x-2"><button type="button" class="x-btn" id="pfReply">' + ic("reply", 18) + 'Balas</button><button type="button" class="x-btn dng" id="pfDel">' + ic("trash", 18) + "Hapus</button></div>", function(b){
-      bindPostForm(b, p, media);
-      $id("pfSave").onclick = function(){ readPost(b, p); p.media = media; var a = X.acc(p.by); X.st.accounts.forEach(function(x){ if(x.pin === p.id) x.pin = null; }); if($id("pfPin").checked && a) a.pin = p.id; X.save(); closeSheet(); render(); X.toast("Postingan diperbarui"); };
+      bindPostForm(b, p, media); bindPoll(b, p);
+      $id("pfSave").onclick = function(){ readPost(b, p); readPoll(b, p); p.media = media; var a = X.acc(p.by); X.st.accounts.forEach(function(x){ if(x.pin === p.id) x.pin = null; }); if($id("pfPin").checked && a) a.pin = p.id; X.save(); closeSheet(); render(); X.toast("Postingan diperbarui"); };
       $id("pfReply").onclick = function(){ X.compose(p.id); };
       $id("pfDel").onclick = function(){ if(!confirm("Hapus postingan ini beserta balasannya?")) return; var kill = [p.id], ch = true; while(ch){ ch = false; X.st.posts.forEach(function(q){ if(q.replyTo && kill.indexOf(q.replyTo) >= 0 && kill.indexOf(q.id) < 0){ kill.push(q.id); ch = true; } }); }
         X.st.posts = X.st.posts.filter(function(q){ return kill.indexOf(q.id) < 0; }); closeSheet(); if(top().v === "post" && kill.indexOf(top().id) >= 0) back(); else render(); X.toast("Postingan dihapus"); };
@@ -11615,6 +11775,7 @@ render();
         var p = X.post(v); if(!p) break; var key = a === "like" ? "likedBy" : "bmBy", on = X.toggle(p, key);
         if(a === "bm") X.toast(on ? "Ditambahkan ke Markah" : "Dihapus dari Markah"); X.render(); break;
       case "rtmenu": repostMenu(v); break;
+      case "vote": var vq = v.split("|"), vp = X.post(vq[0]); if(vp && vp.poll && !vp.poll.closed && (vp.poll.my == null || vp.poll.my === "")){ vp.poll.my = +vq[1]; vp.poll.opts[+vq[1]].v = (+vp.poll.opts[+vq[1]].v || 0) + 1; X.save(); X.render(); } break;
       case "reply": X.compose(v); break;
       case "share": X.toast("Tautan disalin ke papan klip"); break;
       case "views": break;
@@ -11959,7 +12120,14 @@ render();
     drawWidgets(c, FW, cb + 18);
     var y = FH - 104, w = FW - 32, x = 16;
     if(s.music.on){ y -= 164; drawMusic(c, x, y, w); y -= 12; }
-    var ns = s.notifs.slice();
+    var ns = s.notifs.slice(), nm = s.nmode || "list";
+    if(nm === "count" && ns.length){
+      var lab = ns.length + (s.lang === "id" ? " Notifikasi" : (ns.length === 1 ? " Notification" : " Notifications"));
+      c.font = "600 15px " + SF; var lw = c.measureText(lab).width + 34; y -= 40;
+      LN.glass(c, FW / 2 - lw / 2, y, lw, 34, 17, { dark: s.nstyle !== "light", op: s.glassOp, refr: .8, shadowA: .1 });
+      c.fillStyle = s.nstyle !== "light" ? "#FFFFFF" : "#111111"; c.textAlign = "center"; c.fillText(lab, FW / 2, y + 22); ns = [];
+    }
+    if(nm === "stack" && ns.length){ var top0 = JSON.parse(JSON.stringify(ns[ns.length - 1])); top0.stack = Math.min(3, ns.length); ns = [top0]; }
     for(var i = ns.length - 1; i >= 0; i--){
       var n = ns[i], h = notifH(c, n, w), extra = (Math.min(3, +n.stack || 1) - 1) * 9;
       y -= h + extra; if(y < cb + 90) break;
@@ -12008,8 +12176,8 @@ render();
     var p = $id("lkPanel"), s = K.st; p.innerHTML = "";
     if(TAB === "notif"){
       p.innerHTML = '<div class="lk-note">Notifikasi paling bawah = paling baru. Ketuk kartu untuk mengedit.</div><div id="lkNList"></div><button type="button" class="lk-btn pri block" id="lkNAdd">' + SV("plus", 16) + ' Tambah notifikasi</button>' +
-        '<div class="lk-card">' + F("Gaya kartu notifikasi", segH("lkNSt", [["dark", "Kaca gelap"], ["light", "Kaca terang"]])) + F("Liquid Glass (iOS 27): bening \u2194 pekat", '<input type="range" min="0" max="100" id="lkGl">') + "</div>";
-      seg(p, "#lkNSt", s, "nstyle"); var gl = $id("lkGl"); gl.value = s.glassOp; gl.oninput = function(){ s.glassOp = +gl.value; redraw(); };
+        '<div class="lk-card">' + F("Tampilkan sebagai (seperti Pengaturan iOS)", segH("lkNM", [["list", "Daftar"], ["stack", "Tumpuk"], ["count", "Jumlah"]])) + F("Gaya kartu notifikasi", segH("lkNSt", [["dark", "Kaca gelap"], ["light", "Kaca terang"]])) + F("Liquid Glass (iOS 27): bening \u2194 pekat", '<input type="range" min="0" max="100" id="lkGl">') + "</div>";
+      if(!s.nmode) s.nmode = "list"; seg(p, "#lkNM", s, "nmode"); seg(p, "#lkNSt", s, "nstyle"); var gl = $id("lkGl"); gl.value = s.glassOp; gl.oninput = function(){ s.glassOp = +gl.value; redraw(); };
       var open = K._open || null;
       function draw(){
         var box = $id("lkNList"); box.innerHTML = "";
@@ -12305,7 +12473,7 @@ render();
   }
   function render(newPage){
     var ph = $id("igPhone"); if(!ph) return;
-    ph.className = "ig t-" + (I.st.theme || "dark");
+    ph.className = "ig t-" + (I.st.theme || "dark") + (I.st.tabStyle === "flat" ? " tab-flat" : "");
     $id("igStatus").innerHTML = status();
     var n = top(), v = n.v, h = "", tabs = true;
     if(v === "home") h = vHome(); else if(v === "prof") h = vProf(n.id || I.st.me, n.tab || "grid"); else if(v === "post") h = vPostOne(n.id);
@@ -12608,11 +12776,13 @@ render();
   function settings(){
     var s = I.st;
     sheet("Pengaturan IG", '<div class="ig-f"><label>Tema</label>' + segH("sTh", [["dark", "Gelap"], ["light", "Terang"]]) + '</div><div class="ig-f"><label>Bahasa tampilan</label>' + segH("sLg", [["en", "English"], ["id", "Indonesia"]]) + "</div>" +
+      '<div class="ig-f"><label>Gaya tab bar bawah</label>' + segH("sTab", [["glass", "Kaca mengambang"], ["flat", "Datar (klasik)"]]) + '</div>' +
       '<div class="ig-2"><div class="ig-f"><label>Jam status bar</label><input class="ig-in" id="sClk"></div><div class="ig-f"><label>Baterai %</label><input class="ig-in" type="number" id="sBat"></div></div>' +
       '<div class="ig-f"><label>Waktu "sekarang" (untuk "2 hours ago")</label><input class="ig-in" type="datetime-local" id="sNow"><label class="ig-sw"><span>Pakai waktu nyata</span><input type="checkbox" id="sReal"></label></div>' +
       '<div class="ig-2"><button type="button" class="ig-btn" id="sExp">Ekspor data</button><button type="button" class="ig-btn" id="sImp">Impor data</button></div><button type="button" class="ig-btn dng" id="sReset">Kembalikan data contoh</button>' +
       '<div class="ig-note2">Pengaturan ini khusus layanan Instagram. Mocksy tidak berafiliasi dengan Meta/Instagram.</div>', function(b){
-      segB(b, "sTh", function(){ return s.theme; }, function(v){ s.theme = v; render(); }); segB(b, "sLg", function(){ return s.lang; }, function(v){ s.lang = v; render(); });
+      segB(b, "sTh", function(){ return s.theme; }, function(v){ s.theme = v; render(); });
+      segB(b, "sTab", function(){ return s.tabStyle || "glass"; }, function(v){ s.tabStyle = v; render(); }); segB(b, "sLg", function(){ return s.lang; }, function(v){ s.lang = v; render(); });
       $id("sClk").value = s.clock; $id("sClk").oninput = function(){ s.clock = this.value; render(); }; $id("sBat").value = s.batt; $id("sBat").oninput = function(){ s.batt = +this.value || 80; render(); };
       $id("sReal").checked = !s.nowMs; $id("sNow").value = dtIn(now()); $id("sNow").disabled = !s.nowMs;
       $id("sReal").onchange = function(){ s.nowMs = this.checked ? null : now(); $id("sNow").disabled = this.checked; render(); }; $id("sNow").onchange = function(){ var v = new Date(this.value).getTime(); if(isFinite(v)){ s.nowMs = v; render(); } };
@@ -12937,7 +13107,11 @@ render();
   function feedList(tab){ var me = K.st.me, fl = K.st.fol[me] || []; return K.st.videos.filter(function(v){ var a = K.acc(v.by); return canSee(a) && (tab !== "fol" || fl.indexOf(v.by) >= 0); }).sort(function(a, b){ return b.ts - a.ts; }); }
   function vFeed(v){
     var tab = v === "friends" ? "fol" : FTAB, list = feedList(tab);
-    var topH = '<div class="tk-ftop"><span data-a="ftab" data-v="live" class="' + (tab === "live" ? "on" : "") + '">LIVE</span><span data-a="ftab" data-v="fol" class="' + (tab === "fol" ? "on" : "") + '">' + T("Following", "Mengikuti") + '</span><span data-a="ftab" data-v="fy" class="' + (tab === "fy" ? "on" : "") + '">' + T("For You", "Untuk Anda") + '</span><button type="button" class="tk-ib sr" data-a="search">' + ic("search", 24, { sw: 2.2 }) + "</button></div>";
+    var topH = '<div class="tk-ftop"><span data-a="ftab" data-v="live" class="' + (tab === "live" ? "on" : "") + '">LIVE</span><span data-a="ftab" data-v="exp" class="' + (tab === "exp" ? "on" : "") + '">' + T("Explore", "Jelajahi") + '</span><span data-a="ftab" data-v="fol" class="' + (tab === "fol" ? "on" : "") + '">' + T("Following", "Mengikuti") + '</span><span data-a="ftab" data-v="fy" class="' + (tab === "fy" ? "on" : "") + '">' + T("For You", "Untuk Anda") + '</span><button type="button" class="tk-ib sr" data-a="search">' + ic("search", 24, { sw: 2.2 }) + "</button></div>";
+    if(tab === "exp"){
+      var ex = K.st.videos.filter(function(v){ return canSee(K.acc(v.by)); }).sort(function(a, b){ return cnt(b, "like") - cnt(a, "like"); });
+      return '<div class="tk-vid" style="background-color:#000">' + topH + '<div class="tk-scroll" style="position:absolute;inset:100px 0 0;padding:6px"><div class="tk-grid" style="grid-template-columns:repeat(2,1fr);gap:6px">' + ex.map(function(v){ var s = K.img(v.cover), a = K.acc(v.by) || {}; return '<div data-a="watch" data-v="' + v.id + '" style="' + (s ? "background-image:url(" + s + ")" : "") + ';border-radius:6px"><span>' + ic("heart", 11, { fill: 1 }) + num(cnt(v, "like")) + " \u00b7 @" + esc(a.un || "") + "</span></div>"; }).join("") + "</div></div></div>";
+    }
     if(tab === "live"){
       var lives = K.st.accounts.filter(function(a){ return a.live && a.live.on && canSee(a); });
       var cells = '<div data-a="livestart" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background-color:#1C1C1E;color:#fff;aspect-ratio:3/4;cursor:pointer">' + ic("plus", 28, { sw: 2.2 }) + "<span>" + T("Go LIVE", "Mulai LIVE") + "</span></div>" +
@@ -13717,6 +13891,246 @@ render();
   observe("chatStreamScroll");
   /* X & Instagram (DOM) ikut diformat saat dibuka */
   setInterval(function(){ ["xView", "igView"].forEach(function(id){ var el = $id(id); if(el && !el.__mrt) observe(id); }); }, 1500);
+})();
+
+/* ==========================================================================
+   MOCKSY TOOLS — "Tumpuk Referensi" (screenshot asli transparan di atas
+   mockup, tidak ikut terunduh) dan status bar seragam untuk semua layanan.
+   ========================================================================== */
+(function(){
+  "use strict";
+  var LN = window.LINE;
+  function $id(i){ return document.getElementById(i); }
+  var REF = { src: null, op: 50, on: false, raf: 0 };
+
+  /* elemen target: mockup yang sedang tampil */
+  function target(){
+    function open(id){ var e = $id(id); return e && e.classList.contains("open"); }
+    if(open("lkApp")) return $id("lkCanvas");
+    if(open("tkApp")) return $id("tkPhone");
+    if(open("igApp")) return $id("igPhone");
+    if(open("xApp")) return $id("xPhone");
+    var pv = $id("screenPreview"); if(pv && pv.classList.contains("active")) return $id("cv");
+    return null;
+  }
+  function build(){
+    if($id("mkTools")) return;
+    var w = document.createElement("div"); w.id = "mkTools";
+    w.innerHTML = '<button type="button" id="mkToolBtn" aria-label="Alat: referensi & status bar">' + LN.svg("layers", 18) + '<span>Alat</span></button>' +
+      '<div id="mkToolPanel" role="dialog" aria-label="Alat Mocksy"><div class="hd"><b>Alat Mocksy</b><button type="button" id="mkToolX" aria-label="Tutup">' + LN.svg("close", 18) + "</button></div>" +
+      '<div class="sec"><b>Tumpuk Referensi</b><p>Unggah screenshot aplikasi asli. Gambar tampil transparan di atas mockup supaya bisa dicocokkan; tidak ikut terunduh.</p>' +
+      '<div class="row"><button type="button" class="ln-btn sm" id="mkRefUp">' + LN.svg("upload", 15) + '<span>Unggah screenshot</span></button><button type="button" class="ln-btn sm" id="mkRefTog">Sembunyikan</button><button type="button" class="ln-btn sm danger" id="mkRefDel">Hapus</button></div>' +
+      '<label class="rg">Transparansi <input type="range" min="10" max="90" id="mkRefOp"><output id="mkRefOpV"></output></label></div>' +
+      '<div class="sec"><b>Status bar semua layanan</b><p>Samakan jam & baterai di WhatsApp, iMessage, LINE, X, Instagram, TikTok, dan Lockscreen sekaligus.</p>' +
+      '<div class="row"><input class="ln-input" id="mkClock" placeholder="9:41" style="width:90px"><input class="ln-input" id="mkBatt" type="number" min="1" max="100" placeholder="82" style="width:80px"><button type="button" class="ln-btn sm pri" id="mkSbGo">Terapkan ke semua</button></div></div></div>' +
+      '<img id="mkRefImg" alt="">';
+    document.body.appendChild(w);
+    $id("mkToolBtn").onclick = function(){ $id("mkToolPanel").classList.toggle("open"); };
+    $id("mkToolX").onclick = function(){ $id("mkToolPanel").classList.remove("open"); };
+    $id("mkRefUp").onclick = function(){ var i = document.createElement("input"); i.type = "file"; i.accept = "image/*"; i.onchange = function(){ var f = i.files[0]; if(!f) return; var r = new FileReader(); r.onload = function(){ REF.src = r.result; REF.on = true; $id("mkRefImg").src = REF.src; sync(); }; r.readAsDataURL(f); }; i.click(); };
+    $id("mkRefTog").onclick = function(){ if(!REF.src) return; REF.on = !REF.on; sync(); };
+    $id("mkRefDel").onclick = function(){ REF.src = null; REF.on = false; $id("mkRefImg").removeAttribute("src"); sync(); };
+    var op = $id("mkRefOp"); op.value = REF.op; op.oninput = function(){ REF.op = +op.value; sync(); };
+    $id("mkClock").value = (window.S && S.time) || "9:41"; $id("mkBatt").value = (window.S && S.batt) || 82;
+    $id("mkSbGo").onclick = applyStatus;
+    sync();
+  }
+  function sync(){
+    $id("mkRefOpV").textContent = REF.op + "%"; $id("mkRefTog").textContent = REF.on ? "Sembunyikan" : "Tampilkan";
+    $id("mkRefTog").disabled = $id("mkRefDel").disabled = !REF.src;
+    var img = $id("mkRefImg"); img.style.opacity = REF.op / 100;
+    if(REF.on && REF.src){ if(!REF.raf) loop(); } else { img.style.display = "none"; if(REF.raf){ cancelAnimationFrame(REF.raf); REF.raf = 0; } }
+  }
+  /* overlay mengikuti posisi mockup (di luar elemen mockup, jadi tidak ikut Unduh PNG) */
+  function loop(){
+    var img = $id("mkRefImg"), t = target();
+    if(t && REF.on){ var r = t.getBoundingClientRect(); img.style.display = "block"; img.style.left = r.left + "px"; img.style.top = r.top + "px"; img.style.width = r.width + "px"; img.style.height = r.height + "px"; }
+    else img.style.display = "none";
+    REF.raf = requestAnimationFrame(loop);
+  }
+  /* status bar seragam */
+  function applyStatus(){
+    var clk = $id("mkClock").value.trim() || "9:41", bt = Math.max(1, Math.min(100, parseInt($id("mkBatt").value, 10) || 82));
+    (window.CV || []).forEach(function(c){ c.time = clk; c.batt = bt; });
+    [window.MX, window.MIG, window.MTK].forEach(function(m){ if(m && m.st){ m.st.clock = clk; m.st.batt = bt; if(m.save) m.save(); } });
+    if(window.MLock && MLock.st){ MLock.st.time = clk; MLock.st.batt = bt; MLock.save(); if(MLock.redraw) MLock.redraw(); }
+    try{ if(typeof render === "function") render(); if(window.MX && MX.render) MX.render(); if(window.MIG && MIG.render) MIG.render(); if(window.MTK && MTK.render) MTK.render(); }catch(e){}
+    if(LN.ui && LN.ui.toast) LN.ui.toast("Status bar " + clk + " \u00b7 " + bt + "% diterapkan ke semua layanan");
+  }
+  window.MKTOOLS = { applyStatus: applyStatus, ref: REF };
+  build();
+})();
+
+/* ==========================================================================
+   MOCKSY EXTRAS — tapback & balasan iMessage, pemisah tanggal, bubble
+   mengetik, Proyek per AU, screenshot panjang.
+   ========================================================================== */
+(function(){
+  "use strict";
+  var LN = window.LINE, U = LN.ui;
+  function $id(i){ return document.getElementById(i); }
+
+  /* ---------- iMessage: tapback & "N Replies" ---------- */
+  window.IMX = function(c, m, x, y, w, h, dark){
+    if(m.tb){
+      var bx = m.me ? x - 12 : x + w - 22, by = y - 16, R = 15, mine = !!m.tbMe;
+      c.save();
+      c.fillStyle = mine ? "#007AFF" : (dark ? "#3A3A3C" : "#E9E9EB");
+      c.strokeStyle = dark ? "#000000" : "#FFFFFF"; c.lineWidth = 2.5;
+      c.beginPath(); c.arc(bx + R, by + R, R, 0, Math.PI * 2); c.fill(); c.stroke();
+      c.beginPath(); c.arc(m.me ? bx + R * 1.75 : bx + R * .25, by + R * 1.85, 3.4, 0, Math.PI * 2); c.fill(); c.stroke();
+      c.font = "15px -apple-system,'Apple Color Emoji','Segoe UI Emoji',sans-serif"; c.textAlign = "center"; c.textBaseline = "middle";
+      if(m.tb === "heart"){ c.fillStyle = mine ? "#FFFFFF" : "#FF2D55"; var hx = bx + R, hy = by + R + 1, s = 10; c.beginPath(); c.moveTo(hx, hy + s * .45); c.bezierCurveTo(hx - s * .9, hy - s * .1, hx - s * .45, hy - s * .75, hx, hy - s * .3); c.bezierCurveTo(hx + s * .45, hy - s * .75, hx + s * .9, hy - s * .1, hx, hy + s * .45); c.fill(); }
+      else { c.fillStyle = mine ? "#FFFFFF" : "#000000"; c.fillText(m.tb, bx + R, by + R + 1); }
+      c.restore(); c.textBaseline = "alphabetic";
+    }
+    if(+m.reps){
+      var ly = y + h + 15, lab = m.reps + (+m.reps === 1 ? " Reply" : " Replies") + " \u203A";
+      c.save(); c.font = "600 13px -apple-system,'SF Pro Text',system-ui,sans-serif"; c.fillStyle = dark ? "#AEAEB2" : "#8A8A8E";
+      c.textAlign = m.me ? "right" : "left"; c.fillText(lab, m.me ? x + w - 10 : x + 30, ly);
+      c.strokeStyle = dark ? "rgba(255,255,255,.35)" : "rgba(0,0,0,.22)"; c.lineWidth = 2; c.lineCap = "round";
+      if(!m.me){ c.beginPath(); c.moveTo(x + 14, y + h - 4); c.quadraticCurveTo(x + 14, ly - 4, x + 24, ly - 4); c.stroke(); }
+      c.restore();
+    }
+  };
+
+  /* ---------- kolom ekstra di editor bubble ---------- */
+  var TBS = [["", "Tidak ada"], ["heart", "\u2764\uFE0F"], ["\uD83D\uDC4D", "\uD83D\uDC4D"], ["\uD83D\uDC4E", "\uD83D\uDC4E"], ["\uD83D\uDE02", "\uD83D\uDE02"], ["\u203C\uFE0F", "\u203C\uFE0F"], ["\u2753", "\u2753"]];
+  function extraBox(){
+    var md = $id("modalBubbleEditor"); if(!md) return;
+    var host = md.querySelector(".modal-sheet > div:last-child"); if(!host || $id("mkExtra")) return;
+    var d = document.createElement("div"); d.id = "mkExtra"; d.className = "mk-extra";
+    d.innerHTML = '<div class="settings-label-box"><div class="settings-title">Reaksi (iMessage)</div><div class="settings-desc">Tapback di pojok bubble</div></div><div class="ln-chips" id="mkTb"></div>' +
+      '<label class="mk-row"><span>Reaksi dari saya (biru)</span><input type="checkbox" id="mkTbMe"></label>' +
+      '<label class="mk-row"><span>Jumlah balasan berutas ("2 Replies")</span><input type="number" min="0" max="99" id="mkReps" class="mk-num"></label>';
+    host.insertBefore(d, host.lastElementChild);
+    TBS.forEach(function(t){ var b = document.createElement("button"); b.type = "button"; b.className = "ln-chip"; b.dataset.v = t[0]; b.textContent = t[1]; b.onclick = function(){ var m = window.__mkEditMsg; if(!m) return; m.tb = t[0] || undefined; sync(); redraw(); }; $id("mkTb").appendChild(b); });
+    $id("mkTbMe").onchange = function(){ var m = window.__mkEditMsg; if(m){ m.tbMe = this.checked ? 1 : 0; redraw(); } };
+    $id("mkReps").oninput = function(){ var m = window.__mkEditMsg; if(m){ m.reps = Math.max(0, parseInt(this.value, 10) || 0); redraw(); } };
+  }
+  function sync(){ var m = window.__mkEditMsg, S = window.S; if(!m || !$id("mkExtra")) return;
+    $id("mkExtra").style.display = S && !S.wa && !S.ln && m.k === "t" ? "" : "none";
+    document.querySelectorAll("#mkTb .ln-chip").forEach(function(b){ b.classList.toggle("active", (m.tb || "") === b.dataset.v); });
+    $id("mkTbMe").checked = !!m.tbMe; $id("mkReps").value = +m.reps || 0; }
+  function redraw(){ try{ if(typeof render === "function") render(); }catch(e){} }
+  (function(){ var md = $id("modalBubbleEditor"); if(!md) return; extraBox();
+    new MutationObserver(function(){ if(md.classList.contains("active")) sync(); }).observe(md, { attributes: true, attributeFilter: ["class"] }); })();
+
+  /* ---------- pemisah tanggal & bubble mengetik ---------- */
+  var DAYS = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"], DAYS_EN = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], MON = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+  function presets(S){
+    var t = new Date(), y = new Date(Date.now() - 864e5), w = new Date(Date.now() - 3 * 864e5), hh = (S && S.time) || "10:01";
+    if(S && S.ln) return ["Today", "Yesterday", DAYS_EN[w.getDay()] + ", " + (w.getMonth() + 1) + "/" + w.getDate(), "Hari ini", "Kemarin"];
+    if(S && S.wa) return ["Hari ini", "Kemarin", DAYS[w.getDay()], w.getDate() + " " + MON[w.getMonth()] + " " + w.getFullYear(), "Today", "Yesterday"];
+    return ["Today " + hh, "Yesterday " + hh, DAYS_EN[w.getDay()] + " " + hh, DAYS_EN[w.getDay()] + ", " + MON[w.getMonth()].slice(0, 3) + " " + w.getDate() + " at " + hh];
+  }
+  function pushMsg(m){ var MK = U.MK ? U.MK() : window.MK; if(MK && MK.pushMsg) MK.pushMsg(m); else window.S.m.push(m); }
+  window.MKX = window.MKX || {};
+  MKX.dateSheet = function(){
+    var S = window.S;
+    U.sheet("Pemisah tanggal", function(b){
+      b.innerHTML = '<div class="settings-desc" style="margin-bottom:10px">Ketuk salah satu, atau tulis sendiri. Tampil sebagai label tanggal di tengah chat, sesuai gaya ' + (S.ln ? "LINE" : S.wa ? "WhatsApp" : "iMessage") + '.</div><div class="ln-chips" id="mkDs"></div><div class="ln-field" style="margin-top:12px"><label>Tulis sendiri</label><input class="ln-input" id="mkDsTx" placeholder="mis. Sabtu, 8 November"></div><button type="button" class="ln-btn pri block" id="mkDsGo">Tambahkan</button>';
+      function add(t){ var m = { id: "m_" + Date.now(), k: "s", t: t, me: false, ts: "" }; if(S.wa && !S.ln) m.sk = "date"; if(S.ln) m.k = "chip"; pushMsg(m); U.closeSheet(); U.refreshAll(); U.toast("Pemisah tanggal ditambahkan"); }
+      presets(S).forEach(function(p){ var c = document.createElement("button"); c.type = "button"; c.className = "ln-chip"; c.textContent = p; c.onclick = function(){ add(p); }; $id("mkDs").appendChild(c); });
+      $id("mkDsGo").onclick = function(){ var v = $id("mkDsTx").value.trim(); if(v) add(v); };
+    });
+  };
+  MKX.typing = function(){ var S = window.S; pushMsg({ id: "m_" + Date.now(), k: "typ", me: false, who: 0, t: "", ts: "" }); U.refreshAll(); U.toast(S.ln ? "LINE tidak punya indikator mengetik di chat; ditambahkan sebagai bubble." : "Bubble \"sedang mengetik\" ditambahkan"); };
+  (function(){
+    var grid = $id("tileAddPhoto") && $id("tileAddPhoto").parentNode; if(!grid || $id("tileDateSep")) return;
+    [["tileDateSep", "Pemisah Tanggal", "calendar", MKX.dateSheet], ["tileTyping", "Sedang Mengetik\u2026", "more", MKX.typing]].forEach(function(q){
+      var b = document.createElement("button"); b.className = "settings-btn-secondary"; b.id = q[0]; b.type = "button";
+      b.style.cssText = "height:70px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;";
+      b.innerHTML = LN.svg(q[2], 22) + "<span>" + q[1] + "</span>";
+      b.onclick = function(){ var md = $id("modalSpecialMessage"); if(md) md.classList.remove("active"); q[3](); };
+      grid.appendChild(b);
+    });
+  })();
+
+  /* ---------- rasio panjang untuk screenshot chat ---------- */
+  (function(){
+    [$id("ar"), document.querySelector("#previewFrameSelect, select[id*=Frame]")].forEach(function(sel){
+      if(!sel) return;
+      [["14", "1:4 (panjang)"], ["16", "1:6 (panjang)"], ["110", "1:10 (sangat panjang)"]].forEach(function(o){ if(!sel.querySelector('option[value="' + o[0] + '"]')){ var op = document.createElement("option"); op.value = o[0]; op.textContent = o[1]; sel.appendChild(op); } });
+    });
+  })();
+
+  /* ---------- screenshot panjang untuk X / Instagram / TikTok ---------- */
+  MKX.longSnap = function(){
+    function open(id){ var e = $id(id); return e && e.classList.contains("open"); }
+    var map = open("xApp") ? ["xApp", "xPhone", ".x-scroll"] : open("igApp") ? ["igApp", "igPhone", ".ig-scroll"] : open("tkApp") ? ["tkApp", "tkPhone", ".tk-scroll"] : null;
+    if(!map){ U.toast("Untuk chat: pilih rasio 1:4 / 1:6 / 1:10 di Preview, lalu unduh."); return; }
+    var app = $id(map[0]), ph = $id(map[1]), sc = ph.querySelector(map[2]);
+    if(!sc){ U.toast("Layar ini tidak punya konten yang bisa digulir."); return; }
+    var extra = Math.max(0, sc.scrollHeight - sc.clientHeight), H = ph.clientHeight + extra;
+    var saved = { h: ph.style.height, f: ph.style.flex, mh: ph.style.maxHeight };
+    ph.style.setProperty("height", H + "px", "important"); ph.style.setProperty("flex", "0 0 auto", "important"); ph.style.setProperty("max-height", "none", "important");
+    sc.scrollTop = 0;
+    var btn = app.querySelector('.x-tools [data-a="snap"]');
+    setTimeout(function(){ if(btn) btn.click(); setTimeout(function(){ ph.style.height = saved.h; ph.style.flex = saved.f; ph.style.maxHeight = saved.mh; ph.style.removeProperty("height"); ph.style.removeProperty("flex"); ph.style.removeProperty("max-height"); }, 3000); }, 80);
+  };
+
+  /* ---------- PROYEK per AU ---------- */
+  var PKEYS = ["imGlass2", "waGW", "mocksy.x.v1", "mocksy.ig.v1", "mocksy.tk.v1", "mocksy.lock.v1"], PDB = null;
+  function pdb(){ return new Promise(function(res, rej){ if(PDB) return res(PDB); var r = indexedDB.open("mocksy-projects", 1); r.onupgradeneeded = function(){ r.result.createObjectStore("p", { keyPath: "id" }); }; r.onsuccess = function(){ PDB = r.result; res(PDB); }; r.onerror = function(){ rej(r.error); }; }); }
+  function pAll(){ return pdb().then(function(d){ return new Promise(function(res){ var q = d.transaction("p").objectStore("p").getAll(); q.onsuccess = function(){ res(q.result || []); }; q.onerror = function(){ res([]); }; }); }); }
+  function pPut(p){ return pdb().then(function(d){ return new Promise(function(res){ var tx = d.transaction("p", "readwrite"); tx.objectStore("p").put(p); tx.oncomplete = res; tx.onerror = res; }); }); }
+  function pDel(id){ return pdb().then(function(d){ return new Promise(function(res){ var tx = d.transaction("p", "readwrite"); tx.objectStore("p").delete(id); tx.oncomplete = res; }); }); }
+  function curId(){ try{ return localStorage.getItem("mocksy.project") || "p_default"; }catch(e){ return "p_default"; } }
+  function curName(){ try{ return localStorage.getItem("mocksy.projectName") || "Proyek utama"; }catch(e){ return "Proyek utama"; } }
+  function flush(){ try{ var S = window.S; if(typeof CV !== "undefined") localStorage.setItem("imGlass2", "x"); }catch(e){} }
+  function snapshot(){ flush(); var d = {}; PKEYS.forEach(function(k){ var v = localStorage.getItem(k); if(v != null) d[k] = v; }); return d; }
+  var oSet = Storage.prototype.setItem;
+  function writeRaw(data){
+    window.__mkSwitching = true;
+    PKEYS.forEach(function(k){ localStorage.removeItem(k); });
+    Storage.__mcInner = 1; try{ Object.keys(data || {}).forEach(function(k){ oSet.call(localStorage, k, data[k]); }); } finally { Storage.__mcInner = 0; }
+  }
+  Storage.prototype.setItem = (function(prev){ return function(k, v){ if(window.__mkSwitching && PKEYS.indexOf(k) >= 0) return; return prev.apply(this, arguments); }; })(Storage.prototype.setItem);
+  function switchTo(p){
+    pPut({ id: curId(), name: curName(), data: snapshot(), updated: Date.now() }).then(function(){
+      writeRaw(p.data || {}); oSet.call(localStorage, "mocksy.project", p.id); oSet.call(localStorage, "mocksy.projectName", p.name);
+      location.reload();
+    });
+  }
+  MKX.projects = function(){
+    pAll().then(function(list){
+      var cid = curId(); if(!list.some(function(p){ return p.id === cid; })) list.unshift({ id: cid, name: curName(), data: null });
+      U.sheet("Proyek per AU", function(b){
+        b.innerHTML = '<div class="settings-desc" style="margin-bottom:10px">Tiap proyek menyimpan chat (WA/iMessage/LINE), X, Instagram, TikTok, dan Lockscreen sendiri-sendiri. Tema LINE & paket emoji berlaku untuk semua proyek.</div><div id="mkPl"></div>' +
+          '<div class="ln-field" style="margin-top:10px"><label>Proyek baru</label><input class="ln-input" id="mkPn" placeholder="mis. Joki PDKT"></div><div class="ln-btnrow"><button type="button" class="ln-btn pri" id="mkPnew">Buat (kosong)</button><button type="button" class="ln-btn" id="mkPdup">Duplikat proyek ini</button></div>' +
+          '<div class="ln-btnrow" style="margin-top:8px"><button type="button" class="ln-btn sm" id="mkPexp">Ekspor proyek ini</button><button type="button" class="ln-btn sm" id="mkPimp">Impor proyek</button></div>';
+        var box = $id("mkPl");
+        list.forEach(function(p){
+          var on = p.id === cid, r = document.createElement("div"); r.className = "mk-prow" + (on ? " on" : "");
+          r.innerHTML = '<b>' + LN.esc(p.name) + (on ? ' <em>\u2022 aktif</em>' : "") + '</b><span class="sp"></span>' + (on ? "" : '<button type="button" class="ln-btn sm pri" data-o="open">Buka</button>') + '<button type="button" class="ln-btn sm" data-o="ren">Ganti nama</button>' + (on ? "" : '<button type="button" class="ln-btn sm danger" data-o="del">Hapus</button>');
+          r.querySelectorAll("[data-o]").forEach(function(btn){ btn.onclick = function(){
+            var o = btn.dataset.o;
+            if(o === "open") switchTo(p);
+            if(o === "ren"){ var n = prompt("Nama proyek", p.name); if(!n) return; n = n.trim().slice(0, 40); if(on){ oSet.call(localStorage, "mocksy.projectName", n); } p.name = n; pPut({ id: p.id, name: n, data: on ? snapshot() : p.data, updated: Date.now() }).then(MKX.projects); syncLabel(); }
+            if(o === "del" && confirm('Hapus proyek "' + p.name + '"? Semua data di dalamnya hilang.')) pDel(p.id).then(MKX.projects);
+          }; });
+          box.appendChild(r);
+        });
+        $id("mkPnew").onclick = function(){ var n = ($id("mkPn").value || "").trim() || "Proyek baru"; switchTo({ id: "p_" + Date.now().toString(36), name: n.slice(0, 40), data: {} }); };
+        $id("mkPdup").onclick = function(){ var n = ($id("mkPn").value || "").trim() || (curName() + " (salinan)"); switchTo({ id: "p_" + Date.now().toString(36), name: n.slice(0, 40), data: snapshot() }); };
+        $id("mkPexp").onclick = function(){ var bl = new Blob([JSON.stringify({ format: "mocksy-project", v: 1, name: curName(), data: snapshot() })], { type: "application/json" }); var a = document.createElement("a"); a.href = URL.createObjectURL(bl); a.download = "mocksy-proyek-" + curName().replace(/[^\w-]+/g, "_") + ".json"; document.body.appendChild(a); a.click(); a.remove(); U.toast("Proyek diekspor (gambar tetap tersimpan di browser ini)"); };
+        $id("mkPimp").onclick = function(){ var i = document.createElement("input"); i.type = "file"; i.accept = ".json"; i.onchange = function(){ var f = i.files[0]; if(!f) return; var rd = new FileReader(); rd.onload = function(){ try{ var pk = JSON.parse(rd.result); if(!pk || pk.format !== "mocksy-project" || !pk.data) throw new Error("Bukan file proyek Mocksy"); switchTo({ id: "p_" + Date.now().toString(36), name: String(pk.name || "Proyek impor").slice(0, 40), data: pk.data }); }catch(e){ U.toast(e.message); } }; rd.readAsText(f); }; i.click(); };
+      });
+    });
+  };
+  function syncLabel(){ var l = $id("mkProjLbl"); if(l) l.textContent = curName(); }
+
+  /* tombol di panel Alat */
+  (function(){
+    var pn = $id("mkToolPanel"); if(!pn || $id("mkProjSec")) return;
+    var s = document.createElement("div"); s.className = "sec"; s.id = "mkProjSec";
+    s.innerHTML = '<b>Proyek: <span id="mkProjLbl"></span></b><p>Pisahkan data tiap cerita/AU. Ganti proyek dengan sekali ketuk.</p><div class="row"><button type="button" class="ln-btn sm pri" id="mkProjBtn">Kelola proyek</button><button type="button" class="ln-btn sm" id="mkLongBtn">Unduh panjang (X/IG/TikTok)</button></div>';
+    pn.insertBefore(s, pn.children[1]);
+    $id("mkProjBtn").onclick = function(){ pn.classList.remove("open"); MKX.projects(); };
+    $id("mkLongBtn").onclick = function(){ pn.classList.remove("open"); MKX.longSnap(); };
+    syncLabel();
+  })();
 })();
 
 </script>
